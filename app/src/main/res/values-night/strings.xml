@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Shipping Delivery</string>
     <string name="dashboard">Dashboard</string>
     <string name="delivery">Delivery</string>
     <string name="whatsapp">WhatsApp</string>

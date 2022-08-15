@@ -3,6 +3,8 @@
     package="com.editor.shippingdelivery">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".application.Application"
         android:allowBackup="true"
@@ -20,6 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".main.placeOrder.OrderPlacement"/>
+        <activity android:name=".application.NoNetworkActivity"/>
     </application>
 
 </manifest>

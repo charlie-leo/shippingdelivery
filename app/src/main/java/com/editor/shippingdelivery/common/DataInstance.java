@@ -1,6 +1,11 @@
 package com.editor.shippingdelivery.common;
 
+import android.util.Log;
+
+import okio.Buffer;
 import java.util.HashMap;
+
+import okhttp3.ResponseBody;
 
 /**
  * Created by Charles Raj I on 14/08/22.
@@ -20,4 +25,15 @@ public interface DataInstance {
         }
         return "";
     }
+
+//    default String responseBodyToString(ResponseBody responseBody){
+//        String responseString = "";
+//        try{
+//            Buffer buffer = new Buffer();
+//            responseBody.
+//        }catch (Exception e){
+//            Log.d("TAG", "responseBodyToString: " + e.toString());
+//        }
+//        return responseString;
+//    }
 }

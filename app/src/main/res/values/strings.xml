@@ -3,4 +3,7 @@
     <string name="dashboard">Dashboard</string>
     <string name="delivery">Delivery</string>
     <string name="whatsapp">WhatsApp</string>
+    <string name="bill_info_underline"><u>Bill info</u></string>
+    <string name="customer_info_underline"><u>Customer info</u></string>
+    <string name="route_info_underline"><u>Route info</u></string>
 </resources>

@@ -3,17 +3,13 @@ package com.editor.shippingdelivery;
  * Created by Charles Raj I on 14/08/2022.
  *  @author Charles Raj I
  */
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.editor.shippingdelivery.databinding.ActivityMainBinding;
 import com.editor.shippingdelivery.main.placeOrder.OrderPlacement;

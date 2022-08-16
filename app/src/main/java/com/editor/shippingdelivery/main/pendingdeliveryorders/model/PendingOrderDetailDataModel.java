@@ -5,37 +5,30 @@ public class PendingOrderDetailDataModel {
      * distrCode.
      */
     private String distrCode;
-
     /**
      * invoiceNo.
      */
     private String invoiceNo;
-
     /**
      * prodCode.
      */
     private String prodCode;
-
     /**
      * hsnCode.
      */
     private String hsnCode;
-
     /**
      * prodShortName.
      */
     private String prodShortName;
-
     /**
      * prodName.
      */
     private String prodName;
-
     /**
      * prodBatchCode.
      */
     private String prodBatchCode;
-
     /**
      * totalInvoiceQty.
      */

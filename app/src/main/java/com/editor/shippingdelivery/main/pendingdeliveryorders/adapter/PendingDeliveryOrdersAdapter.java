@@ -1,5 +1,6 @@
 package com.editor.shippingdelivery.main.pendingdeliveryorders.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.editor.shippingdelivery.R;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.PendingDeliveryOrdersActivity;
+import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
+
+import java.util.List;
 
 public class PendingDeliveryOrdersAdapter extends RecyclerView.Adapter<PendingDeliveryOrdersAdapter.AdapterViewHolder> {
-    public PendingDeliveryOrdersAdapter(PendingDeliveryOrdersActivity pendingDeliveryOrdersActivity) {
 
+    Context context;
+    List<PendingOrderHeaderDataModel> pendingOrderHeaderDataModelList;
+    public PendingDeliveryOrdersAdapter(Context context, List<PendingOrderHeaderDataModel> pendingOrderHeaderDataModelList) {
+        this.context = context;
+        this.pendingOrderHeaderDataModelList = pendingOrderHeaderDataModelList;
     }
 
     @NonNull
@@ -31,7 +39,7 @@ public class PendingDeliveryOrdersAdapter extends RecyclerView.Adapter<PendingDe
 
     @Override
     public int getItemCount() {
-        return 0;
+        return pendingOrderHeaderDataModelList.size();
     }
 
     public static class AdapterViewHolder extends RecyclerView.ViewHolder {

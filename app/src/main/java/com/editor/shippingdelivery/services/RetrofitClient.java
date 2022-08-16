@@ -14,7 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     /* Add you base URL here !! */
-    public static String BASE_URL="https://apiv2.shiprocket.in/v1/external/";
+//    public static String BASE_URL="https://apiv2.shiprocket.in/v1/external/";
+    public static String BASE_URL="https://botreeuat.csngsfa.com/api/v1/delivery-order/pending";
 
     /*Initialize the retrofit*/
     public static RetrofitInterface getClient() {

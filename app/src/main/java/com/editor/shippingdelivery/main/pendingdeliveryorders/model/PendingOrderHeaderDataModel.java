@@ -1,8 +1,15 @@
 package com.editor.shippingdelivery.main.pendingdeliveryorders.model;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
+import com.editor.shippingdelivery.BR;
+
 import java.util.List;
 
-public class PendingOrderHeaderDataModel {
+public class PendingOrderHeaderDataModel extends BaseObservable {
+
+
     /** distrCode. */
     private String distrCode;
 
@@ -75,12 +82,14 @@ public class PendingOrderHeaderDataModel {
     /** billDetailsEntityList. */
     private List<PendingOrderDetailDataModel> pendingOrderDetailDataModelList;
 
+    @Bindable
     public String getDistrCode() {
         return distrCode;
     }
 
     public void setDistrCode(String distrCode) {
         this.distrCode = distrCode;
+        notifyPropertyChanged(BR.distrCode);
     }
 
     public String getInvoiceNo() {

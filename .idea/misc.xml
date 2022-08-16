@@ -3,21 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/bg_dashboard_gradient.xml" value="0.234" />
-        <entry key="app/src/main/res/drawable/bg_dashboard_left_curve.xml" value="0.234" />
-        <entry key="app/src/main/res/drawable/gradient_bg.xml" value="0.234" />
-        <entry key="app/src/main/res/drawable/ic_baseline_chevron_right_24.xml" value="0.234" />
-        <entry key="app/src/main/res/drawable/ic_baseline_delivery_dining_24.xml" value="0.234" />
-        <entry key="app/src/main/res/drawable/ic_baseline_message_24.xml" value="0.234" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.234" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/activity_pending_delivery_orders.xml" value="0.51484375" />
-        <entry key="app/src/main/res/layout/list_pending_delivery_orders.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/order_placment.xml" value="0.51484375" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1415" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_pending_delivery_orders.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/list_pending_delivery_orders.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/no_network_activity.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/order_placment.xml" value="0.28229166666666666" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

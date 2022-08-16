@@ -7,12 +7,15 @@ package com.editor.shippingdelivery.services;
  */
 
 
+import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 import com.editor.shippingdelivery.main.placeOrder.ShipLoginModel;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderResponse;
 import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
@@ -36,4 +39,7 @@ public interface RetrofitInterface {
 
     @POST("orders/create")
     Observable<CreateOrderResponse> createShipOrder(@Body CreateOrderRequest createOrderRequest);
+
+    @POST("delivery-order/pending")
+    Observable<Response<List<PendingOrderHeaderDataModel>>> getShippingOrderList();
 }

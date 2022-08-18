@@ -8,22 +8,31 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.databinding.library.baseAdapters.BR;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.editor.shippingdelivery.R;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.PendingDeliveryOrdersActivity;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PendingDeliveryOrdersAdapter extends RecyclerView.Adapter<PendingDeliveryOrdersAdapter.AdapterViewHolder> {
 
     Context context;
     List<PendingOrderHeaderDataModel> pendingOrderHeaderDataModelList;
+
     public PendingDeliveryOrdersAdapter(Context context, List<PendingOrderHeaderDataModel> pendingOrderHeaderDataModelList) {
         this.context = context;
         this.pendingOrderHeaderDataModelList = pendingOrderHeaderDataModelList;
     }
+
+    public PendingDeliveryOrdersAdapter(Context context) {
+        this.context = context;
+        this.pendingOrderHeaderDataModelList = new ArrayList<>();
+    }
+
 
     @NonNull
     @Override
@@ -34,7 +43,7 @@ public class PendingDeliveryOrdersAdapter extends RecyclerView.Adapter<PendingDe
 
     @Override
     public void onBindViewHolder(@NonNull AdapterViewHolder holder, int position) {
-
+        holder.bind(pendingOrderHeaderDataModelList.get(position));
     }
 
     @Override
@@ -43,9 +52,21 @@ public class PendingDeliveryOrdersAdapter extends RecyclerView.Adapter<PendingDe
     }
 
     public static class AdapterViewHolder extends RecyclerView.ViewHolder {
+        private final ViewDataBinding viewDataBinding;
+
         public AdapterViewHolder(@NonNull ViewDataBinding viewDataBinding) {
             super(viewDataBinding.getRoot());
+            this.viewDataBinding = viewDataBinding;
             viewDataBinding.executePendingBindings();
         }
+
+        public void bind(PendingOrderHeaderDataModel pendingOrderHeaderDataModel) {
+            viewDataBinding.setVariable(BR.headerModel, pendingOrderHeaderDataModel);
+        }
+    }
+
+    public void setPendingDeliveryOrderList(List<PendingOrderHeaderDataModel> pendingOrderHeaderDataModelList) {
+        this.pendingOrderHeaderDataModelList = pendingOrderHeaderDataModelList;
+        notifyDataSetChanged();
     }
 }

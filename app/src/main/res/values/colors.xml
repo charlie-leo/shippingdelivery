@@ -8,7 +8,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
 
-<!--    &lt;!&ndash;Teal Color&ndash;&gt;
+    <!--Teal Color-->
     <color name="dark_primary">#00796B</color>
     <color name="light_primary">#B2DFDB</color>
     <color name="primary_color">#009688</color>
@@ -16,10 +16,11 @@
     <color name="accent_color">#009688</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
-    <color name="divider">#BDBDBD</color>-->
+    <color name="button_text">#ffffff</color>
+    <color name="divider">#BDBDBD</color>
 
     <!--AMBER Color-->
-    <color name="dark_primary">#FFA000</color>
+<!--    <color name="dark_primary">#FFA000</color>
     <color name="light_primary">#FFECB3</color>
     <color name="primary_color">#FFC107</color>
     <color name="text_icons">#212121</color>
@@ -27,16 +28,17 @@
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
     <color name="button_text">#ffffff</color>
-    <color name="divider">#BDBDBD</color>
+    <color name="divider">#BDBDBD</color>-->
 
-<!--    &lt;!&ndash;ORANGE Color&ndash;&gt;
-    <color name="dark_primary">#F57C00</color>
+    <!--ORANGE Color-->
+<!--    <color name="dark_primary">#F57C00</color>
     <color name="light_primary">#FFE0B2</color>
     <color name="primary_color">#FF9800</color>
     <color name="text_icons">#212121</color>
     <color name="accent_color">#FFC107</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
+    <color name="button_text">#ffffff</color>
     <color name="divider">#BDBDBD</color>-->
 
     <color name="white">#FFFFFFFF</color>

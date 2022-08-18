@@ -7,6 +7,10 @@
         <import type="android.view.View" />
 
         <variable
+            name="headerModel"
+            type="com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel" />
+
+        <variable
             name="ViewModel"
             type="com.editor.shippingdelivery.main.pendingdeliveryorders.adapter.PendingDeliveryOrdersAdapter" />
     </data>
@@ -21,6 +25,7 @@
             android:layout_margin="@dimen/_10sdp"
             android:elevation="@dimen/_10sdp"
             app:cardCornerRadius="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -36,7 +41,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
-                    android:text="Arun Kumar m"
+                    android:text="@{headerModel.customerName}"
                     android:textColor="@color/primary_text"
                     android:textSize="@dimen/_14ssp"
                     app:layout_constraintEnd_toStartOf="@+id/tv_date"
@@ -48,7 +53,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_5sdp"
-                    android:text="19-02-2022"
+                    android:text="@{headerModel.invoiceDt}"
                     android:textColor="@color/secondary_text"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_customer_name"
@@ -68,11 +73,25 @@
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
-                    android:text="INV2000002"
+                    android:text="@{headerModel.invoiceNo}"
                     android:textColor="@color/secondary_text"
                     android:textSize="@dimen/_14ssp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_line_no"
+                    app:layout_constraintBottom_toTopOf="@+id/barrier_invoice"
+
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/barrier_customername_date" />
+                <TextView
+                    android:id="@+id/tv_line_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:text="5 Lines"
+                    app:layout_constraintBottom_toTopOf="@+id/barrier_invoice"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/barrier_customername_date" />
 
                 <androidx.constraintlayout.widget.Barrier
@@ -80,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:barrierDirection="bottom"
-                    app:constraint_referenced_ids="tv_invoice_no" />
+                    app:constraint_referenced_ids="tv_invoice_no,tv_line_no" />
 
                 <TextView
                     android:id="@+id/tv_bill_info"
@@ -147,14 +166,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_5sdp"
-                    android:text="Rs.115.00"
+                    android:text="@{headerModel.totNetAmt.toString()}"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/_14ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view_divider" />
+<!--                date_convert="@{headerModel.totNetAmt.toString()}-->
 
-                <Button
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/primary_color"

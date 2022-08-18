@@ -5,40 +5,47 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.editor.shippingdelivery.databinding.ListPendingDeliveryOrdersBinding;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.PendingDeliveryOrderRepo;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.adapter.PendingDeliveryOrdersAdapter;
+import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingDeliveryOrdersRequest;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
+import com.editor.shippingdelivery.services.RetrofitClient;
+import com.editor.shippingdelivery.services.RetrofitInterface;
+import com.editor.shippingdelivery.utils.AppUtils;
+import com.google.gson.Gson;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PendingDeliveryOrdersViewModel extends AndroidViewModel {
 
-    private PendingDeliveryOrderRepo pendingDeliveryOrderRepo;
+    public MutableLiveData<List<PendingOrderHeaderDataModel>> pendingOrderHeaderDataModel;
+
+    private final PendingDeliveryOrderRepo pendingDeliveryOrderRepo;
+
     public PendingDeliveryOrdersViewModel(@NonNull Application application) {
         super(application);
         pendingDeliveryOrderRepo = new PendingDeliveryOrderRepo();
+        pendingOrderHeaderDataModel=pendingDeliveryOrderRepo.getPendingOrderLiveDate();
     }
 
-    public MutableLiveData<List<PendingOrderHeaderDataModel>> getPendingOrderHeadLiveData(){
-        return pendingDeliveryOrderRepo.getPendingOrderLiveDate();
-    }
-
-
-    @BindingAdapter("setPendingDeliveryAdapter")
-    private static void initRecyclerView(RecyclerView recyclerView, List<PendingOrderHeaderDataModel> pendingOrderHeaderDataModelList) {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(recyclerView.getContext(), RecyclerView.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        PendingDeliveryOrdersAdapter pendingDeliveryOrdersAdapter = new PendingDeliveryOrdersAdapter(recyclerView.getContext(), pendingOrderHeaderDataModelList);
-        recyclerView.setAdapter(pendingDeliveryOrdersAdapter);
+    public void hitApi() {
+        pendingDeliveryOrderRepo.getShippingOrderList();
     }
 }

@@ -7,6 +7,7 @@ package com.editor.shippingdelivery.services;
  */
 
 
+import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingDeliveryOrdersRequest;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 import com.editor.shippingdelivery.main.placeOrder.ShipLoginModel;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
@@ -19,6 +20,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -40,6 +42,10 @@ public interface RetrofitInterface {
     @POST("orders/create")
     Observable<CreateOrderResponse> createShipOrder(@Body CreateOrderRequest createOrderRequest);
 
+
     @POST("delivery-order/pending")
-    Observable<Response<List<PendingOrderHeaderDataModel>>> getShippingOrderList();
+    Observable<Response<ResponseBody>> getShippingOrderList(@Body PendingDeliveryOrdersRequest pendingDeliveryOrdersRequest);
+
+    /*@POST("delivery-order/pending")
+    Call<ResponseBody> getShippingOrderList(@Body PendingDeliveryOrdersRequest pendingDeliveryOrdersRequest);*/
 }

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.editor.shippingdelivery.databinding.ActivityMainBinding;
+import com.editor.shippingdelivery.main.pendingdeliveryorders.PendingDeliveryOrdersActivity;
 import com.editor.shippingdelivery.main.placeOrder.OrderPlacement;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(activity,R.layout.activity_main);
 
         activityMainBinding.cvDelivery.setOnClickListener(view -> {
-            startActivity(new Intent(activity, OrderPlacement.class));
+            startActivity(new Intent(activity, PendingDeliveryOrdersActivity.class));
         });
 
     }

@@ -53,12 +53,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_5sdp"
-                    android:text="@{headerModel.invoiceDt}"
                     android:textColor="@color/secondary_text"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_customer_name"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:set_date="@{headerModel.invoiceDt}" />
 
                 <androidx.constraintlayout.widget.Barrier
                     android:id="@+id/barrier_customername_date"
@@ -76,21 +76,22 @@
                     android:text="@{headerModel.invoiceNo}"
                     android:textColor="@color/secondary_text"
                     android:textSize="@dimen/_14ssp"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_line_no"
                     app:layout_constraintBottom_toTopOf="@+id/barrier_invoice"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_line_no"
 
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/barrier_customername_date" />
+
                 <TextView
                     android:id="@+id/tv_line_no"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
-                    android:text="5 Lines"
-                    app:layout_constraintBottom_toTopOf="@+id/barrier_invoice"
+                    android:text='@{headerModel.pendingOrderDetailDataModelList.size()+" Lines"}'
                     android:textColor="@color/primary_text"
                     android:textSize="@dimen/_12ssp"
+                    app:layout_constraintBottom_toTopOf="@+id/barrier_invoice"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/barrier_customername_date" />
 
@@ -166,13 +167,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_5sdp"
-                    android:text="@{headerModel.totNetAmt.toString()}"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/_14ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_divider" />
-<!--                date_convert="@{headerModel.totNetAmt.toString()}-->
+                    app:layout_constraintTop_toBottomOf="@+id/view_divider"
+                    app:set_value_with_symbol="@{headerModel.totNetAmt.toString()}" />
 
                 <TextView
                     android:layout_width="wrap_content"

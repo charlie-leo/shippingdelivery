@@ -20,12 +20,21 @@ public class BindingUtils {
         pendingDeliveryOrdersAdapter.setPendingDeliveryOrderList(pendingOrderHeaderDataModelList);
     }
 
-    @BindingAdapter("date_convert")
-    public static void setPendingDeliveryOrdersList(TextView textView, String timeStamp) {
+    @BindingAdapter("set_date")
+    public static void setTimeStampToDate(TextView textView, String timeStamp) {
         if (timeStamp != null) {
             SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-            String date = format.format(timeStamp);
+            String date = format.format(Long.parseLong(timeStamp));
             textView.setText(date);
+        }
+    }
+
+    @BindingAdapter("set_value_with_symbol")
+    public static void setValueWithSymbol(TextView textView, String value) {
+        if (value != null) {
+            StringBuilder stringBuilder = new StringBuilder("₹");
+            stringBuilder.append(String.format("%.02f", (Double.parseDouble(value))));
+            textView.setText(stringBuilder.toString());
         }
     }
 }

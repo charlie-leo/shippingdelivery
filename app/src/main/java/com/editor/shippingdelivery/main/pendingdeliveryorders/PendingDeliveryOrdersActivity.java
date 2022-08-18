@@ -33,7 +33,6 @@ public class PendingDeliveryOrdersActivity extends AppCompatActivity implements 
 
     private void initDataBinding() {
         activityPendingDeliveryOrdersBinding = DataBindingUtil.setContentView(this, R.layout.activity_pending_delivery_orders);
-        activityPendingDeliveryOrdersBinding.setLifecycleOwner(this);
         pendingDeliveryOrdersViewModel = new ViewModelProvider(this).get(PendingDeliveryOrdersViewModel.class);
         activityPendingDeliveryOrdersBinding.setPendingDeliveryOrdersViewModel(pendingDeliveryOrdersViewModel);
     }

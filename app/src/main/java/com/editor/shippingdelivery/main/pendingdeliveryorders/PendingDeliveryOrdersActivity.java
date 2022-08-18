@@ -1,10 +1,12 @@
 package com.editor.shippingdelivery.main.pendingdeliveryorders;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +31,14 @@ public class PendingDeliveryOrdersActivity extends AppCompatActivity implements 
         pendingDeliveryOrdersViewModel.hitApi();
         pendingDeliveryOrdersViewModel.pendingOrderHeaderDataModel.observe(this, pendingOrderHeaderDataModels ->
                 pendingDeliveryOrdersAdapter.setPendingDeliveryOrderList(pendingOrderHeaderDataModels));
+
+        pendingDeliveryOrdersViewModel.isProgress.observe(this, aBoolean -> {
+            if (aBoolean) {
+                activityPendingDeliveryOrdersBinding.progressHorizontal.setVisibility(View.VISIBLE);
+            } else {
+                activityPendingDeliveryOrdersBinding.progressHorizontal.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void initDataBinding() {

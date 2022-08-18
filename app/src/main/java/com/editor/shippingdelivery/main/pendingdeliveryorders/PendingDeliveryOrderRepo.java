@@ -33,13 +33,19 @@ import retrofit2.Response;
 public class PendingDeliveryOrderRepo {
 
     public MutableLiveData<List<PendingOrderHeaderDataModel>> pendingOrderLiveDate;
+    public MutableLiveData<Boolean> isProgress;
 
     public PendingDeliveryOrderRepo() {
-        pendingOrderLiveDate=new MutableLiveData<>();
+        pendingOrderLiveDate = new MutableLiveData<>();
+        isProgress = new MutableLiveData<>(true);
     }
 
     public MutableLiveData<List<PendingOrderHeaderDataModel>> getPendingOrderLiveDate() {
         return pendingOrderLiveDate;
+    }
+
+    public MutableLiveData<Boolean> getprogressLiveData() {
+        return isProgress;
     }
 
     public void getShippingOrderList() {
@@ -52,10 +58,11 @@ public class PendingDeliveryOrderRepo {
                     if (responseBodyResponse.isSuccessful()) {
                         if (responseBodyResponse.body() != null) {
                             String resbody = responseBodyResponse.body().string();
-                            JSONObject jsonObject=new JSONObject(resbody);
+                            JSONObject jsonObject = new JSONObject(resbody);
                             String response = AppUtils.getInstance().decompressGZIP(jsonObject.getString("pendingDeliveryOrder"));
                             List<PendingOrderHeaderDataModel> pendingOrderHeaderDataModelList = AppUtils.getInstance().getConvertedList(response, PendingOrderHeaderDataModel.class);
                             pendingOrderLiveDate.setValue(pendingOrderHeaderDataModelList);
+                            isProgress.setValue(false);
                         }
                     }
                 }, throwable -> {

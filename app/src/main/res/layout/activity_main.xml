@@ -18,9 +18,11 @@
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_10sdp"
             android:text="@string/dashboard"
+            android:visibility="invisible"
             android:textColor="@color/white"
             android:textSize="@dimen/_30ssp"
             android:textStyle="bold"
+            android:fontFamily="@font/montserrat_medium"
             app:layout_constraintBottom_toTopOf="@+id/guideline_40_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,6 +92,7 @@
                         android:text="@string/delivery"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14ssp"
+                        android:fontFamily="@font/montserrat_medium"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -139,6 +142,7 @@
                         android:text="@string/whatsapp"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14ssp"
+                        android:fontFamily="@font/montserrat_medium"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />

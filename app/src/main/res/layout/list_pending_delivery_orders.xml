@@ -22,9 +22,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
+            android:layout_margin="@dimen/_8sdp"
             android:elevation="@dimen/_10sdp"
-            app:cardCornerRadius="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,10 +33,19 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <View
+                    android:id="@+id/view_line_bg"
+                    android:layout_width="@dimen/_2sdp"
+                    android:layout_height="0dp"
+                    android:background="@color/primary_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <TextView
                     android:id="@+id/tv_customer_name"
                     android:layout_width="0dp"
+                    android:fontFamily="@font/montserrat_medium"
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
@@ -53,10 +62,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_5sdp"
+                    android:fontFamily="@font/montserrat_medium"
                     android:textColor="@color/secondary_text"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_customer_name"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/view_line_bg"
                     app:layout_constraintTop_toTopOf="parent"
                     app:set_date="@{headerModel.invoiceDt}" />
 
@@ -70,12 +80,12 @@
                 <TextView
                     android:id="@+id/tv_invoice_no"
                     android:layout_width="0dp"
+                    android:fontFamily="@font/montserrat_medium"
                     android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/_5sdp"
-                    android:paddingEnd="@dimen/_5sdp"
+                    android:padding="@dimen/_5sdp"
                     android:text="@{headerModel.invoiceNo}"
                     android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/_14ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toTopOf="@+id/barrier_invoice"
                     app:layout_constraintEnd_toStartOf="@+id/tv_line_no"
 
@@ -85,14 +95,14 @@
                 <TextView
                     android:id="@+id/tv_line_no"
                     android:layout_width="0dp"
+                    android:fontFamily="@font/montserrat_medium"
                     android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/_5sdp"
-                    android:paddingEnd="@dimen/_5sdp"
+                    android:padding="@dimen/_5sdp"
                     android:text='@{headerModel.pendingOrderDetailDataModelList.size()+" Lines"}'
                     android:textColor="@color/primary_text"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toTopOf="@+id/barrier_invoice"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/view_line_bg"
                     app:layout_constraintTop_toBottomOf="@+id/barrier_customername_date" />
 
                 <androidx.constraintlayout.widget.Barrier
@@ -105,10 +115,13 @@
                 <TextView
                     android:id="@+id/tv_bill_info"
                     android:layout_width="0dp"
+                    android:fontFamily="@font/montserrat_medium"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="@dimen/_6sdp"
-                    android:text="@string/bill_info_underline"
+                    android:paddingStart="@dimen/_3sdp"
+                    android:paddingEnd="@dimen/_3sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"                    android:text="@string/bill_info_underline"
                     android:textColor="@color/blue"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintEnd_toStartOf="@+id/tv_customer_info"
@@ -119,9 +132,13 @@
                 <TextView
                     android:id="@+id/tv_customer_info"
                     android:layout_width="0dp"
+                    android:fontFamily="@font/montserrat_medium"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="@dimen/_6sdp"
+                    android:paddingStart="@dimen/_3sdp"
+                    android:paddingEnd="@dimen/_3sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
                     android:text="@string/customer_info_underline"
                     android:textColor="@color/green"
                     android:textSize="@dimen/_12ssp"
@@ -134,14 +151,16 @@
                     android:id="@+id/tv_route_info"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
                     android:gravity="center"
-                    android:padding="@dimen/_6sdp"
-                    android:text="@string/route_info_underline"
+                    android:paddingStart="@dimen/_3sdp"
+                    android:paddingEnd="@dimen/_3sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"                    android:text="@string/route_info_underline"
                     android:textColor="@color/red"
                     android:textSize="@dimen/_12ssp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/view_line_bg"
                     app:layout_constraintHorizontal_bias="0.5"
-
                     app:layout_constraintStart_toEndOf="@+id/tv_customer_info"
                     app:layout_constraintTop_toBottomOf="@+id/barrier_invoice" />
 
@@ -150,14 +169,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:barrierDirection="bottom"
-                    app:constraint_referenced_ids="tv_bill_info,tv_customer_name,tv_route_info" />
+                    app:constraint_referenced_ids="tv_bill_info,tv_customer_info,tv_route_info" />
 
                 <View
                     android:id="@+id/view_divider"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_1sdp"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@color/divider"
+                    android:background="@color/primary_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/barrier_info" />
@@ -166,6 +185,7 @@
                     android:id="@+id/tv_net_amt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
                     android:padding="@dimen/_5sdp"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/_14ssp"
@@ -174,19 +194,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/view_divider"
                     app:set_value_with_symbol="@{headerModel.totNetAmt.toString()}" />
 
-                <TextView
+                <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/primary_color"
-                    android:fallbackLineSpacing="false"
-                    android:gravity="center"
-                    android:padding="@dimen/_5sdp"
-                    android:text="Delivery"
-                    android:textColor="@color/button_text"
-                    android:textSize="@dimen/_14ssp"
+                    android:layout_height="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_divider" />
+                    app:layout_constraintTop_toBottomOf="@+id/view_divider"
+                    android:tint="@color/white"
+                    android:background="@color/primary_color"
+                    android:src="@mipmap/ic_delivery"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

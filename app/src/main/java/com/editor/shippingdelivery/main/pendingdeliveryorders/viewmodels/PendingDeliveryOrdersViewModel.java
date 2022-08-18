@@ -36,13 +36,15 @@ import retrofit2.Response;
 public class PendingDeliveryOrdersViewModel extends AndroidViewModel {
 
     public MutableLiveData<List<PendingOrderHeaderDataModel>> pendingOrderHeaderDataModel;
+    public MutableLiveData<Boolean> isProgress;
 
     private final PendingDeliveryOrderRepo pendingDeliveryOrderRepo;
 
     public PendingDeliveryOrdersViewModel(@NonNull Application application) {
         super(application);
         pendingDeliveryOrderRepo = new PendingDeliveryOrderRepo();
-        pendingOrderHeaderDataModel=pendingDeliveryOrderRepo.getPendingOrderLiveDate();
+        pendingOrderHeaderDataModel = pendingDeliveryOrderRepo.getPendingOrderLiveDate();
+        isProgress = pendingDeliveryOrderRepo.getprogressLiveData();
     }
 
     public void hitApi() {

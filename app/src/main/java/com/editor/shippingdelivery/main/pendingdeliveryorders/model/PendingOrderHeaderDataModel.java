@@ -1,5 +1,8 @@
 package com.editor.shippingdelivery.main.pendingdeliveryorders.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
@@ -7,7 +10,8 @@ import com.editor.shippingdelivery.BR;
 
 import java.util.List;
 
-public class PendingOrderHeaderDataModel extends BaseObservable {
+public class PendingOrderHeaderDataModel extends BaseObservable implements Parcelable
+{
 
 
     /** distrCode. */
@@ -81,6 +85,76 @@ public class PendingOrderHeaderDataModel extends BaseObservable {
 
     /** billDetailsEntityList. */
     private List<PendingOrderDetailDataModel> pendingOrderDetailDataModelList;
+
+    protected PendingOrderHeaderDataModel(Parcel in) {
+        distrCode = in.readString();
+        invoiceNo = in.readString();
+        invoiceDt = in.readString();
+        salesmanCode = in.readString();
+        salesmanName = in.readString();
+        routeCode = in.readString();
+        routeName = in.readString();
+        customerCode = in.readString();
+        customerName = in.readString();
+        mobileNo = in.readString();
+        fssaiNo = in.readString();
+        gstTinNo = in.readString();
+        customerShipAddr = in.readString();
+        if (in.readByte() == 0) {
+            totGrossAmt = null;
+        } else {
+            totGrossAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            totCashDiscAmt = null;
+        } else {
+            totCashDiscAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            totDBDiscAmt = null;
+        } else {
+            totDBDiscAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            totSchDiscAmt = null;
+        } else {
+            totSchDiscAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            totTaxAmt = null;
+        } else {
+            totTaxAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            totNetAmt = null;
+        } else {
+            totNetAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            roundOffAmt = null;
+        } else {
+            roundOffAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            totCrNoteAmt = null;
+        } else {
+            totCrNoteAmt = in.readDouble();
+        }
+        remarks = in.readString();
+        liquidation = in.readString();
+    }
+
+    public static final Creator<PendingOrderHeaderDataModel> CREATOR = new Creator<PendingOrderHeaderDataModel>() {
+        @Override
+        public PendingOrderHeaderDataModel createFromParcel(Parcel in) {
+            return new PendingOrderHeaderDataModel(in);
+        }
+
+        @Override
+        public PendingOrderHeaderDataModel[] newArray(int size) {
+            return new PendingOrderHeaderDataModel[size];
+        }
+    };
 
     @Bindable
     public String getDistrCode() {
@@ -274,5 +348,77 @@ public class PendingOrderHeaderDataModel extends BaseObservable {
 
     public void setPendingOrderDetailDataModelList(List<PendingOrderDetailDataModel> pendingOrderDetailDataModelList) {
         this.pendingOrderDetailDataModelList = pendingOrderDetailDataModelList;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(distrCode);
+        parcel.writeString(invoiceNo);
+        parcel.writeString(invoiceDt);
+        parcel.writeString(salesmanCode);
+        parcel.writeString(salesmanName);
+        parcel.writeString(routeCode);
+        parcel.writeString(routeName);
+        parcel.writeString(customerCode);
+        parcel.writeString(customerName);
+        parcel.writeString(mobileNo);
+        parcel.writeString(fssaiNo);
+        parcel.writeString(gstTinNo);
+        parcel.writeString(customerShipAddr);
+        if (totGrossAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(totGrossAmt);
+        }
+        if (totCashDiscAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(totCashDiscAmt);
+        }
+        if (totDBDiscAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(totDBDiscAmt);
+        }
+        if (totSchDiscAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(totSchDiscAmt);
+        }
+        if (totTaxAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(totTaxAmt);
+        }
+        if (totNetAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(totNetAmt);
+        }
+        if (roundOffAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(roundOffAmt);
+        }
+        if (totCrNoteAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(totCrNoteAmt);
+        }
+        parcel.writeString(remarks);
+        parcel.writeString(liquidation);
     }
 }

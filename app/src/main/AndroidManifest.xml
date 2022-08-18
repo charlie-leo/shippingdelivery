@@ -25,8 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.placeOrder.OrderPlacement" />
+        <activity android:name=".main.placeOrder.OrderPlacementActivity" />
         <activity android:name=".application.NoNetworkActivity" />
+        <activity android:name=".main.serviceablity.SelectServiceableActivity"/>
     </application>
 
 </manifest>

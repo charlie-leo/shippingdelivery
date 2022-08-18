@@ -39,7 +39,7 @@ public interface RetrofitInterface {
     @POST("auth/login")
     Observable<JsonObject> getShipRocketToken(@Body ShipLoginModel jsonObject);
 
-    @POST("orders/create")
+    @POST("delivery-order/create/adhoc")
     Observable<CreateOrderResponse> createShipOrder(@Body CreateOrderRequest createOrderRequest);
 
 

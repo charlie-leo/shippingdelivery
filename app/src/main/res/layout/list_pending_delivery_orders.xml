@@ -20,6 +20,7 @@
         android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/deliveryBase"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_8sdp"

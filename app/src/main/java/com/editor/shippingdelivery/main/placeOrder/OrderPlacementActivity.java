@@ -11,23 +11,38 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.editor.shippingdelivery.R;
 import com.editor.shippingdelivery.databinding.OrderPlacmentBinding;
+import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
 
 /**
  * Created by Charles Raj I on 15/08/22.
  *
  * @author Charles Raj I
  */
-public class OrderPlacement extends AppCompatActivity implements LifecycleOwner {
+public class OrderPlacementActivity extends AppCompatActivity implements LifecycleOwner {
 
     private Activity activity;
     private OrderPlacementViewModel orderPlacementViewModel;
+    private OrderPlacementListener orderPlacementListener;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity = OrderPlacement.this;
+        activity = OrderPlacementActivity.this;
+
         OrderPlacmentBinding orderPlacmentBinding = DataBindingUtil.setContentView(activity, R.layout.order_placment);
         orderPlacementViewModel = new ViewModelProvider(this).get(OrderPlacementViewModel.class);
-        orderPlacementViewModel.getShipToken();
+
+        orderPlacementListener = new OrderPlacementListener();
+        orderPlacementListener.setActivity(activity);
+        orderPlacementListener.setFragmentManager(getSupportFragmentManager());
+        orderPlacementListener.setCreateOrderRequest(new CreateOrderRequest());
+        orderPlacementListener.setOrderPlacementViewModel(orderPlacementViewModel);
+        orderPlacmentBinding.setOrderPlacementListener(orderPlacementListener);
+
+        if (getIntent() != null){
+            orderPlacementListener.setOrderData(getIntent().getParcelableExtra("orderData"));
+        }
+
+
     }
 
     @Override

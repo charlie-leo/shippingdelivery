@@ -13,7 +13,6 @@ import androidx.databinding.DataBindingUtil;
 
 import com.editor.shippingdelivery.databinding.ActivityMainBinding;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.PendingDeliveryOrdersActivity;
-import com.editor.shippingdelivery.main.placeOrder.OrderPlacement;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -9,7 +9,9 @@
         <entry key="app/src/main/res/layout/list_pending_delivery_orders.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/no_network_activity.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/order_placment.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/select_services_activity.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/servicablity_activity.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/serviceability_item.xml" value="0.37025641025641026" />
       </map>
     </option>
   </component>

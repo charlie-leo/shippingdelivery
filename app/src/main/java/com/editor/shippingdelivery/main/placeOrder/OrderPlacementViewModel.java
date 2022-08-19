@@ -66,14 +66,6 @@ public class OrderPlacementViewModel extends  BaseObservable {
         return orderPlacementRepo;
     }
 
-    public void setOrderPlacementViewModel(OrderPlacementRepo orderPlacementRepo) {
-        this.orderPlacementRepo = orderPlacementRepo;
-        notifyPropertyChanged(BR.orderPlacementViewModel);
-    }
-
-    public void setPendingDeliveryToCreateOrder(PendingOrderHeaderDataModel orderData){
-//        createOrderRequest.setOrderId(orderData.code);
-    }
 
     public void selectStartDate(View view){
         MaterialDatePicker.Builder materialDateBuilder = MaterialDatePicker.Builder.datePicker();

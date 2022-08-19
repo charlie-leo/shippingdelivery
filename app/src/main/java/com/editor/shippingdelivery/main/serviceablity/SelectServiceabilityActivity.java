@@ -23,7 +23,8 @@ public class SelectServiceabilityActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = this;
-        com.editor.shippingdelivery.databinding.ServicablityActivityBinding servicablityActivityBinding = DataBindingUtil.setContentView(activity, R.layout.order_placment);
+        ServicablityActivityBinding servicablityActivityBinding = DataBindingUtil.setContentView(activity, R.layout.order_placment);
+
         if (getIntent() != null){
             CreateOrderResponse createOrderResponse = getIntent().getParcelableExtra("orderDetails");
         }

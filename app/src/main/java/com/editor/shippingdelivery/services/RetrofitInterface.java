@@ -12,6 +12,7 @@ import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrder
 import com.editor.shippingdelivery.main.placeOrder.ShipLoginModel;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderResponse;
+import com.editor.shippingdelivery.main.serviceablity.model.ServiceabilityResponse;
 import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
@@ -26,6 +27,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RetrofitInterface {
@@ -45,6 +47,10 @@ public interface RetrofitInterface {
 
     @POST("delivery-order/pending")
     Observable<Response<ResponseBody>> getShippingOrderList(@Body PendingDeliveryOrdersRequest pendingDeliveryOrdersRequest);
+
+
+    @GET("external/international/courier/serviceability")
+    Observable<ServiceabilityResponse> getAvailableServices(@Path("order_id") String order_id);
 
     /*@POST("delivery-order/pending")
     Call<ResponseBody> getShippingOrderList(@Body PendingDeliveryOrdersRequest pendingDeliveryOrdersRequest);*/

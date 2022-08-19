@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.editor.shippingdelivery.R;
 import com.editor.shippingdelivery.databinding.OrderPlacmentBinding;
@@ -21,25 +20,25 @@ import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
 public class OrderPlacementActivity extends AppCompatActivity implements LifecycleOwner {
 
     private Activity activity;
+    private OrderPlacementRepo orderPlacementRepo;
     private OrderPlacementViewModel orderPlacementViewModel;
-    private OrderPlacementListener orderPlacementListener;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = OrderPlacementActivity.this;
 
         OrderPlacmentBinding orderPlacmentBinding = DataBindingUtil.setContentView(activity, R.layout.order_placment);
-        orderPlacementViewModel = new ViewModelProvider(this).get(OrderPlacementViewModel.class);
+//        orderPlacementViewModel = new ViewModelProvider(this).get(OrderPlacementViewModel.class);
 
-        orderPlacementListener = new OrderPlacementListener();
-        orderPlacementListener.setActivity(activity);
-        orderPlacementListener.setFragmentManager(getSupportFragmentManager());
-        orderPlacementListener.setCreateOrderRequest(new CreateOrderRequest());
-        orderPlacementListener.setOrderPlacementViewModel(orderPlacementViewModel);
-        orderPlacmentBinding.setOrderPlacementListener(orderPlacementListener);
+        orderPlacementViewModel = new OrderPlacementViewModel();
+        orderPlacementViewModel.setActivity(activity);
+        orderPlacementViewModel.setFragmentManager(getSupportFragmentManager());
+        orderPlacementViewModel.setCreateOrderRequest(new CreateOrderRequest());
+//        orderPlacementViewModel.setOrderPlacementViewModel(orderPlacementViewModel);
+        orderPlacmentBinding.setOrderPlacementViewModel(orderPlacementViewModel);
 
         if (getIntent() != null){
-            orderPlacementListener.setOrderData(getIntent().getParcelableExtra("orderData"));
+            orderPlacementViewModel.setOrderData(getIntent().getParcelableExtra("orderData"));
         }
 
 

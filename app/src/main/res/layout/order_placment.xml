@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="orderPlacementListener"
-            type="com.editor.shippingdelivery.main.placeOrder.OrderPlacementListener" />
+            name="orderPlacementViewModel"
+            type="com.editor.shippingdelivery.main.placeOrder.OrderPlacementViewModel" />
     </data>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.billingAddress}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.billingAddress}'
                         android:hint="Address Line 1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.billingAddress2}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.billingAddress2}'
                         android:hint="Address Line 2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.billingCity}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.billingCity}'
                         android:hint="Billing City"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.billingPincode}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.billingPincode}'
                         android:hint="Billing Pincode"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.billingState}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.billingState}'
                         android:hint="Billing State"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +79,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.billingCountry}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.billingCountry}'
                         android:hint="Billing Country"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.billingEmail}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.billingEmail}'
                         android:hint="Billing Email"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +97,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.billingPhone}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.billingPhone}'
                         android:hint="Billing Phone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +112,7 @@
                 android:text="Select Pick Up Date"
                 android:padding="5dp"
                 android:layout_marginTop="10dp"
-                android:onClick='@{(view)->orderPlacementListener.selectStartDate(view)}'
+                android:onClick='@{(view)->orderPlacementViewModel.selectStartDate(view)}'
                 app:layout_constraintStart_toStartOf="@+id/BillingDetails"
                 app:layout_constraintTop_toBottomOf="@+id/BillingDetails" />
 
@@ -134,7 +134,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.shippingAddress}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.shippingAddress}'
                         android:hint="Address Line 1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +143,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.shippingAddress2}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.shippingAddress2}'
                         android:hint="Address Line 2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -152,7 +152,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.shippingCity}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.shippingCity}'
                         android:hint="Shipping City"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -161,7 +161,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.shippingPincode}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.shippingPincode}'
                         android:hint="Shipping Pincode"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -170,7 +170,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.shippingState}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.shippingState}'
                         android:hint="Shipping State"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -179,7 +179,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.shippingCountry}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.shippingCountry}'
                         android:hint="Shipping Country"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -188,7 +188,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.shippingEmail}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.shippingEmail}'
                         android:hint="Shipping Email"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -197,7 +197,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='@={orderPlacementListener.createOrderRequest.shippingPhone}'
+                        android:text='@={orderPlacementViewModel.createOrderRequest.shippingPhone}'
                         android:hint="Shipping Phone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -210,7 +210,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Place Order"
-                android:onClick='@{(view) -> orderPlacementListener.placeOrder(view)}'
+                android:onClick='@{(view) -> orderPlacementViewModel.placeOrder(view)}'
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

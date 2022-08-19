@@ -27,7 +27,7 @@
         </activity>
         <activity android:name=".main.placeOrder.OrderPlacementActivity" />
         <activity android:name=".application.NoNetworkActivity" />
-        <activity android:name=".main.serviceablity.SelectServiceableActivity"/>
+        <activity android:name=".main.serviceablity.SelectServiceabilityActivity"/>
     </application>
 
 </manifest>

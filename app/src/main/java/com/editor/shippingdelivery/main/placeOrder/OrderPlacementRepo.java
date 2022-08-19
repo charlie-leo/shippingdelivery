@@ -1,25 +1,15 @@
 package com.editor.shippingdelivery.main.placeOrder;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Application;
 import android.content.Intent;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 
 import com.editor.shippingdelivery.common.DataInstance;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
-import com.editor.shippingdelivery.main.serviceablity.SelectServiceableActivity;
+import com.editor.shippingdelivery.main.serviceablity.SelectServiceabilityActivity;
 import com.editor.shippingdelivery.services.DisposableManager;
 import com.editor.shippingdelivery.services.RetrofitClient;
 import com.editor.shippingdelivery.services.RetrofitInterface;
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
-import com.google.gson.JsonObject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -65,7 +55,7 @@ public class OrderPlacementRepo implements DataInstance {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(createOrderResponse -> {
-                        Intent intent = new Intent(activity, SelectServiceableActivity.class);
+                        Intent intent = new Intent(activity, SelectServiceabilityActivity.class);
                         intent.putExtra("orderDetails", createOrderResponse);
                         activity.startActivity(intent);
                         Log.d(TAG, "createShippingOrder: " + createOrderResponse.getStatus());

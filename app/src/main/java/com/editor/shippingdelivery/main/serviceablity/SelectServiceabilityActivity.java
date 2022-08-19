@@ -16,7 +16,7 @@ import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderResponse;
  *
  * @author Charles Raj I
  */
-public class SelectServiceableActivity extends AppCompatActivity {
+public class SelectServiceabilityActivity extends AppCompatActivity {
 
     private Activity activity;
     @Override

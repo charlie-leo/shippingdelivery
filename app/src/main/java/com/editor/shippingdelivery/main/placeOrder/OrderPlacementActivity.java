@@ -40,8 +40,6 @@ public class OrderPlacementActivity extends AppCompatActivity implements Lifecyc
         if (getIntent() != null){
             orderPlacementViewModel.setOrderData(getIntent().getParcelableExtra("orderData"));
         }
-
-
     }
 
     @Override

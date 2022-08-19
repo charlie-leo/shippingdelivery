@@ -3,6 +3,7 @@ package com.editor.shippingdelivery.main.pendingdeliveryorders.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.editor.shippingdelivery.R;
 import com.editor.shippingdelivery.databinding.ListPendingDeliveryOrdersBinding;
+import com.editor.shippingdelivery.main.pendingdeliveryorders.listeners.OnListItemClickListener;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 import com.editor.shippingdelivery.main.placeOrder.OrderPlacementActivity;
 
@@ -20,12 +22,14 @@ import java.util.List;
 
 public class PendingDeliveryOrdersAdapter extends RecyclerView.Adapter<PendingDeliveryOrdersAdapter.AdapterViewHolder> {
 
-    Context context;
-    List<PendingOrderHeaderDataModel> pendingOrderHeaderDataModelList;
+    private Context context;
+    private List<PendingOrderHeaderDataModel> pendingOrderHeaderDataModelList;
+    private OnListItemClickListener onListItemClickListener;
 
-    public PendingDeliveryOrdersAdapter(Context context, List<PendingOrderHeaderDataModel> pendingOrderHeaderDataModelList) {
+    public PendingDeliveryOrdersAdapter(Context context, OnListItemClickListener onListItemClickListener) {
         this.context = context;
-        this.pendingOrderHeaderDataModelList = pendingOrderHeaderDataModelList;
+        this.pendingOrderHeaderDataModelList = new ArrayList<>();
+        this.onListItemClickListener = onListItemClickListener;
     }
 
     public PendingDeliveryOrdersAdapter(Context context) {
@@ -43,7 +47,7 @@ public class PendingDeliveryOrdersAdapter extends RecyclerView.Adapter<PendingDe
 
     @Override
     public void onBindViewHolder(@NonNull AdapterViewHolder holder, int position) {
-        holder.bind(pendingOrderHeaderDataModelList.get(position));
+        holder.bind(position, pendingOrderHeaderDataModelList.get(position), onListItemClickListener);
     }
 
     @Override
@@ -60,12 +64,24 @@ public class PendingDeliveryOrdersAdapter extends RecyclerView.Adapter<PendingDe
             viewDataBinding.executePendingBindings();
         }
 
-        public void bind(PendingOrderHeaderDataModel pendingOrderHeaderDataModel) {
+        public void bind(int position, PendingOrderHeaderDataModel pendingOrderHeaderDataModel, OnListItemClickListener onListItemClickListener) {
             viewDataBinding.setVariable(BR.headerModel, pendingOrderHeaderDataModel);
-            viewDataBinding.deliveryBase.setOnClickListener( v -> {
+            viewDataBinding.deliveryBase.setOnClickListener(v -> {
                 Intent intent = new Intent(v.getContext(), OrderPlacementActivity.class);
                 intent.putExtra("orderData", pendingOrderHeaderDataModel);
                 v.getContext().startActivity(intent);
+            });
+            viewDataBinding.tvBillInfo.setOnClickListener(view -> {
+                onListItemClickListener.onClickInfo(viewDataBinding.tvBillInfo, "Bill Info", position, pendingOrderHeaderDataModel);
+            });
+
+            viewDataBinding.tvCustomerInfo.setOnClickListener(view -> {
+                onListItemClickListener.onClickInfo(viewDataBinding.tvCustomerInfo, "Customer Info", position, pendingOrderHeaderDataModel);
+            });
+
+            viewDataBinding.tvRouteInfo.setOnClickListener(view -> {
+                onListItemClickListener.onClickInfo(viewDataBinding.tvCustomerInfo, "Route Info", position, pendingOrderHeaderDataModel);
+
             });
         }
     }

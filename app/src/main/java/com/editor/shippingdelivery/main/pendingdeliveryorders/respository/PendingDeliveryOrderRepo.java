@@ -1,4 +1,4 @@
-package com.editor.shippingdelivery.main.pendingdeliveryorders;
+package com.editor.shippingdelivery.main.pendingdeliveryorders.respository;
 
 import android.util.Log;
 
@@ -37,18 +37,15 @@ public class PendingDeliveryOrderRepo {
 
     public PendingDeliveryOrderRepo() {
         pendingOrderLiveDate = new MutableLiveData<>();
-        isProgress = new MutableLiveData<>(true);
-    }
-
-    public MutableLiveData<List<PendingOrderHeaderDataModel>> getPendingOrderLiveDate() {
-        return pendingOrderLiveDate;
+        isProgress = new MutableLiveData<>(false);
     }
 
     public MutableLiveData<Boolean> getprogressLiveData() {
         return isProgress;
     }
 
-    public void getShippingOrderList() {
+    public MutableLiveData<List<PendingOrderHeaderDataModel>> getPendingDeliveryOrdersList() {
+        isProgress.setValue(true);
         RetrofitInterface service = RetrofitClient.getClient();
         PendingDeliveryOrdersRequest pendingDeliveryOrdersRequest = new PendingDeliveryOrdersRequest();
         DisposableManager.add(service.getShippingOrderList(pendingDeliveryOrdersRequest)
@@ -68,6 +65,7 @@ public class PendingDeliveryOrderRepo {
                 }, throwable -> {
                     Log.d("TAG", "getShippingOrderList: " + throwable.getMessage());
                 }));
+        return pendingOrderLiveDate;
     }
 
 

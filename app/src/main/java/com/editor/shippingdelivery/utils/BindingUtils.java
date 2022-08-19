@@ -6,7 +6,9 @@ import android.widget.TextView;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.editor.shippingdelivery.main.pendingdeliveryorders.adapter.InfoBottomSheetDetailsAdapter;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.adapter.PendingDeliveryOrdersAdapter;
+import com.editor.shippingdelivery.main.pendingdeliveryorders.model.InfoBottomSheetDetailsModel;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 
 import java.text.SimpleDateFormat;
@@ -18,6 +20,12 @@ public class BindingUtils {
     public static void setPendingDeliveryOrdersList(RecyclerView recyclerView, List<PendingOrderHeaderDataModel> pendingOrderHeaderDataModelList) {
         PendingDeliveryOrdersAdapter pendingDeliveryOrdersAdapter = new PendingDeliveryOrdersAdapter(recyclerView.getContext());
         pendingDeliveryOrdersAdapter.setPendingDeliveryOrderList(pendingOrderHeaderDataModelList);
+    }
+
+    @BindingAdapter("set_info_bottom_sheet")
+    public static void setInfoBottomSheetDetails(RecyclerView recyclerView, List<InfoBottomSheetDetailsModel> infoBottomSheetDetailsModelList) {
+        InfoBottomSheetDetailsAdapter infoBottomSheetDetailsAdapter = new InfoBottomSheetDetailsAdapter(recyclerView.getContext());
+        infoBottomSheetDetailsAdapter.setPendingDeliveryOrderList(infoBottomSheetDetailsModelList);
     }
 
     @BindingAdapter("set_date")

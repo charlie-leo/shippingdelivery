@@ -3,15 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.1672661870503597" />
+        <entry key="app/src/main/res/drawable/bg_dashboard_gradient.xml" value="0.345" />
+        <entry key="app/src/main/res/drawable/bg_gradient_header.xml" value="0.221" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1415" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/activity_pending_delivery_orders.xml" value="0.2564814814814815" />
-        <entry key="app/src/main/res/layout/list_pending_delivery_orders.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_pending_delivery_orders.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/bottom_sheet_bill_info.xml" value="0.51328125" />
+        <entry key="app/src/main/res/layout/item_info_bottom_sheet_details.xml" value="0.44" />
+        <entry key="app/src/main/res/layout/item_pending_delivery.xml" value="0.51328125" />
+        <entry key="app/src/main/res/layout/list_pending_delivery_orders.xml" value="0.67" />
         <entry key="app/src/main/res/layout/no_network_activity.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/order_placment.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/select_services_activity.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/servicablity_activity.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/serviceability_item.xml" value="0.37025641025641026" />
+        <entry key="app/src/main/res/layout/order_placment.xml" value="0.5866666666666667" />
       </map>
     </option>
   </component>
@@ -20,5 +23,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.5" />
+      </ProjectState>
+    </option>
   </component>
 </project>

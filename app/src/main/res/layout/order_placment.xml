@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
+        <import type="android.text.TextUtils"/>
+        <import type="android.view.View"/>
         <variable
             name="orderPlacementViewModel"
             type="com.editor.shippingdelivery.main.placeOrder.OrderPlacementViewModel" />
@@ -390,7 +391,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pack Details"
+                        android:text="Total and Discount"
                         />
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -416,6 +417,18 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <TextView
+                android:id="@+id/errorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="@color/errorColor"
+                android:visibility='@{TextUtils.isEmpty(orderPlacementViewModel.errorMessage)?View.GONE:View.VISIBLE}'
+                android:text='@{orderPlacementViewModel.errorMessage}'
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/amountDetails" />
+
             <Button
                 android:id="@+id/placeOrderBtn"
                 android:layout_width="wrap_content"
@@ -425,7 +438,7 @@
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/amountDetails" />
+                app:layout_constraintTop_toBottomOf="@+id/errorText" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

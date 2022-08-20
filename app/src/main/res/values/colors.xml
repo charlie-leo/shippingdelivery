@@ -52,5 +52,6 @@
 
     <color name="textColor">#515151</color>
     <color name="transparant">#00FFFFFF</color>
+    <color name="errorColor">#DA2323</color>
 
 </resources>

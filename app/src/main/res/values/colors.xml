@@ -54,4 +54,11 @@
     <color name="transparant">#00FFFFFF</color>
     <color name="errorColor">#DA2323</color>
 
+
+    <color name="sunset_orange">#FE5F55</color>
+    <color name="beige">#EEF5DB</color>
+    <color name="columbia_blue">#B8D8D8</color>
+    <color name="weldon_blue">#7A9E9F</color>
+    <color name="strom_cloud">#4F6367</color>
+
 </resources>

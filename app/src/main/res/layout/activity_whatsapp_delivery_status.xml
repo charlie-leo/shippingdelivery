@@ -15,14 +15,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/half_white"
+        android:background="@color/weldon_blue"
         tools:context=".main.whatsappdeliverystatus.WhatsappDeliveryStatusActivity">
 
         <View
             android:id="@+id/view_toolbar_bg"
             android:layout_width="0dp"
             android:layout_height="@dimen/_60sdp"
-            android:background="@drawable/bg_gradient_header"
+            android:background="@color/weldon_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -46,11 +46,13 @@
             android:layout_height="@dimen/_40sdp"
             android:fontFamily="@font/montserrat_medium"
             android:gravity="center_vertical"
-            android:text="Pending Orders"
+            android:text="Orders"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_10sdp"
-            android:textColor="@color/primary_text"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:textSize="@dimen/_14ssp"
+            android:background="@color/weldon_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -62,6 +64,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:indeterminateOnly="true"
+            android:indeterminateTint="@color/sunset_orange"
+            android:background="@color/weldon_blue"
             android:visibility='@{whatsappDeliveryStatusViewModel.isProgress?View.VISIBLE:View.GONE}'
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +75,9 @@
             android:id="@+id/rv_whatsapp_status_orders"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_margin="@dimen/_4sdp"
             android:scrollbars="none"
+            android:background="@color/weldon_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -15,6 +15,7 @@
             type="com.editor.shippingdelivery.main.whatsappdeliverystatus.adapter.WhatsappDeliveryStatusAdapter" />
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -23,7 +24,7 @@
             android:id="@+id/deliveryBase"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_8sdp"
+            android:layout_margin="@dimen/_4sdp"
             android:elevation="@dimen/_10sdp"
             app:cardCornerRadius="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -33,21 +34,68 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <View
-                    android:id="@+id/view_line_bg"
-                    android:layout_width="@dimen/_2sdp"
-                    android:layout_height="0dp"
-                    android:background="@color/primary_color"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_6sdp">
+
+                <ImageView
+                    android:id="@+id/tv_bill_info"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="start|center"
+                    android:padding="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:src="@drawable/bill_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    style="?android:borderlessButtonStyle"
+                    android:contentDescription="@string/app_name" />
+
+
+                <ImageView
+                    android:id="@+id/tv_customer_info"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="start|center"
+                    android:padding="@dimen/_4sdp"
+                    android:layout_marginStart="@dimen/_32sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:src="@drawable/person"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_bill_info"
+                    app:layout_constraintTop_toBottomOf="@+id/view_divider"
+                    style="?android:borderlessButtonStyle"
+                    android:contentDescription="@string/app_name" />
+
+                <ImageView
+                    android:id="@+id/tv_route_info"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="start|center"
+                    android:layout_marginStart="@dimen/_32sdp"
+                    android:padding="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:src="@drawable/route_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_customer_info"
+                    app:layout_constraintTop_toBottomOf="@+id/view_divider"
+                    style="?android:borderlessButtonStyle"
+                    android:contentDescription="@string/app_name" />
+
 
                 <TextView
                     android:id="@+id/tv_customer_name"
                     android:layout_width="0dp"
-                    android:fontFamily="@font/montserrat_medium"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
@@ -62,12 +110,13 @@
                     android:id="@+id/tv_date"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/_5sdp"
                     android:fontFamily="@font/montserrat_medium"
+                    android:padding="@dimen/_5sdp"
                     android:textColor="@color/secondary_text"
                     android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_customer_name"
-                    app:layout_constraintEnd_toStartOf="@+id/view_line_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:set_date="@{headerModels.invoiceDt}" />
 
@@ -81,29 +130,28 @@
                 <TextView
                     android:id="@+id/tv_invoice_no"
                     android:layout_width="0dp"
-                    android:fontFamily="@font/montserrat_medium"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
                     android:padding="@dimen/_5sdp"
                     android:text="@{headerModels.invoiceNo}"
                     android:textColor="@color/secondary_text"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toTopOf="@+id/barrier_invoice"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_line_no"
-
+                    app:layout_constraintEnd_toStartOf="@+id/tv_net_amt"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/barrier_customername_date" />
 
                 <TextView
-                    android:id="@+id/tv_line_no"
+                    android:id="@+id/tv_net_amt"
                     android:layout_width="0dp"
-                    android:fontFamily="@font/montserrat_medium"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
                     android:padding="@dimen/_5sdp"
-                    android:text='@{headerModels.whatsappDeliveryDetailDataModelList.size()+" Lines"}'
+                    app:set_value_with_symbol="@{headerModels.totNetAmt.toString()}"
                     android:textColor="@color/primary_text"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toTopOf="@+id/barrier_invoice"
-                    app:layout_constraintEnd_toStartOf="@+id/view_line_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/barrier_customername_date" />
 
                 <androidx.constraintlayout.widget.Barrier
@@ -111,103 +159,58 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:barrierDirection="bottom"
-                    app:constraint_referenced_ids="tv_invoice_no,tv_line_no" />
+                    app:constraint_referenced_ids="tv_invoice_no,tv_net_amt" />
+
 
                 <TextView
-                    android:id="@+id/tv_bill_info"
+                    android:id="@+id/tv_line_no"
                     android:layout_width="0dp"
-                    android:fontFamily="@font/montserrat_medium"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
                     android:gravity="center"
-                    android:paddingStart="@dimen/_3sdp"
-                    android:paddingEnd="@dimen/_3sdp"
-                    android:paddingBottom="@dimen/_5sdp"
-                    android:paddingTop="@dimen/_5sdp"                    android:text="@string/bill_info_underline"
-                    android:textColor="@color/blue"
-                    android:textSize="@dimen/_12ssp"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_customer_info"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    android:padding="@dimen/_2sdp"
+                    android:textColor="@color/sunset_orange"
+                    android:textSize="@dimen/_14ssp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/barrier_invoice" />
+                    app:layout_constraintTop_toBottomOf="@+id/barrier_invoice"
+                    android:text='@{headerModels.whatsappDeliveryDetailDataModelList.size()+" Lines"}'
+                    android:visibility="gone"/>
 
-                <TextView
-                    android:id="@+id/tv_customer_info"
-                    android:layout_width="0dp"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingStart="@dimen/_3sdp"
-                    android:paddingEnd="@dimen/_3sdp"
-                    android:paddingBottom="@dimen/_5sdp"
-                    android:paddingTop="@dimen/_5sdp"
-                    android:text="@string/customer_info_underline"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/_12ssp"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_route_info"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/tv_bill_info"
-                    app:layout_constraintTop_toBottomOf="@+id/barrier_invoice" />
-
-                <TextView
-                    android:id="@+id/tv_route_info"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:gravity="center"
-                    android:paddingStart="@dimen/_3sdp"
-                    android:paddingEnd="@dimen/_3sdp"
-                    android:paddingBottom="@dimen/_5sdp"
-                    android:paddingTop="@dimen/_5sdp"
-                    android:text="@string/route_info_underline"
-                    android:textColor="@color/red"
-                    android:textSize="@dimen/_12ssp"
-                    app:layout_constraintEnd_toStartOf="@+id/view_line_bg"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/tv_customer_info"
-                    app:layout_constraintTop_toBottomOf="@+id/barrier_invoice" />
 
                 <androidx.constraintlayout.widget.Barrier
                     android:id="@+id/barrier_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:barrierDirection="bottom"
-                    app:constraint_referenced_ids="tv_bill_info,tv_customer_info,tv_route_info" />
+                    app:constraint_referenced_ids="tv_line_no" />
 
                 <View
                     android:id="@+id/view_divider"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_1sdp"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:background="@color/primary_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/barrier_info" />
 
-                <TextView
-                    android:id="@+id/tv_net_amt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:padding="@dimen/_5sdp"
-                    android:textColor="@color/primary_color"
-                    android:textSize="@dimen/_14ssp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_divider"
-                    app:set_value_with_symbol="@{headerModels.totNetAmt.toString()}" />
 
-                <ImageView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
+                    android:background="@color/sunset_orange"
+                    android:drawableTint="@color/beige"
+                    android:gravity="center"
+                    android:padding="@dimen/_4sdp"
+                    android:text="Place Order"
+                    android:textColor="@color/beige"
+                    app:drawableStartCompat="@drawable/touch_app"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_divider"
-                    app:tint="@color/white"
-                    android:background="@color/primary_color"
-                    android:src="@mipmap/ic_delivery"/>
+                    app:layout_constraintTop_toBottomOf="@+id/view_divider" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

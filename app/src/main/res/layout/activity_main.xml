@@ -41,7 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/_20sdp"
-            android:background="@drawable/bg_dashboard_left_curve"
+            android:background="@drawable/bg_dashboard_white_left_curve"
             app:cardCornerRadius="@dimen/_15sdp"
             app:cardElevation="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="parent"

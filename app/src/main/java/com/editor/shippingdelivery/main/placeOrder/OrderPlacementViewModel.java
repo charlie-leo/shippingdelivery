@@ -2,6 +2,7 @@ package com.editor.shippingdelivery.main.placeOrder;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -32,6 +33,7 @@ public class OrderPlacementViewModel extends  BaseObservable {
     private PendingOrderHeaderDataModel orderData;
     private CreateOrderRequest createOrderRequest;
     private OrderPlacementRepo orderPlacementRepo;
+    private String errorMessage = "";
 
 
     public void setActivity(Activity activity) {
@@ -106,6 +108,16 @@ public class OrderPlacementViewModel extends  BaseObservable {
         notifyPropertyChanged(BR.createOrderRequest);
     }
 
+    @Bindable
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+        notifyPropertyChanged(BR.errorMessage);
+    }
+
     public void selectStartDate(View view){
         MaterialDatePicker.Builder materialDateBuilder = MaterialDatePicker.Builder.datePicker();
         materialDateBuilder.setTitleText("SELECT A DATE");
@@ -123,6 +135,52 @@ public class OrderPlacementViewModel extends  BaseObservable {
     }
 
     public void placeOrder(View view){
-        orderPlacementRepo.createShippingOrder(activity,createOrderRequest);
+        if (validateOrder()) {
+            orderPlacementRepo.createShippingOrder(activity, createOrderRequest);
+        }
+    }
+    public boolean validateOrder(){
+        if (TextUtils.isEmpty(createOrderRequest.getOrderDate())){
+            setErrorMessage("Pick Up date is required");
+            return false;
+        }else if (TextUtils.isEmpty(createOrderRequest.getBillingCustomerName())
+                && TextUtils.isEmpty(createOrderRequest.getBillingLastName())){
+            setErrorMessage("Billing First name && Last Name is Required");
+            return false;
+        }else if (TextUtils.isEmpty(createOrderRequest.getBillingAddress())
+                && TextUtils.isEmpty(createOrderRequest.getBillingCity())
+                && TextUtils.isEmpty(createOrderRequest.getBillingState())
+                && TextUtils.isEmpty(createOrderRequest.getBillingCountry())){
+            setErrorMessage("Billing Address is Required");
+            return false;
+        }else if (TextUtils.isEmpty(createOrderRequest.getBillingEmail())
+                && TextUtils.isEmpty(createOrderRequest.getBillingPhone())
+        ){
+            setErrorMessage("Billing Email && Phone number is Required");
+            return false;
+        }else if (TextUtils.isEmpty(createOrderRequest.getShippingCustomerName())
+                && TextUtils.isEmpty(createOrderRequest.getShippingLastName())){
+            setErrorMessage("Shipping First name && Last Name is Required");
+            return false;
+        }else if (TextUtils.isEmpty(createOrderRequest.getShippingAddress())
+                && TextUtils.isEmpty(createOrderRequest.getShippingCity())
+                && TextUtils.isEmpty(createOrderRequest.getShippingState())
+                && TextUtils.isEmpty(createOrderRequest.getShippingCountry())){
+            setErrorMessage("Shipping Address is Required");
+            return false;
+        }else if (TextUtils.isEmpty(createOrderRequest.getShippingEmail())
+                && TextUtils.isEmpty(createOrderRequest.getShippingPhone())
+        ){
+            setErrorMessage("Shipping Email && Phone number is Required");
+            return false;
+        }else if (createOrderRequest.getLength() >= 0.5
+                && createOrderRequest.getBreadth() >= 0.5
+                && createOrderRequest.getHeight() >= 0.5
+                && createOrderRequest.getWeight() >= 0.5
+        ){
+            setErrorMessage("Package length, breath, height, weight must be equal or greater than 0.5.");
+            return false;
+        }
+        return true;
     }
 }

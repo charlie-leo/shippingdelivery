@@ -28,10 +28,10 @@ public class RecommendedBy{
 
 	@Override
  	public String toString(){
-		return 
-			"RecommendedBy{" + 
-			"id = '" + id + '\'' + 
-			",title = '" + title + '\'' + 
+		return
+			"RecommendedBy{" +
+			"id = '" + id + '\'' +
+			",title = '" + title + '\'' +
 			"}";
 		}
 }

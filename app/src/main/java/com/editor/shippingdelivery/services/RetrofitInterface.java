@@ -8,7 +8,6 @@ package com.editor.shippingdelivery.services;
 
 
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingDeliveryOrdersRequest;
-import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 import com.editor.shippingdelivery.main.placeOrder.ShipLoginModel;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderResponse;
@@ -16,19 +15,13 @@ import com.editor.shippingdelivery.main.serviceablity.model.ServiceabilityRespon
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappDeliveryStatusRequest;
 import com.google.gson.JsonObject;
 
-import org.json.JSONObject;
-
-import java.util.List;
-
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RetrofitInterface {
@@ -56,8 +49,8 @@ public interface RetrofitInterface {
     Observable<Response<ResponseBody>> getWhatsappOrderList(@Body WhatsappDeliveryStatusRequest pendingDeliveryOrdersRequest);
 
 
-    @GET(baseLocalUrl+"external/international/courier/serviceability")
-    Observable<ServiceabilityResponse> getAvailableServices(@Path("order_id") String order_id);
+    @GET(baseLocalUrl+"delivery-order/serviceability")
+    Observable<ServiceabilityResponse> getAvailableServices(@Query("order_id") String order_id);
 
     /*@POST("delivery-order/pending")
     Call<ResponseBody> getShippingOrderList(@Body PendingDeliveryOrdersRequest pendingDeliveryOrdersRequest);*/

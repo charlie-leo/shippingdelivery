@@ -26,28 +26,6 @@ public class OrderPlacementRepo implements DataInstance {
     public OrderPlacementRepo() {
         service = RetrofitClient.getClient();
     }
-    // TODO : Need to remove the function
-    public void getShipToken(){
-
-        try {
-            ShipLoginModel shipLoginModel = new ShipLoginModel();
-            DisposableManager.add(service.getShipRocketToken(shipLoginModel)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(responseBodyResponse -> {
-                        if ( responseBodyResponse != null) {
-                            String token = responseBodyResponse.toString();
-                            Log.d(TAG, "getShipToken: Response" + token);
-                            setApplicationData("token", responseBodyResponse.get("token").toString());
-                            setApplicationData("company_id", responseBodyResponse.get("company_id").toString());
-                        }
-                    }, throwable -> {
-                        Log.d(TAG, "getShipToken: Error  " + throwable.getMessage());
-                    }));
-        }catch (Exception e){
-            Log.d(TAG, "getShipToken: exception  " + e.getMessage() );
-        }
-    }
 
     public void createShippingOrder(Activity activity, CreateOrderRequest createOrderRequest){
         try {

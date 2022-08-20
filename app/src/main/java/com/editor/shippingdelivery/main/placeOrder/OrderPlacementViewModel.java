@@ -83,22 +83,22 @@ public class OrderPlacementViewModel extends  BaseObservable {
         if (orderData != null) {
             createOrderRequest.setOrderId(orderData.getInvoiceNo());
             createOrderRequest.setSubTotal(orderData.getTotNetAmt());
-            OrderItemsItem customOrder = new OrderItemsItem();
-            customOrder.setName("Soap");
-            customOrder.setSellingPrice("10");
-            customOrder.setUnits(10);
-            customOrder.setTax("0");
-            customOrder.setDiscount("0");
-            List<OrderItemsItem> orderItemsItems = new ArrayList<>();
-            orderItemsItems.add(customOrder);
-            createOrderRequest.setOrderItems(orderItemsItems);
+//            OrderItemsItem customOrder = new OrderItemsItem();
+//            customOrder.setName("Soap");
+//            customOrder.setSellingPrice("10");
+//            customOrder.setUnits(10);
+//            customOrder.setTax("0");
+//            customOrder.setDiscount("0");
+//            List<OrderItemsItem> orderItemsItems = new ArrayList<>();
+//            orderItemsItems.add(customOrder);
+//            createOrderRequest.setOrderItems(orderItemsItems);
 
             if (orderData.getPendingOrderDetailDataModelList().isEmpty()) {
                 for (PendingOrderDetailDataModel item : orderData.getPendingOrderDetailDataModelList()) {
                     OrderItemsItem orderItemsItem = new OrderItemsItem();
                     orderItemsItem.setName(item.getProdName());
                     orderItemsItem.setSellingPrice(String.valueOf(item.getSellRate()));
-//            orderItemsItem.setUnits(item.get);
+                    orderItemsItem.setUnits(item.getTotalInvoiceQty());
                     orderItemsItem.setTax(String.valueOf(item.getTaxAmt()));
                     orderItemsItem.setDiscount("0");
                     createOrderRequest.getOrderItems().add(orderItemsItem);

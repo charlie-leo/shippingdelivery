@@ -7,11 +7,13 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.editor.shippingdelivery.BR;
+import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PendingOrderHeaderDataModel extends BaseObservable implements Parcelable
+public class PendingOrderHeaderDataModel extends BaseObservable implements Parcelable, Serializable
 {
 
 
@@ -85,6 +87,7 @@ public class PendingOrderHeaderDataModel extends BaseObservable implements Parce
     private String liquidation;
 
     /** billDetailsEntityList. */
+    @SerializedName("billPrintDetailList")
     private List<PendingOrderDetailDataModel> pendingOrderDetailDataModelList = new ArrayList<>();
 
     protected PendingOrderHeaderDataModel(Parcel in) {

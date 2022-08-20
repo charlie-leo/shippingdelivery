@@ -1,7 +1,5 @@
 package com.editor.shippingdelivery.main.serviceablity;
 
-import android.view.View;
-
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.databinding.BindingAdapter;
@@ -36,16 +34,16 @@ public class SelectServiceabilityViewModel extends BaseObservable {
         notifyPropertyChanged(BR.serviceabilityResponse);
     }
 
-
-    public void getServiceability(View view, String orderId){
+    public void getServiceability(String orderId){
         selectServiceabilityRepo.getAvailableServices(this,orderId);
     }
 
     @BindingAdapter("setServiceabilityAdapter")
     public static void setServiceabilityAdapter(RecyclerView recyclerView, ServiceabilityResponse serviceabilityResponse){
-
-        SelectServiceabilityAdapter selectServiceabilityAdapter = new SelectServiceabilityAdapter(serviceabilityResponse.getData().getAvailableCourierCompanies());
-        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(selectServiceabilityAdapter);
+        if (serviceabilityResponse != null && !serviceabilityResponse.getData().getAvailableCourierCompanies().isEmpty()) {
+            SelectServiceabilityAdapter selectServiceabilityAdapter = new SelectServiceabilityAdapter(serviceabilityResponse.getData().getAvailableCourierCompanies());
+            recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+            recyclerView.setAdapter(selectServiceabilityAdapter);
+        }
     }
 }

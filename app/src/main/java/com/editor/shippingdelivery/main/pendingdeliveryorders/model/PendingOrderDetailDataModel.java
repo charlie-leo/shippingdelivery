@@ -1,6 +1,9 @@
 package com.editor.shippingdelivery.main.pendingdeliveryorders.model;
 
-public class PendingOrderDetailDataModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class PendingOrderDetailDataModel implements Parcelable {
     /**
      * distrCode.
      */
@@ -148,6 +151,140 @@ public class PendingOrderDetailDataModel {
      * netAmt.
      */
     private Double netAmt;
+
+    protected PendingOrderDetailDataModel(Parcel in) {
+        distrCode = in.readString();
+        invoiceNo = in.readString();
+        prodCode = in.readString();
+        hsnCode = in.readString();
+        prodShortName = in.readString();
+        prodName = in.readString();
+        prodBatchCode = in.readString();
+        if (in.readByte() == 0) {
+            totalInvoiceQty = null;
+        } else {
+            totalInvoiceQty = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            invoiceQty1 = null;
+        } else {
+            invoiceQty1 = in.readInt();
+        }
+        uomCode1 = in.readString();
+        inputStr = in.readString();
+        if (in.readByte() == 0) {
+            freeQty = null;
+        } else {
+            freeQty = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            mrp = null;
+        } else {
+            mrp = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            sellRate = null;
+        } else {
+            sellRate = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            actualSellRate = null;
+        } else {
+            actualSellRate = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            cashDiscAmt = null;
+        } else {
+            cashDiscAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            dbDiscAmt = null;
+        } else {
+            dbDiscAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            schDiscAmt = null;
+        } else {
+            schDiscAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            grossAmt = null;
+        } else {
+            grossAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            taxAmt = null;
+        } else {
+            taxAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            cgstPerc = null;
+        } else {
+            cgstPerc = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            cgstAmt = null;
+        } else {
+            cgstAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            sgstPerc = null;
+        } else {
+            sgstPerc = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            sgstAmt = null;
+        } else {
+            sgstAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            utgstPerc = null;
+        } else {
+            utgstPerc = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            utgstAmt = null;
+        } else {
+            utgstAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            igstPerc = null;
+        } else {
+            igstPerc = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            igstAmt = null;
+        } else {
+            igstAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            cessPerc = null;
+        } else {
+            cessPerc = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            cessAmt = null;
+        } else {
+            cessAmt = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            netAmt = null;
+        } else {
+            netAmt = in.readDouble();
+        }
+    }
+
+    public static final Creator<PendingOrderDetailDataModel> CREATOR = new Creator<PendingOrderDetailDataModel>() {
+        @Override
+        public PendingOrderDetailDataModel createFromParcel(Parcel in) {
+            return new PendingOrderDetailDataModel(in);
+        }
+
+        @Override
+        public PendingOrderDetailDataModel[] newArray(int size) {
+            return new PendingOrderDetailDataModel[size];
+        }
+    };
 
     public String getDistrCode() {
         return distrCode;
@@ -395,5 +532,155 @@ public class PendingOrderDetailDataModel {
 
     public void setNetAmt(Double netAmt) {
         this.netAmt = netAmt;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(distrCode);
+        parcel.writeString(invoiceNo);
+        parcel.writeString(prodCode);
+        parcel.writeString(hsnCode);
+        parcel.writeString(prodShortName);
+        parcel.writeString(prodName);
+        parcel.writeString(prodBatchCode);
+        if (totalInvoiceQty == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(totalInvoiceQty);
+        }
+        if (invoiceQty1 == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(invoiceQty1);
+        }
+        parcel.writeString(uomCode1);
+        parcel.writeString(inputStr);
+        if (freeQty == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(freeQty);
+        }
+        if (mrp == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(mrp);
+        }
+        if (sellRate == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(sellRate);
+        }
+        if (actualSellRate == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(actualSellRate);
+        }
+        if (cashDiscAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(cashDiscAmt);
+        }
+        if (dbDiscAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(dbDiscAmt);
+        }
+        if (schDiscAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(schDiscAmt);
+        }
+        if (grossAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(grossAmt);
+        }
+        if (taxAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(taxAmt);
+        }
+        if (cgstPerc == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(cgstPerc);
+        }
+        if (cgstAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(cgstAmt);
+        }
+        if (sgstPerc == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(sgstPerc);
+        }
+        if (sgstAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(sgstAmt);
+        }
+        if (utgstPerc == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(utgstPerc);
+        }
+        if (utgstAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(utgstAmt);
+        }
+        if (igstPerc == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(igstPerc);
+        }
+        if (igstAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(igstAmt);
+        }
+        if (cessPerc == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(cessPerc);
+        }
+        if (cessAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(cessAmt);
+        }
+        if (netAmt == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeDouble(netAmt);
+        }
     }
 }

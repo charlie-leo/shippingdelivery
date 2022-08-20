@@ -2,6 +2,7 @@ package com.editor.shippingdelivery.main.pendingdeliveryorders.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.editor.shippingdelivery.databinding.ListPendingDeliveryOrdersBinding;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.listeners.OnListItemClickListener;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 import com.editor.shippingdelivery.main.placeOrder.OrderPlacementActivity;
+import com.editor.shippingdelivery.main.serviceablity.SelectServiceabilityActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,9 +69,15 @@ public class PendingDeliveryOrdersAdapter extends RecyclerView.Adapter<PendingDe
         public void bind(int position, PendingOrderHeaderDataModel pendingOrderHeaderDataModel, OnListItemClickListener onListItemClickListener) {
             viewDataBinding.setVariable(BR.headerModel, pendingOrderHeaderDataModel);
             viewDataBinding.deliveryBase.setOnClickListener(v -> {
-                Intent intent = new Intent(v.getContext(), OrderPlacementActivity.class);
-                intent.putExtra("orderData", pendingOrderHeaderDataModel);
+
+                // TODO : Need To Change the Comment
+                Intent intent = new Intent(v.getContext(), SelectServiceabilityActivity.class);
+                intent.putExtra("orderDetails", "248296234");
                 v.getContext().startActivity(intent);
+
+//                Intent intent = new Intent(v.getContext(), OrderPlacementActivity.class);
+//                intent.putExtra("orderData", (Parcelable) pendingOrderHeaderDataModel);
+//                v.getContext().startActivity(intent);
             });
             viewDataBinding.tvBillInfo.setOnClickListener(view -> {
                 onListItemClickListener.onClickInfo(viewDataBinding.tvBillInfo, "Bill Info", position, pendingOrderHeaderDataModel);

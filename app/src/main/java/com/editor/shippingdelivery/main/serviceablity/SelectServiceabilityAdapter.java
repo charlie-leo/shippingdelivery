@@ -1,7 +1,6 @@
 package com.editor.shippingdelivery.main.serviceablity;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.editor.shippingdelivery.R;
 import com.editor.shippingdelivery.databinding.ServiceabilityItemBinding;
 import com.editor.shippingdelivery.main.serviceablity.model.AvailableCourierCompaniesItem;
-import com.editor.shippingdelivery.main.serviceablity.model.ServiceabilityResponse;
 
 import java.util.List;
 

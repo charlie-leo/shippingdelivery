@@ -14,103 +14,109 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             >
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp"
                 >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text='@{serviceableData.courierName, default = "Courier Name"}'
-                    android:textColor="@color/black"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text='@{"Min.Wt : " + serviceableData.minWeight + " Kg", default = "Min Wt : 0.5 Kg"}'
-                    android:textColor="@color/black"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text='@{"Rate : " + serviceableData.rate.rate, default = "Rate : 2173.0"}'
-                    android:textColor="@color/black"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text='@{"Weight : " + serviceableData.rate.weight, default = "Weight : 0.45"}'
-                    android:textColor="@color/black"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text='@{"Estimated Delivery : " + serviceableData.etd, default = "Estimated Delivery : Apr 09, 2022 - Apr 14, 2022"}'
-                    android:textColor="@color/black"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text='@{"Rating : " + serviceableData.rating, default = "Rating : 4"}'
-                    android:textColor="@color/black"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text='Availibility'
-                    android:textColor="@color/black"
-                    />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
+                    android:padding="10dp"
                     >
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='DBC'
+                        android:text='@{serviceableData.courierName, default = "Courier Name"}'
                         android:textColor="@color/black"
-                        android:layout_weight="1"
-                        android:visibility='@{serviceableData.deliveryBoyContact.equals("MIS")?View.VISIBLE:View.GONE}'
                         />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='POD'
+                        android:text='@{"Min.Wt : " + serviceableData.minWeight + " Kg", default = "Min Wt : 0.5 Kg"}'
                         android:textColor="@color/black"
-                        android:layout_weight="1"
-                        android:visibility='@{serviceableData.podAvailable.equals("On Request")?View.VISIBLE:View.GONE}'
                         />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='CBD'
+                        android:text='@{"Rate : " + serviceableData.rate, default = "Rate : 2173.0"}'
                         android:textColor="@color/black"
-                        android:layout_weight="1"
-                        android:visibility='@{serviceableData.callBeforeDelivery.equals("Available")?View.VISIBLE:View.GONE}'
                         />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text='RTT'
+                        android:text='@{"Estimated delivery days : " + serviceableData.estimatedDeliveryDays, default = "Estimated delivery days : 5"}'
                         android:textColor="@color/black"
-                        android:layout_weight="1"
-                        android:visibility='@{serviceableData.realtimeTracking.equals("Available")?View.VISIBLE:View.GONE}'
                         />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text='@{"Estimated Delivery : " + serviceableData.etd, default = "Estimated Delivery : Apr 09, 2022 - Apr 14, 2022"}'
+                        android:textColor="@color/black"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text='@{"Rating : " + serviceableData.rating, default = "Rating : 4"}'
+                        android:textColor="@color/black"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text='Availibility'
+                        android:textColor="@color/black"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text='DBC'
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:visibility='@{serviceableData.deliveryBoyContact.equals("MIS")?View.VISIBLE:View.GONE}'
+                            />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text='POD'
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:visibility='@{serviceableData.podAvailable.equals("Instant")?View.VISIBLE:View.GONE}'
+                            />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text='CBD'
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:visibility='@{serviceableData.callBeforeDelivery.equals("Available")?View.VISIBLE:View.GONE}'
+                            />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text='RTT'
+                            android:textColor="@color/black"
+                            android:layout_weight="1"
+                            android:visibility='@{serviceableData.realtimeTracking.equals("Available")?View.VISIBLE:View.GONE}'
+                            />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
 
-        </RelativeLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

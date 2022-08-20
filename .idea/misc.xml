@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/layout/activity_pending_delivery_orders.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_whatsapp_delivery_status.xml" value="0.19947916666666668" />
         <entry key="app/src/main/res/layout/bottom_sheet_bill_info.xml" value="0.51328125" />
+        <entry key="app/src/main/res/layout/bottom_sheet_bill_info_whatsapp.xml" value="0.1609375" />
         <entry key="app/src/main/res/layout/item_info_bottom_sheet_details.xml" value="0.44" />
         <entry key="app/src/main/res/layout/item_pending_delivery.xml" value="0.51328125" />
         <entry key="app/src/main/res/layout/list_pending_delivery_orders.xml" value="0.67" />

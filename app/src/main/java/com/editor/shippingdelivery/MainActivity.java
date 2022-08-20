@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.editor.shippingdelivery.databinding.ActivityMainBinding;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.PendingDeliveryOrdersActivity;
+import com.editor.shippingdelivery.main.whatsappdeliverystatus.WhatsappDeliveryStatusActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
         activityMainBinding.cvDelivery.setOnClickListener(view -> {
             startActivity(new Intent(activity, PendingDeliveryOrdersActivity.class));
+        });
+        activityMainBinding.cvWatsapp.setOnClickListener(view -> {
+            startActivity(new Intent(activity, WhatsappDeliveryStatusActivity.class));
         });
 
     }

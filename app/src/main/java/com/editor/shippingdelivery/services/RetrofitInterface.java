@@ -13,6 +13,7 @@ import com.editor.shippingdelivery.main.placeOrder.ShipLoginModel;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderResponse;
 import com.editor.shippingdelivery.main.serviceablity.model.ServiceabilityResponse;
+import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappDeliveryStatusRequest;
 import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
@@ -50,6 +51,9 @@ public interface RetrofitInterface {
 
     @POST(baseUrl+"delivery-order/pending")
     Observable<Response<ResponseBody>> getShippingOrderList(@Body PendingDeliveryOrdersRequest pendingDeliveryOrdersRequest);
+
+    @POST("delivery-order/pending")
+    Observable<Response<ResponseBody>> getWhatsappOrderList(@Body WhatsappDeliveryStatusRequest pendingDeliveryOrdersRequest);
 
 
     @GET(baseLocalUrl+"external/international/courier/serviceability")

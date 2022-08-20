@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="whatsappDeliveryStatusViewModel"
+            type="com.editor.shippingdelivery.main.whatsappdeliverystatus.viewmodels.WhatsappDeliveryStatusViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/half_white"
+        tools:context=".main.whatsappdeliverystatus.WhatsappDeliveryStatusActivity">
+
+        <View
+            android:id="@+id/view_toolbar_bg"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@drawable/bg_gradient_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!--<ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="@dimen/_10sdp"
+            android:src="@mipmap/ic_back"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/view_toolbar_bg"
+            app:layout_constraintDimensionRatio="h,1:1"
+            app:layout_constraintStart_toStartOf="@+id/view_toolbar_bg"
+            app:layout_constraintTop_toTopOf="@+id/view_toolbar_bg" />
+-->
+        <TextView
+            android:id="@+id/tv_toolbar_label"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center_vertical"
+            android:text="Pending Orders"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_goneMarginStart="@dimen/_10sdp" />
+
+        <ProgressBar
+            android:id="@+id/progress_horizontal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminateOnly="true"
+            android:visibility='@{whatsappDeliveryStatusViewModel.isProgress?View.VISIBLE:View.GONE}'
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_toolbar_label" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_whatsapp_status_orders"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progress_horizontal"
+            app:set_whatsapp_status_delivery_list="@{whatsappDeliveryStatusViewModel.whatsappStatusHeaderDataModel}"
+            tools:listitem="@layout/list_whatsapp_delivery_status_orders" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

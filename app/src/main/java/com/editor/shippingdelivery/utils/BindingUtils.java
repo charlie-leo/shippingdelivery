@@ -15,6 +15,8 @@ import com.editor.shippingdelivery.main.pendingdeliveryorders.model.InfoBottomSh
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 import com.editor.shippingdelivery.main.placeOrder.OrderPlacementViewModel;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
+import com.editor.shippingdelivery.main.whatsappdeliverystatus.adapter.WhatsappDeliveryStatusAdapter;
+import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappStatusHeaderDataModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,6 +27,12 @@ public class BindingUtils {
     public static void setPendingDeliveryOrdersList(RecyclerView recyclerView, List<PendingOrderHeaderDataModel> pendingOrderHeaderDataModelList) {
         PendingDeliveryOrdersAdapter pendingDeliveryOrdersAdapter = new PendingDeliveryOrdersAdapter(recyclerView.getContext());
         pendingDeliveryOrdersAdapter.setPendingDeliveryOrderList(pendingOrderHeaderDataModelList);
+    }
+
+    @BindingAdapter("set_whatsapp_status_delivery_list")
+    public static void setWhatsappDeliveryStatusList(RecyclerView recyclerView, List<WhatsappStatusHeaderDataModel> whatsappStatusHeaderDataModelList) {
+        WhatsappDeliveryStatusAdapter whatsappDeliveryStatusAdapter = new WhatsappDeliveryStatusAdapter(recyclerView.getContext());
+        whatsappDeliveryStatusAdapter.setWhatsappDeliveryStatusList(whatsappStatusHeaderDataModelList);
     }
 
     @BindingAdapter("set_info_bottom_sheet")

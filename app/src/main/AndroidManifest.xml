@@ -18,6 +18,9 @@
             android:name=".main.pendingdeliveryorders.PendingDeliveryOrdersActivity"
             android:exported="false" />
         <activity
+            android:name=".main.whatsappdeliverystatus.WhatsappDeliveryStatusActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

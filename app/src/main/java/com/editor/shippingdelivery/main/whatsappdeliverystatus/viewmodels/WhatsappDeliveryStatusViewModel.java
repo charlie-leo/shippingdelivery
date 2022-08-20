@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.editor.shippingdelivery.main.whatsappdeliverystatus.WhatsappDeliveryStatusRepo;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappStatusHeaderDataModel;
+import com.editor.shippingdelivery.main.whatsappdeliverystatus.respository.WhatsappDeliveryStatusRepo;
 
 import java.util.List;
 
@@ -21,11 +21,11 @@ public class WhatsappDeliveryStatusViewModel extends AndroidViewModel {
     public WhatsappDeliveryStatusViewModel(@NonNull Application application) {
         super(application);
         whatsappDeliveryStatusRepo = new WhatsappDeliveryStatusRepo();
-        whatsappStatusHeaderDataModel = whatsappDeliveryStatusRepo.getWhatsappOrderLiveDate();
+        whatsappStatusHeaderDataModel = whatsappDeliveryStatusRepo.getPendingDeliveryOrdersList();
         isProgress = whatsappDeliveryStatusRepo.getprogressLiveData();
     }
 
-    public void hitApi() {
-        whatsappDeliveryStatusRepo.getShippingOrderList();
+    public MutableLiveData<List<WhatsappStatusHeaderDataModel>> getWhatsappStatusOrders() {
+        return whatsappStatusHeaderDataModel = whatsappDeliveryStatusRepo.getPendingDeliveryOrdersList();
     }
 }

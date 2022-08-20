@@ -1,9 +1,10 @@
-package com.editor.shippingdelivery.main.whatsappdeliverystatus;
+package com.editor.shippingdelivery.main.whatsappdeliverystatus.respository;
 
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappDeliveryStatusRequest;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappStatusHeaderDataModel;
 import com.editor.shippingdelivery.services.DisposableManager;
@@ -25,18 +26,11 @@ public class WhatsappDeliveryStatusRepo {
 
     public WhatsappDeliveryStatusRepo() {
         whatsappOrderLiveData = new MutableLiveData<>();
-        isProgress = new MutableLiveData<>(true);
+        isProgress = new MutableLiveData<>(false);
     }
 
-    public MutableLiveData<List<WhatsappStatusHeaderDataModel>> getWhatsappOrderLiveDate() {
-        return whatsappOrderLiveData;
-    }
-
-    public MutableLiveData<Boolean> getprogressLiveData() {
-        return isProgress;
-    }
-
-    public void getShippingOrderList() {
+    public MutableLiveData<List<WhatsappStatusHeaderDataModel>> getPendingDeliveryOrdersList() {
+        isProgress.setValue(true);
         RetrofitInterface service = RetrofitClient.getClient();
         WhatsappDeliveryStatusRequest whatsappDeliveryStatusRequest = new WhatsappDeliveryStatusRequest();
         DisposableManager.add(service.getWhatsappOrderList(whatsappDeliveryStatusRequest)
@@ -56,7 +50,11 @@ public class WhatsappDeliveryStatusRepo {
                 }, throwable -> {
                     Log.d("TAG", "getShippingOrderList: " + throwable.getMessage());
                 }));
+        return whatsappOrderLiveData;
     }
 
+    public MutableLiveData<Boolean> getprogressLiveData() {
+        return isProgress;
+    }
 
 }

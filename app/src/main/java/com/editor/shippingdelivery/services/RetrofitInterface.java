@@ -45,7 +45,7 @@ public interface RetrofitInterface {
     @POST(baseUrl+"delivery-order/pending")
     Observable<Response<ResponseBody>> getShippingOrderList(@Body PendingDeliveryOrdersRequest pendingDeliveryOrdersRequest);
 
-    @POST("delivery-order/pending")
+    @POST(baseUrl+"delivery-order/pending")
     Observable<Response<ResponseBody>> getWhatsappOrderList(@Body WhatsappDeliveryStatusRequest pendingDeliveryOrdersRequest);
 
 

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.editor.shippingdelivery.BR;
 import com.editor.shippingdelivery.R;
 import com.editor.shippingdelivery.databinding.ListWhatsappDeliveryStatusOrdersBinding;
+import com.editor.shippingdelivery.main.whatsappdeliverystatus.listeners.OnListItemClickListener;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappStatusHeaderDataModel;
 
 import java.util.ArrayList;
@@ -20,10 +21,12 @@ public class WhatsappDeliveryStatusAdapter extends RecyclerView.Adapter<Whatsapp
 
     Context context;
     List<WhatsappStatusHeaderDataModel> whatsappStatusHeaderDataModelList;
+    private OnListItemClickListener onListItemClickListener;
 
-    public WhatsappDeliveryStatusAdapter(Context context, List<WhatsappStatusHeaderDataModel> whatsappStatusHeaderDataModelList) {
+    public WhatsappDeliveryStatusAdapter(Context context, OnListItemClickListener onListItemClickListener) {
         this.context = context;
-        this.whatsappStatusHeaderDataModelList = whatsappStatusHeaderDataModelList;
+        this.onListItemClickListener = onListItemClickListener;
+        this.whatsappStatusHeaderDataModelList = new ArrayList<>();
     }
 
     public WhatsappDeliveryStatusAdapter(Context context) {
@@ -41,7 +44,7 @@ public class WhatsappDeliveryStatusAdapter extends RecyclerView.Adapter<Whatsapp
 
     @Override
     public void onBindViewHolder(@NonNull AdapterViewHolder holder, int position) {
-        holder.bind(whatsappStatusHeaderDataModelList.get(position));
+        holder.bind(position, whatsappStatusHeaderDataModelList.get(position), onListItemClickListener);
     }
 
     @Override
@@ -58,12 +61,24 @@ public class WhatsappDeliveryStatusAdapter extends RecyclerView.Adapter<Whatsapp
             viewDataBinding.executePendingBindings();
         }
 
-        public void bind(WhatsappStatusHeaderDataModel whatsappStatusHeaderDataModel) {
+        public void bind(int position, WhatsappStatusHeaderDataModel whatsappStatusHeaderDataModel, OnListItemClickListener onListItemClickListener) {
             viewDataBinding.setVariable(BR.headerModels, whatsappStatusHeaderDataModel);
-            viewDataBinding.deliveryBase.setOnClickListener( v -> {
+            viewDataBinding.deliveryBase.setOnClickListener(v -> {
                 /*Intent intent = new Intent(v.getContext(), OrderPlacementActivity.class);
-                intent.putExtra("orderData", whatsappStatusHeaderDataModel);
+                intent.putExtra("orderData", pendingOrderHeaderDataModel);
                 v.getContext().startActivity(intent);*/
+            });
+            viewDataBinding.tvBillInfo.setOnClickListener(view -> {
+                onListItemClickListener.onClickInfo(viewDataBinding.tvBillInfo, "Bill Info", position, whatsappStatusHeaderDataModel);
+            });
+
+            viewDataBinding.tvCustomerInfo.setOnClickListener(view -> {
+                onListItemClickListener.onClickInfo(viewDataBinding.tvCustomerInfo, "Customer Info", position, whatsappStatusHeaderDataModel);
+            });
+
+            viewDataBinding.tvRouteInfo.setOnClickListener(view -> {
+                onListItemClickListener.onClickInfo(viewDataBinding.tvCustomerInfo, "Route Info", position, whatsappStatusHeaderDataModel);
+
             });
         }
     }

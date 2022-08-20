@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class CreateOrderRequest{
 
 	@SerializedName("shipping_charges")
-	private int shippingCharges;
+	private int shippingCharges  = 0;
 
 	@SerializedName("billing_last_name")
 	private String billingLastName;
@@ -15,16 +15,16 @@ public class CreateOrderRequest{
 	private String billingPhone;
 
 	@SerializedName("giftwrap_charges")
-	private int giftwrapCharges;
+	private double giftwrapCharges = 0;
 
 	@SerializedName("total_discount")
-	private int totalDiscount;
+	private double totalDiscount = 0;
 
 	@SerializedName("shipping_state")
 	private String shippingState;
 
 	@SerializedName("breadth")
-	private int breadth;
+	private double breadth = 0.6;
 
 	@SerializedName("shipping_city")
 	private String shippingCity;
@@ -63,7 +63,7 @@ public class CreateOrderRequest{
 	private List<OrderItemsItem> orderItems;
 
 	@SerializedName("height")
-	private int height;
+	private double height = 0.6;
 
 	@SerializedName("pickup_location")
 	private String pickupLocation;
@@ -75,10 +75,10 @@ public class CreateOrderRequest{
 	private String billingCountry;
 
 	@SerializedName("length")
-	private int length;
+	private double length = 0.6;
 
 	@SerializedName("weight")
-	private double weight;
+	private double weight = 0.6;
 
 	@SerializedName("order_date")
 	private String orderDate;
@@ -96,7 +96,7 @@ public class CreateOrderRequest{
 	private String billingPincode;
 
 	@SerializedName("sub_total")
-	private int subTotal;
+	private double subTotal = 0;
 
 	@SerializedName("shipping_last_name")
 	private String shippingLastName;
@@ -111,10 +111,10 @@ public class CreateOrderRequest{
 	private String channelId;
 
 	@SerializedName("shipping_country")
-	private String shippingCountry;
+	private String shippingCountry = "india";
 
 	@SerializedName("transaction_charges")
-	private int transactionCharges;
+	private double transactionCharges = 0;
 
 	public void setShippingCharges(int shippingCharges){
 		this.shippingCharges = shippingCharges;
@@ -140,19 +140,19 @@ public class CreateOrderRequest{
 		return billingPhone;
 	}
 
-	public void setGiftwrapCharges(int giftwrapCharges){
+	public void setGiftwrapCharges(double giftwrapCharges){
 		this.giftwrapCharges = giftwrapCharges;
 	}
 
-	public int getGiftwrapCharges(){
+	public double getGiftwrapCharges(){
 		return giftwrapCharges;
 	}
 
-	public void setTotalDiscount(int totalDiscount){
+	public void setTotalDiscount(double totalDiscount){
 		this.totalDiscount = totalDiscount;
 	}
 
-	public int getTotalDiscount(){
+	public double getTotalDiscount(){
 		return totalDiscount;
 	}
 
@@ -164,11 +164,11 @@ public class CreateOrderRequest{
 		return shippingState;
 	}
 
-	public void setBreadth(int breadth){
+	public void setBreadth(double breadth){
 		this.breadth = breadth;
 	}
 
-	public int getBreadth(){
+	public double getBreadth(){
 		return breadth;
 	}
 
@@ -268,11 +268,11 @@ public class CreateOrderRequest{
 		return orderItems;
 	}
 
-	public void setHeight(int height){
+	public void setHeight(double height){
 		this.height = height;
 	}
 
-	public int getHeight(){
+	public double getHeight(){
 		return height;
 	}
 
@@ -300,11 +300,11 @@ public class CreateOrderRequest{
 		return billingCountry;
 	}
 
-	public void setLength(int length){
+	public void setLength(double length){
 		this.length = length;
 	}
 
-	public int getLength(){
+	public double getLength(){
 		return length;
 	}
 
@@ -356,11 +356,11 @@ public class CreateOrderRequest{
 		return billingPincode;
 	}
 
-	public void setSubTotal(int subTotal){
+	public void setSubTotal(double subTotal){
 		this.subTotal = subTotal;
 	}
 
-	public int getSubTotal(){
+	public double getSubTotal(){
 		return subTotal;
 	}
 
@@ -404,11 +404,11 @@ public class CreateOrderRequest{
 		return shippingCountry;
 	}
 
-	public void setTransactionCharges(int transactionCharges){
+	public void setTransactionCharges(double transactionCharges){
 		this.transactionCharges = transactionCharges;
 	}
 
-	public int getTransactionCharges(){
+	public double getTransactionCharges(){
 		return transactionCharges;
 	}
 }

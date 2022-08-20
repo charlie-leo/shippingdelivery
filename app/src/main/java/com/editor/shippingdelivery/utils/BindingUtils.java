@@ -1,15 +1,20 @@
 package com.editor.shippingdelivery.utils;
 
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.editor.shippingdelivery.main.pendingdeliveryorders.adapter.InfoBottomSheetDetailsAdapter;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.adapter.PendingDeliveryOrdersAdapter;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.InfoBottomSheetDetailsModel;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
+import com.editor.shippingdelivery.main.placeOrder.OrderPlacementViewModel;
+import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,6 +48,16 @@ public class BindingUtils {
             StringBuilder stringBuilder = new StringBuilder("₹");
             stringBuilder.append(String.format("%.02f", (Double.parseDouble(value))));
             textView.setText(stringBuilder.toString());
+        }
+    }
+
+    @BindingAdapter(value = {"doubleEditConverter"})
+    public static void doubleEditConverter(EditText view, CreateOrderRequest value) {
+        if (value.getLength() >0) {
+            view.setText(String.valueOf(value));
+        }
+        if (!TextUtils.isEmpty(view.getText().toString())){
+            value.setLength(Double.parseDouble(view.getText().toString()));
         }
     }
 }

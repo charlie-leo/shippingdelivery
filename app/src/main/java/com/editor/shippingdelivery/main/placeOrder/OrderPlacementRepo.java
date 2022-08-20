@@ -58,7 +58,7 @@ public class OrderPlacementRepo implements DataInstance {
                         Intent intent = new Intent(activity, SelectServiceabilityActivity.class);
                         intent.putExtra("orderDetails", createOrderResponse);
                         activity.startActivity(intent);
-                        Log.d(TAG, "createShippingOrder: " + createOrderResponse.getStatus());
+                        Log.d(TAG, "createShippingOrder: " + createOrderResponse);
                     }, throwable -> {
                         Log.d(TAG, "createShippingOrder: " + throwable.getMessage());
                     }));

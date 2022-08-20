@@ -10,10 +10,15 @@ import androidx.databinding.Bindable;
 import androidx.fragment.app.FragmentManager;
 
 import com.editor.shippingdelivery.BR;
+import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderDetailDataModel;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
+import com.editor.shippingdelivery.main.placeOrder.model.OrderItemsItem;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Charles Raj I on 18/08/22.
@@ -50,6 +55,7 @@ public class OrderPlacementViewModel extends  BaseObservable {
 
     public void setOrderData(PendingOrderHeaderDataModel orderData) {
         this.orderData = orderData;
+        setPendingDeliveryToCreateOrder(orderData);
         notifyPropertyChanged(BR.orderData);
     }
     @Bindable
@@ -66,6 +72,39 @@ public class OrderPlacementViewModel extends  BaseObservable {
         return orderPlacementRepo;
     }
 
+    public void setOrderPlacementViewModel(OrderPlacementRepo orderPlacementRepo) {
+        this.orderPlacementRepo = orderPlacementRepo;
+        notifyPropertyChanged(BR.orderPlacementViewModel);
+    }
+
+    public void setPendingDeliveryToCreateOrder(PendingOrderHeaderDataModel orderData){
+        if (orderData != null) {
+            createOrderRequest.setOrderId(orderData.getInvoiceNo());
+            createOrderRequest.setSubTotal(orderData.getTotNetAmt());
+            OrderItemsItem customOrder = new OrderItemsItem();
+            customOrder.setName("Soap");
+            customOrder.setSellingPrice("10");
+            customOrder.setUnits(10);
+            customOrder.setTax("0");
+            customOrder.setDiscount("0");
+            List<OrderItemsItem> orderItemsItems = new ArrayList<>();
+            orderItemsItems.add(customOrder);
+            createOrderRequest.setOrderItems(orderItemsItems);
+
+            if (orderData.getPendingOrderDetailDataModelList().isEmpty()) {
+                for (PendingOrderDetailDataModel item : orderData.getPendingOrderDetailDataModelList()) {
+                    OrderItemsItem orderItemsItem = new OrderItemsItem();
+                    orderItemsItem.setName(item.getProdName());
+                    orderItemsItem.setSellingPrice(String.valueOf(item.getSellRate()));
+//            orderItemsItem.setUnits(item.get);
+                    orderItemsItem.setTax(String.valueOf(item.getTaxAmt()));
+                    orderItemsItem.setDiscount("0");
+                    createOrderRequest.getOrderItems().add(orderItemsItem);
+                }
+            }
+        }
+        notifyPropertyChanged(BR.createOrderRequest);
+    }
 
     public void selectStartDate(View view){
         MaterialDatePicker.Builder materialDateBuilder = MaterialDatePicker.Builder.datePicker();

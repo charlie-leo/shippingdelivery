@@ -8,6 +8,7 @@ import androidx.databinding.Bindable;
 
 import com.editor.shippingdelivery.BR;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PendingOrderHeaderDataModel extends BaseObservable implements Parcelable
@@ -84,7 +85,7 @@ public class PendingOrderHeaderDataModel extends BaseObservable implements Parce
     private String liquidation;
 
     /** billDetailsEntityList. */
-    private List<PendingOrderDetailDataModel> pendingOrderDetailDataModelList;
+    private List<PendingOrderDetailDataModel> pendingOrderDetailDataModelList = new ArrayList<>();
 
     protected PendingOrderHeaderDataModel(Parcel in) {
         distrCode = in.readString();

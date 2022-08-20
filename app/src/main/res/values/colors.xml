@@ -48,4 +48,9 @@
     <color name="blue">#001587</color>
     <color name="green">#017167</color>
 
+
+
+    <color name="textColor">#515151</color>
+    <color name="transparant">#00FFFFFF</color>
+
 </resources>

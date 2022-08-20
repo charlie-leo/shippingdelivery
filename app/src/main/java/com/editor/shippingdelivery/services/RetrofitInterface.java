@@ -32,24 +32,27 @@ import retrofit2.http.Query;
 
 public interface RetrofitInterface {
 
+    String baseUrl = "https://botreeuat.csngsfa.com/api/v1/";
+    String baseLocalUrl = "http://10.0.2.2:8080/api/v1/";
+
 //    @GET("")
 //    Observable<DataResponse> getDatas();
 
     @Headers({
             "Content-Type: application/json"
     })
-    @POST("auth/login")
+    @POST(baseUrl+"auth/login")
     Observable<JsonObject> getShipRocketToken(@Body ShipLoginModel jsonObject);
 
-    @POST("delivery-order/create/adhoc")
+    @POST(baseLocalUrl+"delivery-order/create/adhoc")
     Observable<CreateOrderResponse> createShipOrder(@Body CreateOrderRequest createOrderRequest);
 
 
-    @POST("delivery-order/pending")
+    @POST(baseUrl+"delivery-order/pending")
     Observable<Response<ResponseBody>> getShippingOrderList(@Body PendingDeliveryOrdersRequest pendingDeliveryOrdersRequest);
 
 
-    @GET("external/international/courier/serviceability")
+    @GET(baseLocalUrl+"external/international/courier/serviceability")
     Observable<ServiceabilityResponse> getAvailableServices(@Path("order_id") String order_id);
 
     /*@POST("delivery-order/pending")

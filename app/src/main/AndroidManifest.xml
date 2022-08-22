@@ -12,8 +12,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.ShippingDelivery">
+        android:theme="@style/Theme.ShippingDelivery"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
         <activity
             android:name=".main.pendingdeliveryorders.PendingDeliveryOrdersActivity"
             android:exported="false" />
@@ -21,7 +24,7 @@
             android:name=".main.whatsappdeliverystatus.WhatsappDeliveryStatusActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +34,7 @@
         </activity>
         <activity android:name=".main.placeOrder.OrderPlacementActivity" />
         <activity android:name=".application.NoNetworkActivity" />
-        <activity android:name=".main.serviceablity.SelectServiceabilityActivity"/>
+        <activity android:name=".main.serviceablity.SelectServiceabilityActivity" />
     </application>
 
 </manifest>

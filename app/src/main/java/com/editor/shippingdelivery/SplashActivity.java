@@ -17,5 +17,6 @@ public class SplashActivity extends AppCompatActivity {
 
      private void nxtStartActivity(){
          startActivity(new Intent(this,MainActivity.class));
+         finish();
      }
 }

@@ -42,7 +42,7 @@
             android:gravity="center_vertical"
             android:paddingStart="@dimen/_5sdp"
             android:paddingEnd="@dimen/_10sdp"
-            android:text="Place Order"
+            android:text="@string/place_order"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/_14ssp"
             app:layout_constraintEnd_toEndOf="parent"

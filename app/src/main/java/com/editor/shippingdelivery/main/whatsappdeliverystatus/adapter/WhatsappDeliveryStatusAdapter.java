@@ -2,6 +2,7 @@ package com.editor.shippingdelivery.main.whatsappdeliverystatus.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.editor.shippingdelivery.BR;
 import com.editor.shippingdelivery.R;
 import com.editor.shippingdelivery.databinding.ListWhatsappDeliveryStatusOrdersBinding;
+import com.editor.shippingdelivery.main.placeOrder.PlaceOrderModel;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.listeners.OnListItemClickListener;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappStatusHeaderDataModel;
 
@@ -78,6 +80,17 @@ public class WhatsappDeliveryStatusAdapter extends RecyclerView.Adapter<Whatsapp
 
             viewDataBinding.tvRouteInfo.setOnClickListener(view -> {
                 onListItemClickListener.onClickInfo(viewDataBinding.tvCustomerInfo, "Route Info", position, whatsappStatusHeaderDataModel);
+
+            });
+            viewDataBinding.placeOrderTxt.setOnClickListener(view -> {
+                PlaceOrderModel placeOrderModel = new PlaceOrderModel();
+                placeOrderModel.setCustomerCode(whatsappStatusHeaderDataModel.getCustomerCode());
+                placeOrderModel.setInvoiceNo(whatsappStatusHeaderDataModel.getInvoiceNo());
+                placeOrderModel.setMessageId(Double.toString(Math.random()));
+                placeOrderModel.setMobileNumber(whatsappStatusHeaderDataModel.getMobileNo());
+                placeOrderModel.setMessageContent("");
+
+                onListItemClickListener.onClick(viewDataBinding.placeOrderTxt, position, placeOrderModel);
 
             });
         }

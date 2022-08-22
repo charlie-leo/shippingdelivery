@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.editor.shippingdelivery.R;
 import com.editor.shippingdelivery.databinding.ActivityWhatsappDeliveryStatusBinding;
 import com.editor.shippingdelivery.databinding.BottomSheetBillInfoWhatsappBinding;
+import com.editor.shippingdelivery.main.placeOrder.PlaceOrderModel;
+import com.editor.shippingdelivery.main.serviceablity.SelectServiceabilityViewModel;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.adapter.WhatappInfoBottomSheetDetailsAdapter;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.adapter.WhatsappDeliveryStatusAdapter;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.listeners.OnListItemClickListener;
@@ -54,6 +56,11 @@ public class WhatsappDeliveryStatusActivity extends AppCompatActivity implements
             @Override
             public void onClick(View view, int position) {
 
+            }
+
+            @Override
+            public void onClick(View view, int position, PlaceOrderModel placeOrderModel) {
+                    placeOrderModel.getPlaceOrderViaWhatsApp();
             }
 
             @Override

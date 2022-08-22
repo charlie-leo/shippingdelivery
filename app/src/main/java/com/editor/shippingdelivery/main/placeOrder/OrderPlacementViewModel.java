@@ -124,13 +124,9 @@ public class OrderPlacementViewModel extends  BaseObservable {
         final MaterialDatePicker materialDatePicker = materialDateBuilder.build();
         materialDatePicker.show(fragmentManager, "MATERIAL_DATE_PICKER");
         materialDatePicker.addOnPositiveButtonClickListener(
-                new MaterialPickerOnPositiveButtonClickListener() {
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void onPositiveButtonClick(Object selection) {
-                        createOrderRequest.setOrderDate(materialDatePicker.getHeaderText());
-                        ((TextView)view).setText(materialDatePicker.getHeaderText());
-                    }
+                selection -> {
+                    createOrderRequest.setOrderDate(materialDatePicker.getHeaderText());
+                    ((TextView)view).setText(materialDatePicker.getHeaderText());
                 });
     }
 

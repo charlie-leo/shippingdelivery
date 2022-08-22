@@ -433,7 +433,7 @@
                 android:id="@+id/placeOrderBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Place Order"
+                android:text="@string/place_order"
                 android:onClick='@{(view) -> orderPlacementViewModel.placeOrder(view)}'
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -8,6 +8,8 @@ package com.editor.shippingdelivery.services;
 
 
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingDeliveryOrdersRequest;
+import com.editor.shippingdelivery.main.placeOrder.PlaceOrderModel;
+import com.editor.shippingdelivery.main.placeOrder.PlaceOrderResponse;
 import com.editor.shippingdelivery.main.placeOrder.ShipLoginModel;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderResponse;
@@ -17,6 +19,7 @@ import com.google.gson.JsonObject;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -54,4 +57,7 @@ public interface RetrofitInterface {
 
     /*@POST("delivery-order/pending")
     Call<ResponseBody> getShippingOrderList(@Body PendingDeliveryOrdersRequest pendingDeliveryOrdersRequest);*/
+
+    @POST("wa-messaging/send")
+    Observable<PlaceOrderResponse> placeOrderViaWaMessaging(@Body PlaceOrderModel placeOrderModel);
 }

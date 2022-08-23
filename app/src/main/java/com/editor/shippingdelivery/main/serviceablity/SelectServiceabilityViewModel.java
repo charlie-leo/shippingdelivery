@@ -50,9 +50,8 @@ public class SelectServiceabilityViewModel extends BaseObservable  {
         notifyPropertyChanged(BR.errorMessage);
     }
 
-    @BindingAdapter("setServiceabilityAdapter")
-    public static void setServiceabilityAdapter(RecyclerView recyclerView, SelectServiceabilityViewModel selectServiceabilityViewModel){
-        ServiceabilityResponse serviceabilityResponse = selectServiceabilityViewModel.serviceabilityResponse;
+    @BindingAdapter( value = {"setServiceabilityAdapter", "setServiceAbilityViewModel"})
+    public static void setServiceabilityAdapter(RecyclerView recyclerView, ServiceabilityResponse serviceabilityResponse, SelectServiceabilityViewModel selectServiceabilityViewModel){
         if (serviceabilityResponse != null && !serviceabilityResponse.getData().getAvailableCourierCompanies().isEmpty()) {
             SelectServiceabilityAdapter selectServiceabilityAdapter = new SelectServiceabilityAdapter(serviceabilityResponse.getData().getAvailableCourierCompanies(), selectServiceabilityViewModel);
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));

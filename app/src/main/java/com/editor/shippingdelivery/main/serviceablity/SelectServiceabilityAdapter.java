@@ -44,7 +44,7 @@ public class SelectServiceabilityAdapter extends RecyclerView.Adapter<SelectServ
     @NonNull
     @Override
     public SelectServiceabilityViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ServiceabilityItemBinding serviceabilityItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_service_availabilty_list, parent, false);
+        ServiceabilityItemBinding serviceabilityItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.serviceability_item, parent, false);
         return new SelectServiceabilityViewHolder(serviceabilityItemBinding);
     }
 
@@ -67,7 +67,7 @@ public class SelectServiceabilityAdapter extends RecyclerView.Adapter<SelectServ
         }
         public void onBind(AvailableCourierCompaniesItem courierCompaniesItem, SelectServiceabilityViewModel selectServiceabilityViewModel){
             itemView.setServiceableData(courierCompaniesItem);
-            itemView.serviceCard.setOnClickListener(view -> {
+            itemView.deliveryBase.setOnClickListener(view -> {
                 RetrofitInterface service = RetrofitClient.getClient();
                 int courierId = courierCompaniesItem.getCourierCompanyId();
                 String invoiceId = getApplicationData(StaticVariables.INVOICE_ID);
@@ -77,7 +77,7 @@ public class SelectServiceabilityAdapter extends RecyclerView.Adapter<SelectServ
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(jsonObject -> {
-                                if ((int)jsonObject.getAsJsonPrimitive("status_code").getAsNumber() == 200){
+                                if ((int)jsonObject.getAsJsonPrimitive("status_code").getAsInt() == 200){
                                     Intent intent = new Intent(itemView.getRoot().getContext(), PickUpActivity.class);
                                     itemView.getRoot().getContext().startActivity(intent);
                                 }

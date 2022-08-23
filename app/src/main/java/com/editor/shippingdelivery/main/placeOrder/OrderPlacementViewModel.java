@@ -224,7 +224,8 @@ public class OrderPlacementViewModel extends BaseObservable {
 
     @BindingAdapter("snack_bar_error")
     public static void setErrorEditText(ConstraintLayout layout, String errorMessage) {
-        if (!TextUtils.isEmpty(errorMessage) && !errorMessage.equalsIgnoreCase("")) {
+        if (errorMessage != null && !TextUtils.isEmpty(errorMessage)
+                && !errorMessage.equalsIgnoreCase("")) {
             TSnackbar snackbar = TSnackbar.make(layout, errorMessage, TSnackbar.LENGTH_SHORT);
             View snackbarView = snackbar.getView();
             snackbarView.setBackgroundColor(ContextCompat.getColor(layout.getContext(), R.color.primary_color));

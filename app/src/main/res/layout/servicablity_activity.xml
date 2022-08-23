@@ -16,7 +16,8 @@
             android:id="@+id/serviceabilityRecyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:setServiceabilityAdapter='@{serviceabilityData}'
+            app:setServiceabilityAdapter='@{serviceabilityData.serviceabilityResponse}'
+            app:setServiceAbilityViewModel='@{serviceabilityData}'
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

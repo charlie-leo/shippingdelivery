@@ -1,32 +1,35 @@
 package com.editor.shippingdelivery.main.placeOrder;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.BindingAdapter;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.MutableLiveData;
 
 import com.editor.shippingdelivery.BR;
+import com.editor.shippingdelivery.R;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderDetailDataModel;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
 import com.editor.shippingdelivery.main.placeOrder.model.OrderItemsItem;
+import com.editor.shippingdelivery.utils.topsnackbar.TSnackbar;
 import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.google.android.material.textfield.TextInputLayout;
 
 /**
  * Created by Charles Raj I on 18/08/22.
  *
  * @author Charles Raj I
  */
-public class OrderPlacementViewModel extends  BaseObservable {
+public class OrderPlacementViewModel extends BaseObservable {
 
     private Activity activity;
     private FragmentManager fragmentManager;
@@ -34,7 +37,6 @@ public class OrderPlacementViewModel extends  BaseObservable {
     private CreateOrderRequest createOrderRequest;
     private OrderPlacementRepo orderPlacementRepo;
     private String errorMessage = "";
-
 
     public void setActivity(Activity activity) {
         this.activity = activity;
@@ -50,6 +52,7 @@ public class OrderPlacementViewModel extends  BaseObservable {
         this.fragmentManager = fragmentManager;
         notifyPropertyChanged(BR.fragmentManager);
     }
+
     @Bindable
     public PendingOrderHeaderDataModel getOrderData() {
         return orderData;
@@ -60,6 +63,7 @@ public class OrderPlacementViewModel extends  BaseObservable {
         setPendingDeliveryToCreateOrder(orderData);
         notifyPropertyChanged(BR.orderData);
     }
+
     @Bindable
     public CreateOrderRequest getCreateOrderRequest() {
         return createOrderRequest;
@@ -69,6 +73,7 @@ public class OrderPlacementViewModel extends  BaseObservable {
         this.createOrderRequest = createOrderRequest;
         notifyPropertyChanged(BR.createOrderRequest);
     }
+
     @Bindable
     public OrderPlacementRepo getOrderPlacementViewModel() {
         return orderPlacementRepo;
@@ -79,19 +84,12 @@ public class OrderPlacementViewModel extends  BaseObservable {
         notifyPropertyChanged(BR.orderPlacementViewModel);
     }
 
-    public void setPendingDeliveryToCreateOrder(PendingOrderHeaderDataModel orderData){
+    public void setPendingDeliveryToCreateOrder(PendingOrderHeaderDataModel orderData) {
         if (orderData != null) {
             createOrderRequest.setOrderId(orderData.getInvoiceNo());
             createOrderRequest.setSubTotal(orderData.getTotNetAmt());
-//            OrderItemsItem customOrder = new OrderItemsItem();
-//            customOrder.setName("Soap");
-//            customOrder.setSellingPrice("10");
-//            customOrder.setUnits(10);
-//            customOrder.setTax("0");
-//            customOrder.setDiscount("0");
-//            List<OrderItemsItem> orderItemsItems = new ArrayList<>();
-//            orderItemsItems.add(customOrder);
-//            createOrderRequest.setOrderItems(orderItemsItems);
+            createOrderRequest.setShippingCustomerName(orderData.getCustomerName());
+            createOrderRequest.setShippingPhone(orderData.getMobileNo());
 
             if (orderData.getPendingOrderDetailDataModelList().isEmpty()) {
                 for (PendingOrderDetailDataModel item : orderData.getPendingOrderDetailDataModelList()) {
@@ -118,7 +116,7 @@ public class OrderPlacementViewModel extends  BaseObservable {
         notifyPropertyChanged(BR.errorMessage);
     }
 
-    public void selectStartDate(View view){
+    public void selectStartDate(View view) {
         MaterialDatePicker.Builder materialDateBuilder = MaterialDatePicker.Builder.datePicker();
         materialDateBuilder.setTitleText("SELECT A DATE");
         final MaterialDatePicker materialDatePicker = materialDateBuilder.build();
@@ -126,57 +124,105 @@ public class OrderPlacementViewModel extends  BaseObservable {
         materialDatePicker.addOnPositiveButtonClickListener(
                 selection -> {
                     createOrderRequest.setOrderDate(materialDatePicker.getHeaderText());
-                    ((TextView)view).setText(materialDatePicker.getHeaderText());
+                    ((TextView) view).setText(materialDatePicker.getHeaderText());
                 });
     }
 
-    public void placeOrder(View view){
+    public void placeOrder(View view) {
         if (validateOrder()) {
             orderPlacementRepo.createShippingOrder(activity, createOrderRequest);
         }
     }
-    public boolean validateOrder(){
-        if (TextUtils.isEmpty(createOrderRequest.getOrderDate())){
-            setErrorMessage("Pick Up date is required");
+
+    public boolean validateOrder() {
+        if (createOrderRequest.getBillingCustomerName().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Billing Name");
             return false;
-        }else if (TextUtils.isEmpty(createOrderRequest.getBillingCustomerName())
-                && TextUtils.isEmpty(createOrderRequest.getBillingLastName())){
-            setErrorMessage("Billing First name && Last Name is Required");
+        } else if (createOrderRequest.getBillingLastName().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Last Name");
             return false;
-        }else if (TextUtils.isEmpty(createOrderRequest.getBillingAddress())
-                && TextUtils.isEmpty(createOrderRequest.getBillingCity())
-                && TextUtils.isEmpty(createOrderRequest.getBillingState())
-                && TextUtils.isEmpty(createOrderRequest.getBillingCountry())){
-            setErrorMessage("Billing Address is Required");
+        } else if (createOrderRequest.getBillingAddress().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Billing Address");
             return false;
-        }else if (TextUtils.isEmpty(createOrderRequest.getBillingEmail())
-                && TextUtils.isEmpty(createOrderRequest.getBillingPhone())
-        ){
-            setErrorMessage("Billing Email && Phone number is Required");
+        } else if (createOrderRequest.getBillingAddress2().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Billing Address 2");
             return false;
-        }else if (TextUtils.isEmpty(createOrderRequest.getShippingCustomerName())
-                && TextUtils.isEmpty(createOrderRequest.getShippingLastName())){
-            setErrorMessage("Shipping First name && Last Name is Required");
+        } else if (createOrderRequest.getBillingCity().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Billing city");
             return false;
-        }else if (TextUtils.isEmpty(createOrderRequest.getShippingAddress())
-                && TextUtils.isEmpty(createOrderRequest.getShippingCity())
-                && TextUtils.isEmpty(createOrderRequest.getShippingState())
-                && TextUtils.isEmpty(createOrderRequest.getShippingCountry())){
-            setErrorMessage("Shipping Address is Required");
+        } else if (createOrderRequest.getBillingState().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Billing State");
             return false;
-        }else if (TextUtils.isEmpty(createOrderRequest.getShippingEmail())
-                && TextUtils.isEmpty(createOrderRequest.getShippingPhone())
-        ){
-            setErrorMessage("Shipping Email && Phone number is Required");
+        } else if (createOrderRequest.getBillingCountry().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Billing Country");
             return false;
-        }else if (createOrderRequest.getLength() >= 0.5
-                && createOrderRequest.getBreadth() >= 0.5
-                && createOrderRequest.getHeight() >= 0.5
-                && createOrderRequest.getWeight() >= 0.5
-        ){
+        } else if (createOrderRequest.getBillingPincode().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Billing Pin Code");
+            return false;
+        } else if (createOrderRequest.getBillingEmail().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Billing Email");
+            return false;
+        } else if (createOrderRequest.getBillingPhone().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Billing Phone");
+            return false;
+        } else if (createOrderRequest.getShippingCustomerName().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Shipping Name");
+            return false;
+        } else if (createOrderRequest.getShippingLastName().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Last Name");
+            return false;
+        } else if (createOrderRequest.getShippingAddress().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Shipping Address");
+            return false;
+        } else if (createOrderRequest.getShippingAddress2().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Shipping Address 2");
+            return false;
+        } else if (createOrderRequest.getShippingCity().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Shipping city");
+            return false;
+        } else if (createOrderRequest.getShippingState().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Shipping State");
+            return false;
+        } else if (createOrderRequest.getShippingCountry().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Shipping Country");
+            return false;
+        } else if (createOrderRequest.getShippingPincode().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Shipping Pin Code");
+            return false;
+        } else if (createOrderRequest.getShippingEmail().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Shipping Email");
+            return false;
+        } else if (createOrderRequest.getShippingPhone().equalsIgnoreCase("")) {
+            setErrorMessage("Kindly Enter Shipping Phone");
+            return false;
+        } else if (createOrderRequest.getLength() <= 0.5
+                && createOrderRequest.getBreadth() <= 0.5
+                && createOrderRequest.getHeight() <= 0.5
+                && createOrderRequest.getWeight() <= 0.5
+        ) {
             setErrorMessage("Package length, breath, height, weight must be equal or greater than 0.5.");
             return false;
         }
         return true;
+    }
+
+    @BindingAdapter("error_et")
+    public static void setErrorEditText(TextInputLayout textInputLayout, String errorMessage) {
+        if (textInputLayout != null) {
+            textInputLayout.setError(errorMessage);
+        }
+
+    }
+
+    @BindingAdapter("snack_bar_error")
+    public static void setErrorEditText(ConstraintLayout layout, String errorMessage) {
+        if (!errorMessage.equalsIgnoreCase("")) {
+            TSnackbar snackbar = TSnackbar.make(layout, errorMessage, TSnackbar.LENGTH_SHORT);
+            View snackbarView = snackbar.getView();
+            snackbarView.setBackgroundColor(ContextCompat.getColor(layout.getContext(), R.color.primary_color));
+            TextView textView = (TextView) snackbarView.findViewById(R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+        }
     }
 }

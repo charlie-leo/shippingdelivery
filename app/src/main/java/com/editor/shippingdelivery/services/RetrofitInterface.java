@@ -23,6 +23,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -38,21 +39,26 @@ public interface RetrofitInterface {
     @Headers({
             "Content-Type: application/json"
     })
-    @POST(baseUrl+"auth/login")
+    @POST(baseUrl + "auth/login")
     Observable<JsonObject> getShipRocketToken(@Body ShipLoginModel jsonObject);
 
+/*
     @POST(baseLocalUrl+"delivery-order/create/adhoc")
     Observable<CreateOrderResponse> createShipOrder(@Body CreateOrderRequest createOrderRequest);
+*/
+
+    @POST("orders/create/adhoc")
+    Observable<CreateOrderResponse> createShipOrder(@Header("Content-Type")String content,@Header("Authorization")String auth, @Body CreateOrderRequest createOrderRequest);
 
 
-    @POST(baseUrl+"delivery-order/pending")
+    @POST(baseUrl + "delivery-order/pending")
     Observable<Response<ResponseBody>> getShippingOrderList(@Body PendingDeliveryOrdersRequest pendingDeliveryOrdersRequest);
 
-    @POST(baseUrl+"delivery-order/pending")
+    @POST(baseUrl + "delivery-order/pending")
     Observable<Response<ResponseBody>> getWhatsappOrderList(@Body WhatsappDeliveryStatusRequest pendingDeliveryOrdersRequest);
 
 
-    @GET(baseLocalUrl+"delivery-order/serviceability")
+    @GET(baseLocalUrl + "delivery-order/serviceability")
     Observable<ServiceabilityResponse> getAvailableServices(@Query("order_id") String order_id);
 
     /*@POST("delivery-order/pending")

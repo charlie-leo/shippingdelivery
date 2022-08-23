@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.text.TextUtils"/>
-        <import type="android.view.View"/>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
         <variable
             name="orderPlacementViewModel"
             type="com.editor.shippingdelivery.main.placeOrder.OrderPlacementViewModel" />
     </data>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+<!--
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/BillingDetails"
@@ -31,148 +36,142 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:padding="10dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Billing Details"
-                        />
+                        android:text="Billing Details" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.pickupLocation}'
+                            android:layout_weight="1"
                             android:hint="Pick up location"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText"
-                            />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.pickupLocation}' />
 
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.paymentMethod}'
+                            android:layout_weight="1"
                             android:hint="Payment Method"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText"
-                            />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.paymentMethod}' />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.billingCustomerName}'
+                            android:layout_weight="1"
                             android:hint="First Name"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText"
-                            />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.billingCustomerName}' />
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.billingLastName}'
+                            android:layout_weight="1"
                             android:hint="Last name"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText"
-                            />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.billingLastName}' />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.billingAddress}'
+                            android:layout_weight="1"
                             android:hint="Address Line 1"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText"
-                            />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.billingAddress}' />
 
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.billingAddress2}'
+                            android:layout_weight="1"
                             android:hint="Address Line 2"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText"
-                            />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.billingAddress2}' />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.billingCity}'
+                            android:layout_weight="1"
                             android:hint="City"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText"
-                            />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.billingCity}' />
 
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.billingPincode}'
+                            android:layout_weight="1"
                             android:hint="Pin code"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText"
-                            />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.billingPincode}' />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
 
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.billingState}'
+                            android:layout_weight="1"
                             android:hint="State"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText"
-                             />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.billingState}' />
 
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.billingCountry}'
-                            android:hint="Country"
                             android:layout_weight="1"
-                            style="@style/orderPlacementEditText"
-                             />
+                            android:hint="Country"
+                            android:text='@={orderPlacementViewModel.createOrderRequest.billingCountry}' />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.billingEmail}'
-                            android:hint="Email"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText"
-                             />
+                        android:orientation="horizontal">
 
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.billingPhone}'
-                            android:hint="Phone"
                             android:layout_weight="1"
+                            android:hint="Email"
+                            android:text='@={orderPlacementViewModel.createOrderRequest.billingEmail}' />
+
+                        <EditText
                             style="@style/orderPlacementEditText"
-                             />
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Phone"
+                            android:text='@={orderPlacementViewModel.createOrderRequest.billingPhone}' />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -181,10 +180,10 @@
                 android:id="@+id/startDatePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select Pick Up Date"
-                android:padding="5dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop=`10dp`
                 android:onClick='@{(view)->orderPlacementViewModel.selectStartDate(view)}'
+                android:padding="5dp"
+                android:text="Select Pick Up Date"
                 app:layout_constraintStart_toStartOf="@+id/BillingDetails"
                 app:layout_constraintTop_toBottomOf="@+id/BillingDetails" />
 
@@ -194,122 +193,128 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 app:layout_constraintStart_toStartOf="@+id/BillingDetails"
-                app:layout_constraintTop_toBottomOf="@+id/startDatePicker"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/startDatePicker">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:padding="10dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Shipping Details"
-                        />
+                        android:text="Shipping Details" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingCustomerName}'
+                            android:layout_weight="1"
                             android:hint="First Name"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingCustomerName}' />
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingLastName}'
+                            android:layout_weight="1"
                             android:hint="Last name"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingLastName}' />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingAddress}'
+                            android:layout_weight="1"
                             android:hint="Address Line 1"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText"/>
+                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingAddress}' />
 
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingAddress2}'
+                            android:layout_weight="1"
                             android:hint="Address Line 2"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingAddress2}' />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingCity}'
+                            android:layout_weight="1"
                             android:hint="City"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingCity}' />
 
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingPincode}'
+                            android:layout_weight="1"
                             android:hint="Pin code"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingPincode}' />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingState}'
+                            android:layout_weight="1"
                             android:hint="State"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingState}' />
 
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingCountry}'
-                            android:hint="Country"
                             android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:hint="Country"
+                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingCountry}' />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingEmail}'
-                            android:hint="Email"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                        android:orientation="horizontal">
 
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingPhone}'
-                            android:hint="Phone"
                             android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:hint="Email"
+                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingEmail}' />
+
+                        <EditText
+                            style="@style/orderPlacementEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Phone"
+                            android:text='@={orderPlacementViewModel.createOrderRequest.shippingPhone}' />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -320,57 +325,61 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 app:layout_constraintStart_toStartOf="@+id/ShippingDetails"
-                app:layout_constraintTop_toBottomOf="@+id/ShippingDetails"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/ShippingDetails">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:padding="10dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pack Details"
-                        />
+                        android:text="Pack Details" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.length}'
+                            android:layout_weight="1"
                             android:hint="Length"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.length}' />
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.breadth}'
-                            android:hint="Breath"
                             android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:hint="Breath"
+                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.breadth}' />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.height}'
+                            android:layout_weight="1"
                             android:hint="Height"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.height}' />
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.weight}'
-                            android:hint="Weight"
                             android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:hint="Weight"
+                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.weight}' />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -381,37 +390,39 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 app:layout_constraintStart_toStartOf="@+id/packDetails"
-                app:layout_constraintTop_toBottomOf="@+id/packDetails"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/packDetails">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:padding="10dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total and Discount"
-                        />
+                        android:text="Total and Discount" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.subTotal}'
+                            android:layout_weight="1"
                             android:hint="Sub Total"
-                            android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.subTotal}' />
+
                         <EditText
+                            style="@style/orderPlacementEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.totalDiscount}'
-                            android:hint="Total Discount"
                             android:layout_weight="1"
-                            style="@style/orderPlacementEditText" />
+                            android:hint="Total Discount"
+                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.totalDiscount}' />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -422,9 +433,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:text='@{orderPlacementViewModel.errorMessage}'
                 android:textColor="@color/errorColor"
                 android:visibility='@{TextUtils.isEmpty(orderPlacementViewModel.errorMessage)?View.GONE:View.VISIBLE}'
-                android:text='@{orderPlacementViewModel.errorMessage}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/amountDetails" />
@@ -433,13 +444,14 @@
                 android:id="@+id/placeOrderBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/place_order"
-                android:onClick='@{(view) -> orderPlacementViewModel.placeOrder(view)}'
                 android:layout_marginTop="10dp"
+                android:onClick='@{(view) -> orderPlacementViewModel.placeOrder(view)}'
+                android:text="@string/place_order"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/errorText" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+-->
     </androidx.core.widget.NestedScrollView>
 </layout>

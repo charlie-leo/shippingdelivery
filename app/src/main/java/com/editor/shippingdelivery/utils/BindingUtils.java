@@ -14,6 +14,7 @@ import com.editor.shippingdelivery.main.pendingdeliveryorders.adapter.PendingDel
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.InfoBottomSheetDetailsModel;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 import com.editor.shippingdelivery.main.placeOrder.OrderPlacementViewModel;
+import com.editor.shippingdelivery.main.placeOrder.PlaceDeliveryOrderViewModel;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.adapter.WhatappInfoBottomSheetDetailsAdapter;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.adapter.WhatsappDeliveryStatusAdapter;
@@ -69,11 +70,12 @@ public class BindingUtils {
 
     @BindingAdapter(value = {"doubleEditConverter"})
     public static void doubleEditConverter(EditText view, CreateOrderRequest value) {
-        if (value.getLength() >0) {
+        if (value.getLength() > 0) {
             view.setText(String.valueOf(value));
         }
-        if (!TextUtils.isEmpty(view.getText().toString())){
+        if (!TextUtils.isEmpty(view.getText().toString())) {
             value.setLength(Double.parseDouble(view.getText().toString()));
         }
     }
+
 }

@@ -1,414 +1,416 @@
 package com.editor.shippingdelivery.main.placeOrder.model;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CreateOrderRequest{
+public class CreateOrderRequest {
+    @SerializedName("order_id")
+    private String orderId = "";
 
-	@SerializedName("shipping_charges")
-	private int shippingCharges  = 0;
+    @SerializedName("order_date")
+    private String orderDate = "2022-08-13 11:11";
 
-	@SerializedName("billing_last_name")
-	private String billingLastName;
+    @SerializedName("pickup_location")
+    private String pickupLocation = "Primary";
 
-	@SerializedName("billing_phone")
-	private String billingPhone;
+    @SerializedName("channel_id")
+    private String channelId = "";
 
-	@SerializedName("giftwrap_charges")
-	private double giftwrapCharges = 0;
+    @SerializedName("comment")
+    private String comment = "";
 
-	@SerializedName("total_discount")
-	private double totalDiscount = 0;
+    @SerializedName("billing_customer_name")
+    private String billingCustomerName = "Ak";
 
-	@SerializedName("shipping_state")
-	private String shippingState;
+    @SerializedName("billing_last_name")
+    private String billingLastName = "M";
 
-	@SerializedName("breadth")
-	private double breadth = 0.6;
+    @SerializedName("billing_address")
+    private String billingAddress = "15th streeet";
 
-	@SerializedName("shipping_city")
-	private String shippingCity;
+    @SerializedName("billing_address_2")
+    private String billingAddress2 = "line";
 
-	@SerializedName("shipping_phone")
-	private String shippingPhone;
+    @SerializedName("billing_city")
+    private String billingCity = "chennai";
 
-	@SerializedName("billing_customer_name")
-	private String billingCustomerName;
+    @SerializedName("billing_pincode")
+    private String billingPincode = "600039";
 
-	@SerializedName("billing_address")
-	private String billingAddress;
+    @SerializedName("billing_state")
+    private String billingState = "TN";
 
-	@SerializedName("shipping_address_2")
-	private String shippingAddress2;
+    @SerializedName("billing_country")
+    private String billingCountry = "India";
 
-	@SerializedName("shipping_is_billing")
-	private boolean shippingIsBilling;
+    @SerializedName("billing_email")
+    private String billingEmail = "demo@test.com";
 
-	@SerializedName("billing_state")
-	private String billingState;
+    @SerializedName("billing_phone")
+    private String billingPhone = "132100000";
 
-	@SerializedName("billing_address_2")
-	private String billingAddress2;
+    @SerializedName("shipping_is_billing")
+    private Boolean shippingIsBilling = true;
 
-	@SerializedName("billing_email")
-	private String billingEmail;
+    @SerializedName("shipping_customer_name")
+    private String shippingCustomerName = "";
 
-	@SerializedName("shipping_address")
-	private String shippingAddress;
+    @SerializedName("shipping_last_name")
+    private String shippingLastName = "R";
 
-	@SerializedName("payment_method")
-	private String paymentMethod;
+    @SerializedName("shipping_address")
+    private String shippingAddress = "11th streen";
 
-	@SerializedName("order_items")
-	private List<OrderItemsItem> orderItems;
+    @SerializedName("shipping_address_2")
+    private String shippingAddress2 = "line2";
 
-	@SerializedName("height")
-	private double height = 0.6;
+    @SerializedName("shipping_city")
+    private String shippingCity = "chennai";
 
-	@SerializedName("pickup_location")
-	private String pickupLocation;
+    @SerializedName("shipping_pincode")
+    private String shippingPincode = "600001";
 
-	@SerializedName("shipping_customer_name")
-	private String shippingCustomerName;
+    @SerializedName("shipping_country")
+    private String shippingCountry = "india";
 
-	@SerializedName("billing_country")
-	private String billingCountry;
+    @SerializedName("shipping_state")
+    private String shippingState = "TN";
 
-	@SerializedName("length")
-	private double length = 0.6;
+    @SerializedName("shipping_email")
+    private String shippingEmail = "dm@demo.com";
 
-	@SerializedName("weight")
-	private double weight = 0.6;
+    @SerializedName("shipping_phone")
+    private String shippingPhone = "132133000";
 
-	@SerializedName("order_date")
-	private String orderDate;
+    @SerializedName("payment_method")
+    private String paymentMethod = "Prepaid";
 
-	@SerializedName("billing_city")
-	private String billingCity;
+    @SerializedName("shipping_charges")
+    private Integer shippingCharges = 0;
 
-	@SerializedName("shipping_pincode")
-	private String shippingPincode;
+    @SerializedName("giftwrap_charges")
+    private Integer giftwrapCharges = 0;
 
-	@SerializedName("shipping_email")
-	private String shippingEmail;
+    @SerializedName("transaction_charges")
+    private Integer transactionCharges = 0;
 
-	@SerializedName("billing_pincode")
-	private String billingPincode;
+    @SerializedName("total_discount")
+    private Double totalDiscount = 0.0;
 
-	@SerializedName("sub_total")
-	private double subTotal = 0;
+    @SerializedName("sub_total")
+    private Double subTotal = 0.0;
 
-	@SerializedName("shipping_last_name")
-	private String shippingLastName;
+    @SerializedName("length")
+    private Double length = 0.6;
 
-	@SerializedName("comment")
-	private String comment;
+    @SerializedName("breadth")
+    private Double breadth = 0.6;
 
-	@SerializedName("order_id")
-	private String orderId;
+    @SerializedName("height")
+    private Double height = 0.6;
 
-	@SerializedName("channel_id")
-	private String channelId;
+    @SerializedName("weight")
+    private Double weight = 0.6;
 
-	@SerializedName("shipping_country")
-	private String shippingCountry = "india";
+    @SerializedName("order_items")
+    private List<OrderItemsItem> orderItems;
 
-	@SerializedName("transaction_charges")
-	private double transactionCharges = 0;
+    public String getOrderId() {
+        return orderId;
+    }
 
-	public void setShippingCharges(int shippingCharges){
-		this.shippingCharges = shippingCharges;
-	}
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
 
-	public int getShippingCharges(){
-		return shippingCharges;
-	}
+    public String getOrderDate() {
+        return orderDate;
+    }
 
-	public void setBillingLastName(String billingLastName){
-		this.billingLastName = billingLastName;
-	}
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
+    }
 
-	public String getBillingLastName(){
-		return billingLastName;
-	}
+    public String getPickupLocation() {
+        return pickupLocation;
+    }
 
-	public void setBillingPhone(String billingPhone){
-		this.billingPhone = billingPhone;
-	}
+    public void setPickupLocation(String pickupLocation) {
+        this.pickupLocation = pickupLocation;
+    }
 
-	public String getBillingPhone(){
-		return billingPhone;
-	}
+    public String getChannelId() {
+        return channelId;
+    }
 
-	public void setGiftwrapCharges(double giftwrapCharges){
-		this.giftwrapCharges = giftwrapCharges;
-	}
+    public void setChannelId(String channelId) {
+        this.channelId = channelId;
+    }
 
-	public double getGiftwrapCharges(){
-		return giftwrapCharges;
-	}
+    public String getComment() {
+        return comment;
+    }
 
-	public void setTotalDiscount(double totalDiscount){
-		this.totalDiscount = totalDiscount;
-	}
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
-	public double getTotalDiscount(){
-		return totalDiscount;
-	}
+    public String getBillingCustomerName() {
+        return billingCustomerName;
+    }
 
-	public void setShippingState(String shippingState){
-		this.shippingState = shippingState;
-	}
+    public void setBillingCustomerName(String billingCustomerName) {
+        this.billingCustomerName = billingCustomerName;
+    }
 
-	public String getShippingState(){
-		return shippingState;
-	}
+    public String getBillingLastName() {
+        return billingLastName;
+    }
 
-	public void setBreadth(double breadth){
-		this.breadth = breadth;
-	}
+    public void setBillingLastName(String billingLastName) {
+        this.billingLastName = billingLastName;
+    }
 
-	public double getBreadth(){
-		return breadth;
-	}
+    public String getBillingAddress() {
+        return billingAddress;
+    }
 
-	public void setShippingCity(String shippingCity){
-		this.shippingCity = shippingCity;
-	}
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
+    }
 
-	public String getShippingCity(){
-		return shippingCity;
-	}
+    public String getBillingAddress2() {
+        return billingAddress2;
+    }
 
-	public void setShippingPhone(String shippingPhone){
-		this.shippingPhone = shippingPhone;
-	}
+    public void setBillingAddress2(String billingAddress2) {
+        this.billingAddress2 = billingAddress2;
+    }
 
-	public String getShippingPhone(){
-		return shippingPhone;
-	}
+    public String getBillingCity() {
+        return billingCity;
+    }
 
-	public void setBillingCustomerName(String billingCustomerName){
-		this.billingCustomerName = billingCustomerName;
-	}
+    public void setBillingCity(String billingCity) {
+        this.billingCity = billingCity;
+    }
 
-	public String getBillingCustomerName(){
-		return billingCustomerName;
-	}
+    public String getBillingPincode() {
+        return billingPincode;
+    }
 
-	public void setBillingAddress(String billingAddress){
-		this.billingAddress = billingAddress;
-	}
+    public void setBillingPincode(String billingPincode) {
+        this.billingPincode = billingPincode;
+    }
 
-	public String getBillingAddress(){
-		return billingAddress;
-	}
+    public String getBillingState() {
+        return billingState;
+    }
 
-	public void setShippingAddress2(String shippingAddress2){
-		this.shippingAddress2 = shippingAddress2;
-	}
+    public void setBillingState(String billingState) {
+        this.billingState = billingState;
+    }
 
-	public String getShippingAddress2(){
-		return shippingAddress2;
-	}
+    public String getBillingCountry() {
+        return billingCountry;
+    }
 
-	public void setShippingIsBilling(boolean shippingIsBilling){
-		this.shippingIsBilling = shippingIsBilling;
-	}
+    public void setBillingCountry(String billingCountry) {
+        this.billingCountry = billingCountry;
+    }
 
-	public boolean isShippingIsBilling(){
-		return shippingIsBilling;
-	}
+    public String getBillingEmail() {
+        return billingEmail;
+    }
 
-	public void setBillingState(String billingState){
-		this.billingState = billingState;
-	}
+    public void setBillingEmail(String billingEmail) {
+        this.billingEmail = billingEmail;
+    }
 
-	public String getBillingState(){
-		return billingState;
-	}
+    public String getBillingPhone() {
+        return billingPhone;
+    }
 
-	public void setBillingAddress2(String billingAddress2){
-		this.billingAddress2 = billingAddress2;
-	}
+    public void setBillingPhone(String billingPhone) {
+        this.billingPhone = billingPhone;
+    }
 
-	public String getBillingAddress2(){
-		return billingAddress2;
-	}
+    public Boolean getShippingIsBilling() {
+        return shippingIsBilling;
+    }
 
-	public void setBillingEmail(String billingEmail){
-		this.billingEmail = billingEmail;
-	}
+    public void setShippingIsBilling(Boolean shippingIsBilling) {
+        this.shippingIsBilling = shippingIsBilling;
+    }
 
-	public String getBillingEmail(){
-		return billingEmail;
-	}
+    public String getShippingCustomerName() {
+        return shippingCustomerName;
+    }
 
-	public void setShippingAddress(String shippingAddress){
-		this.shippingAddress = shippingAddress;
-	}
+    public void setShippingCustomerName(String shippingCustomerName) {
+        this.shippingCustomerName = shippingCustomerName;
+    }
 
-	public String getShippingAddress(){
-		return shippingAddress;
-	}
+    public String getShippingLastName() {
+        return shippingLastName;
+    }
 
-	public void setPaymentMethod(String paymentMethod){
-		this.paymentMethod = paymentMethod;
-	}
+    public void setShippingLastName(String shippingLastName) {
+        this.shippingLastName = shippingLastName;
+    }
 
-	public String getPaymentMethod(){
-		return paymentMethod;
-	}
+    public String getShippingAddress() {
+        return shippingAddress;
+    }
 
-	public void setOrderItems(List<OrderItemsItem> orderItems){
-		this.orderItems = orderItems;
-	}
+    public void setShippingAddress(String shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
 
-	public List<OrderItemsItem> getOrderItems(){
-		return orderItems;
-	}
+    public String getShippingAddress2() {
+        return shippingAddress2;
+    }
 
-	public void setHeight(double height){
-		this.height = height;
-	}
+    public void setShippingAddress2(String shippingAddress2) {
+        this.shippingAddress2 = shippingAddress2;
+    }
 
-	public double getHeight(){
-		return height;
-	}
+    public String getShippingCity() {
+        return shippingCity;
+    }
 
-	public void setPickupLocation(String pickupLocation){
-		this.pickupLocation = pickupLocation;
-	}
+    public void setShippingCity(String shippingCity) {
+        this.shippingCity = shippingCity;
+    }
 
-	public String getPickupLocation(){
-		return pickupLocation;
-	}
+    public String getShippingPincode() {
+        return shippingPincode;
+    }
 
-	public void setShippingCustomerName(String shippingCustomerName){
-		this.shippingCustomerName = shippingCustomerName;
-	}
+    public void setShippingPincode(String shippingPincode) {
+        this.shippingPincode = shippingPincode;
+    }
 
-	public String getShippingCustomerName(){
-		return shippingCustomerName;
-	}
+    public String getShippingCountry() {
+        return shippingCountry;
+    }
 
-	public void setBillingCountry(String billingCountry){
-		this.billingCountry = billingCountry;
-	}
+    public void setShippingCountry(String shippingCountry) {
+        this.shippingCountry = shippingCountry;
+    }
 
-	public String getBillingCountry(){
-		return billingCountry;
-	}
+    public String getShippingState() {
+        return shippingState;
+    }
 
-	public void setLength(double length){
-		this.length = length;
-	}
+    public void setShippingState(String shippingState) {
+        this.shippingState = shippingState;
+    }
 
-	public double getLength(){
-		return length;
-	}
+    public String getShippingEmail() {
+        return shippingEmail;
+    }
 
-	public void setWeight(double weight){
-		this.weight = weight;
-	}
+    public void setShippingEmail(String shippingEmail) {
+        this.shippingEmail = shippingEmail;
+    }
 
-	public double getWeight(){
-		return weight;
-	}
+    public String getShippingPhone() {
+        return shippingPhone;
+    }
 
-	public void setOrderDate(String orderDate){
-		this.orderDate = orderDate;
-	}
+    public void setShippingPhone(String shippingPhone) {
+        this.shippingPhone = shippingPhone;
+    }
 
-	public String getOrderDate(){
-		return orderDate;
-	}
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
 
-	public void setBillingCity(String billingCity){
-		this.billingCity = billingCity;
-	}
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
 
-	public String getBillingCity(){
-		return billingCity;
-	}
+    public Integer getShippingCharges() {
+        return shippingCharges;
+    }
 
-	public void setShippingPincode(String shippingPincode){
-		this.shippingPincode = shippingPincode;
-	}
+    public void setShippingCharges(Integer shippingCharges) {
+        this.shippingCharges = shippingCharges;
+    }
 
-	public String getShippingPincode(){
-		return shippingPincode;
-	}
+    public Integer getGiftwrapCharges() {
+        return giftwrapCharges;
+    }
 
-	public void setShippingEmail(String shippingEmail){
-		this.shippingEmail = shippingEmail;
-	}
+    public void setGiftwrapCharges(Integer giftwrapCharges) {
+        this.giftwrapCharges = giftwrapCharges;
+    }
 
-	public String getShippingEmail(){
-		return shippingEmail;
-	}
+    public Integer getTransactionCharges() {
+        return transactionCharges;
+    }
 
-	public void setBillingPincode(String billingPincode){
-		this.billingPincode = billingPincode;
-	}
+    public void setTransactionCharges(Integer transactionCharges) {
+        this.transactionCharges = transactionCharges;
+    }
 
-	public String getBillingPincode(){
-		return billingPincode;
-	}
+    public Double getTotalDiscount() {
+        return totalDiscount;
+    }
 
-	public void setSubTotal(double subTotal){
-		this.subTotal = subTotal;
-	}
+    public void setTotalDiscount(double totalDiscount) {
+        this.totalDiscount = totalDiscount;
+    }
 
-	public double getSubTotal(){
-		return subTotal;
-	}
+    public Double getSubTotal() {
+        return subTotal;
+    }
 
-	public void setShippingLastName(String shippingLastName){
-		this.shippingLastName = shippingLastName;
-	}
+    public void setSubTotal(double subTotal) {
+        this.subTotal = subTotal;
+    }
 
-	public String getShippingLastName(){
-		return shippingLastName;
-	}
+    public Double getLength() {
+        return length;
+    }
 
-	public void setComment(String comment){
-		this.comment = comment;
-	}
+    public void setLength(Double length) {
+        this.length = length;
+    }
 
-	public String getComment(){
-		return comment;
-	}
+    public Double getBreadth() {
+        return breadth;
+    }
 
-	public void setOrderId(String orderId){
-		this.orderId = orderId;
-	}
+    public void setBreadth(Double breadth) {
+        this.breadth = breadth;
+    }
 
-	public String getOrderId(){
-		return orderId;
-	}
+    public Double getHeight() {
+        return height;
+    }
 
-	public void setChannelId(String channelId){
-		this.channelId = channelId;
-	}
+    public void setHeight(Double height) {
+        this.height = height;
+    }
 
-	public String getChannelId(){
-		return channelId;
-	}
+    public Double getWeight() {
+        return weight;
+    }
 
-	public void setShippingCountry(String shippingCountry){
-		this.shippingCountry = shippingCountry;
-	}
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
 
-	public String getShippingCountry(){
-		return shippingCountry;
-	}
+    public List<OrderItemsItem> getOrderItems() {
+        return orderItems;
+    }
 
-	public void setTransactionCharges(double transactionCharges){
-		this.transactionCharges = transactionCharges;
-	}
-
-	public double getTransactionCharges(){
-		return transactionCharges;
-	}
+    public void setOrderItems(List<OrderItemsItem> orderItems) {
+        this.orderItems = orderItems;
+    }
 }

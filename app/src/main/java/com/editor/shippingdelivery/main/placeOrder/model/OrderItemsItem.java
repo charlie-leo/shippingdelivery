@@ -5,22 +5,22 @@ import com.google.gson.annotations.SerializedName;
 public class OrderItemsItem{
 
 	@SerializedName("selling_price")
-	private String sellingPrice;
+	private String sellingPrice="900";
 
 	@SerializedName("hsn")
-	private int hsn;
+	private int hsn=441122;
 
 	@SerializedName("name")
-	private String name;
+	private String name="Kunai";
 
 	@SerializedName("discount")
-	private String discount;
+	private String discount="";
 
 	@SerializedName("tax")
-	private String tax;
+	private String tax="";
 
 	@SerializedName("units")
-	private int units;
+	private int units=10;
 
 	@SerializedName("sku")
 	private String sku = "Channel";

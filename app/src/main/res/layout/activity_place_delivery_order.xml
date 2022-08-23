@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+        <!--<variable
+            name="placeDeliverOrderVm"
+            type="com.editor.shippingdelivery.main.placeOrder.PlaceDeliveryOrderViewModel" />-->
+
+        <variable
+            name="orderPlacementViewModel"
+            type="com.editor.shippingdelivery.main.placeOrder.OrderPlacementViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/half_white">
+        android:background="@color/half_white"
+        app:snack_bar_error="@{orderPlacementViewModel.errorMessage}">
 
         <View
             android:id="@+id/view_toolbar_bg"
@@ -56,6 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:indeterminateOnly="true"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_toolbar_label" />
@@ -70,7 +84,9 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraint_layout_billing_details"
@@ -82,44 +98,435 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
-                        android:id="@+id/iv_right_arrow_billing"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="0dp"
-                        android:background="@drawable/bg_dashboard_primary_color_left_curve"
-                        android:padding="@dimen/_5ssp"
-                        android:rotation="180"
-                        android:src="@mipmap/ic_back"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    <!--    <ImageView
+                            android:id="@+id/iv_right_arrow_billing"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="0dp"
+                            android:background="@drawable/bg_dashboard_primary_color_left_curve"
+                            android:padding="@dimen/_5ssp"
+                            android:rotation="180"
+                            android:src="@mipmap/ic_back"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />-->
 
                     <TextView
                         android:id="@+id/tv_billing_details_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10ssp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_8sdp"
                         android:fontFamily="@font/montserrat_medium"
                         android:text="Billing Details"
                         android:textColor="@color/primary_text"
-                        android:textSize="@dimen/_14ssp"
-                        app:layout_constraintEnd_toStartOf="@+id/iv_right_arrow_billing"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/tv_billing_details_sub_label"
-                        android:layout_width="0dp"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10ssp"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:text="Add address"
-                        android:textColor="@color/secondary_text"
-                        android:textSize="@dimen/_12ssp"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/iv_right_arrow_billing"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_billing_details_label" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_billing_details_label">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_billing_customer_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Name"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:errorContentDescription="Enter Customer Name"
+                            app:layout_constraintEnd_toStartOf="@+id/til_billing_customer_last_name"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_billing_customer_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:singleLine="true"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.billingCustomerName}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_billing_customer_last_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Last Name"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/til_billing_customer_name"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_billing_customer_last_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:singleLine="true"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.billingLastName}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.Barrier
+                            android:id="@+id/barrier_billing_name_lname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:barrierDirection="bottom"
+                            app:constraint_referenced_ids="til_billing_customer_name,til_billing_customer_last_name" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_billing_address"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Address Line 1"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/barrier_billing_name_lname">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_billing_address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.billingAddress}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_billing_address_line_two"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Address Line 2"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/til_billing_address">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_billing_address_line_two"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.billingAddress2}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_billing_city"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="City"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toStartOf="@+id/til_billing_pin_code"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/til_billing_address_line_two">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_billing_city"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:singleLine="true"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.billingCity}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_billing_pin_code"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Pin Code"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/til_billing_city"
+                            app:layout_constraintTop_toBottomOf="@+id/til_billing_address_line_two">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_billing_pin_code"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="number"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.billingPincode}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.Barrier
+                            android:id="@+id/barrier_billing_city_pincode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:barrierDirection="bottom"
+                            app:constraint_referenced_ids="til_billing_city,til_billing_pin_code" />
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_billing_Country"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Country"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toStartOf="@+id/til_billing_state"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/barrier_billing_city_pincode">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_billing_country"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:singleLine="true"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.billingCountry}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_billing_state"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="State"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/til_billing_Country"
+                            app:layout_constraintTop_toBottomOf="@+id/barrier_billing_city_pincode">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_billing_state"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:singleLine="true"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.billingState}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.Barrier
+                            android:id="@+id/barrier_billing_country_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:barrierDirection="bottom"
+                            app:constraint_referenced_ids="til_billing_Country,til_billing_state" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_billing_email"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Email"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/barrier_billing_country_state">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_billing_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="textEmailAddress"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.billingEmail}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_billing_mobile_no"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:layout_marginBottom="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Mobile No"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/til_billing_email">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_mobile_no"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionDone"
+                                android:inputType="number"
+                                android:maxLength="12"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.billingPhone}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--
+                                        <TextView
+                                            android:id="@+id/tv_billing_details_sub_label"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_8sdp"
+                                            android:layout_marginTop="@dimen/_4sdp"
+                                            android:layout_marginEnd="@dimen/_8sdp"
+                                            android:layout_marginBottom="@dimen/_8sdp"
+                                            android:fontFamily="@font/montserrat_medium"
+                                            android:text="Add address"
+                                            android:textColor="@color/secondary_text"
+                                            android:textSize="@dimen/_8ssp"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toStartOf="@+id/iv_right_arrow_billing"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toBottomOf="@+id/tv_billing_details_label" />-->
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -134,7 +541,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/constraint_layout_billing_details">
 
-                    <ImageView
+                    <!--<ImageView
                         android:id="@+id/iv_right_arrow_shipping"
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="0dp"
@@ -144,36 +551,442 @@
                         android:src="@mipmap/ic_back"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent" />-->
 
                     <TextView
                         android:id="@+id/tv_shipping_details_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10ssp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_8sdp"
                         android:fontFamily="@font/montserrat_medium"
                         android:text="Shipping Details"
                         android:textColor="@color/primary_text"
-                        android:textSize="@dimen/_14ssp"
-                        app:layout_constraintEnd_toStartOf="@+id/iv_right_arrow_shipping"
+                        android:textSize="@dimen/_12ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/tv_shipping_details_sub_label"
-                        android:layout_width="0dp"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10ssp"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:text="Add address"
-                        android:textColor="@color/secondary_text"
-                        android:textSize="@dimen/_12ssp"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/iv_right_arrow_shipping"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_shipping_details_label" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_shipping_details_label">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_shipping_customer_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Name"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:errorContentDescription="Enter Customer Name"
+                            app:layout_constraintEnd_toStartOf="@+id/til_shipping_customer_last_name"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_shipping_customer_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:singleLine="true"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.shippingCustomerName}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_shipping_customer_last_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Last Name"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/til_shipping_customer_name"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_shipping_customer_last_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:singleLine="true"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.shippingLastName}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.Barrier
+                            android:id="@+id/barrier_shipping_name_lname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:barrierDirection="bottom"
+                            app:constraint_referenced_ids="til_shipping_customer_name,til_shipping_customer_last_name" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_shipping_address"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Address Line 1"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/barrier_shipping_name_lname">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_shipping_address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.shippingAddress}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_shipping_address_line_two"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Address Line 2"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/til_shipping_address">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_shipping_address_line_two"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.shippingAddress2}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_shipping_city"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="City"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toStartOf="@+id/til_shipping_pin_code"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/til_shipping_address_line_two">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_shipping_city"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:singleLine="true"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.shippingCity}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_shipping_pin_code"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Pin Code"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/til_shipping_city"
+                            app:layout_constraintTop_toBottomOf="@+id/til_shipping_address_line_two">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_shipping_pin_code"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="number"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.shippingPincode}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.Barrier
+                            android:id="@+id/barrier_shipping_city_pincode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:barrierDirection="bottom"
+                            app:constraint_referenced_ids="til_shipping_city,til_shipping_pin_code" />
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_shipping_Country"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Country"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toStartOf="@+id/til_shipping_state"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/barrier_shipping_city_pincode">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_shipping_country"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:singleLine="true"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.shippingCountry}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_shipping_state"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="State"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/til_shipping_Country"
+                            app:layout_constraintTop_toBottomOf="@+id/barrier_shipping_city_pincode">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_shipping_state"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:singleLine="true"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.shippingState}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.Barrier
+                            android:id="@+id/barrier_shipping_country_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:barrierDirection="bottom"
+                            app:constraint_referenced_ids="til_shipping_Country,til_shipping_state" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_shipping_email"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Email"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/barrier_shipping_country_state">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_shipping_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionNext"
+                                android:inputType="textEmailAddress"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.shippingEmail}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_shipping_mobile_no"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:layout_marginBottom="@dimen/_8sdp"
+                            android:background="@drawable/bg_white_curve"
+                            android:hint="Mobile No"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/til_shipping_email">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ti_et_shipping_mobile_no"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_2sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:imeOptions="actionDone"
+                                android:inputType="number"
+                                android:maxLength="12"
+                                android:text="@={orderPlacementViewModel.createOrderRequest.shippingPhone}"
+                                android:textColor="@color/primary_text"
+                                android:textColorHint="@color/secondary_text"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <!-- <TextView
+                         android:id="@+id/tv_shipping_details_sub_label"
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:layout_marginStart="@dimen/_8sdp"
+                         android:layout_marginTop="@dimen/_4sdp"
+                         android:layout_marginEnd="@dimen/_8sdp"
+                         android:layout_marginBottom="@dimen/_8sdp"
+                         android:fontFamily="@font/montserrat_medium"
+                         android:text="Add address"
+                         android:textColor="@color/secondary_text"
+                         android:textSize="@dimen/_8ssp"
+                         app:layout_constraintBottom_toBottomOf="parent"
+                         app:layout_constraintEnd_toStartOf="@+id/iv_right_arrow_shipping"
+                         app:layout_constraintStart_toStartOf="parent"
+                         app:layout_constraintTop_toBottomOf="@+id/tv_shipping_details_label" />-->
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_pickup_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:background="@drawable/bg_white_curve"
+                    android:hint="Select Pickup Date"
+                    android:onClick='@{(view)->orderPlacementViewModel.selectStartDate(view)}'
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/primary_text"
+                    android:textColorHint="@color/secondary_text"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraint_layout_shipping_details" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraint_layout_package_details"
@@ -184,7 +997,7 @@
                     android:paddingBottom="@dimen/_5sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/constraint_layout_shipping_details">
+                    app:layout_constraintTop_toBottomOf="@id/tv_pickup_date">
 
                     <TextView
                         android:id="@+id/tv_package_details_label"
@@ -197,7 +1010,7 @@
                         android:paddingBottom="@dimen/_5sdp"
                         android:text="Package Details"
                         android:textColor="@color/secondary_text"
-                        android:textSize="@dimen/_14ssp"
+                        android:textSize="@dimen/_12ssp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -209,6 +1022,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_8sdp"
                         android:background="@drawable/bg_white_curve"
+                        android:hint="Length"
                         app:boxStrokeWidth="0dp"
                         app:boxStrokeWidthFocused="0dp"
                         app:layout_constraintBottom_toBottomOf="@+id/barrier_length_breadth"
@@ -218,13 +1032,14 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_package_details_label">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/ti_et_lenght"
+                            android:id="@+id/ti_et_billing_lenght"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:fontFamily="@font/montserrat_medium"
-                            android:hint="Length"
-                            android:text=""
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.length}'
                             android:textColor="@color/primary_text"
                             android:textColorHint="@color/secondary_text"
                             android:textSize="@dimen/_10ssp" />
@@ -237,6 +1052,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_8sdp"
                         android:background="@drawable/bg_white_curve"
+                        android:hint="Breadth"
                         app:boxStrokeWidth="0dp"
                         app:boxStrokeWidthFocused="0dp"
                         app:layout_constraintBottom_toBottomOf="@+id/barrier_length_breadth"
@@ -250,9 +1066,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
+                            android:focusedByDefault="false"
                             android:fontFamily="@font/montserrat_medium"
-                            android:hint="Breadth"
-                            android:text=""
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.breadth}'
                             android:textColor="@color/primary_text"
                             android:textColorHint="@color/secondary_text"
                             android:textSize="@dimen/_10ssp" />
@@ -273,6 +1091,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_8sdp"
                         android:background="@drawable/bg_white_curve"
+                        android:hint="height"
                         app:boxStrokeWidth="0dp"
                         app:boxStrokeWidthFocused="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -287,8 +1106,9 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:fontFamily="@font/montserrat_medium"
-                            android:hint="height"
-                            android:text=""
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.height}'
                             android:textColor="@color/primary_text"
                             android:textColorHint="@color/secondary_text"
                             android:textSize="@dimen/_10ssp" />
@@ -301,6 +1121,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_8sdp"
                         android:background="@drawable/bg_white_curve"
+                        android:hint="Weight"
                         app:boxStrokeWidth="0dp"
                         app:boxStrokeWidthFocused="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -315,11 +1136,14 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:fontFamily="@font/montserrat_medium"
-                            android:hint="Weight"
-                            android:text=""
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:text='@={"" + orderPlacementViewModel.createOrderRequest.weight}'
                             android:textColor="@color/primary_text"
                             android:textColorHint="@color/secondary_text"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="@dimen/_10ssp"
+                            tools:layout_editor_absoluteX="84dp"
+                            tools:layout_editor_absoluteY="1870dp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -332,8 +1156,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_8sdp"
                     android:background="@drawable/bg_white_curve"
+                    android:hint="Shipping Charges"
                     app:boxStrokeWidth="0dp"
                     app:boxStrokeWidthFocused="0dp"
+                    app:errorEnabled="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraint_layout_package_details">
@@ -348,8 +1174,9 @@
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:background="@android:color/transparent"
                         android:fontFamily="@font/montserrat_medium"
-                        android:hint="Shipping Charges"
-                        android:text=""
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:text='@={"" + orderPlacementViewModel.createOrderRequest.shippingCharges}'
                         android:textColor="@color/primary_text"
                         android:textColorHint="@color/secondary_text"
                         android:textSize="@dimen/_10ssp" />
@@ -365,13 +1192,14 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:gravity="start|center_vertical"
                     android:hint="Comments"
-                    android:maxLines="10"
+                    android:imeOptions="actionDone"
+                    android:maxLines="5"
                     android:minLines="4"
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingTop="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_10sdp"
                     android:paddingBottom="@dimen/_5sdp"
-                    android:text=""
+                    android:text="@={orderPlacementViewModel.createOrderRequest.comment}"
                     android:textColor="@color/primary_text"
                     android:textColorHint="@color/secondary_text"
                     android:textSize="@dimen/_10ssp"
@@ -388,10 +1216,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/primary_color"
-            app:layout_constraintTop_toTopOf="@+id/barrier_submit_total"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/barrier_submit_total" />
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrier_submit_total"
@@ -406,15 +1234,15 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
             android:paddingStart="@dimen/_10sdp"
-            android:paddingTop="@dimen/_15sdp"
+            android:paddingTop="@dimen/_10sdp"
             android:paddingEnd="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_15sdp"
-            android:text="Rs.70000"
+            android:paddingBottom="@dimen/_10sdp"
             android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintBottom_toBottomOf="@id/view_bg_bottom"
             app:layout_constraintStart_toStartOf="@id/view_bg_bottom"
-            app:layout_constraintTop_toTopOf="@+id/barrier_submit_total" />
+            app:layout_constraintTop_toTopOf="@+id/barrier_submit_total"
+            app:set_value_with_symbol='@{"" + orderPlacementViewModel.createOrderRequest.subTotal}' />
 
         <TextView
             android:id="@+id/tv_place_order"
@@ -422,10 +1250,11 @@
             android:layout_height="wrap_content"
             android:background="@color/light_primary"
             android:fontFamily="@font/montserrat_medium"
+            android:onClick='@{(view) -> orderPlacementViewModel.placeOrder(view)}'
             android:paddingStart="@dimen/_10sdp"
-            android:paddingTop="@dimen/_15sdp"
+            android:paddingTop="@dimen/_10sdp"
             android:paddingEnd="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_15sdp"
+            android:paddingBottom="@dimen/_10sdp"
             android:text="Submit"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/_14ssp"

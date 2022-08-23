@@ -71,13 +71,13 @@ public class PendingDeliveryOrdersAdapter extends RecyclerView.Adapter<PendingDe
             viewDataBinding.deliveryBase.setOnClickListener(v -> {
 
                 // TODO : Need To Change the Comment
-                Intent intent = new Intent(v.getContext(), SelectServiceabilityActivity.class);
+  /*              Intent intent = new Intent(v.getContext(), SelectServiceabilityActivity.class);
                 intent.putExtra("orderDetails", "248296234");
-                v.getContext().startActivity(intent);
+                v.getContext().startActivity(intent);*/
 
-//                Intent intent = new Intent(v.getContext(), OrderPlacementActivity.class);
-//                intent.putExtra("orderData", (Parcelable) pendingOrderHeaderDataModel);
-//                v.getContext().startActivity(intent);
+                Intent intent = new Intent(v.getContext(), OrderPlacementActivity.class);
+                intent.putExtra("orderData", (Parcelable) pendingOrderHeaderDataModel);
+                v.getContext().startActivity(intent);
             });
             viewDataBinding.tvBillInfo.setOnClickListener(view -> {
                 onListItemClickListener.onClickInfo(viewDataBinding.tvBillInfo, "Bill Info", position, pendingOrderHeaderDataModel);

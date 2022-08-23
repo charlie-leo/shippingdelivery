@@ -27,91 +27,91 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp"
-                    >
+                    android:padding="10dp">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text='@{serviceableData.courierName, default = "Courier Name"}'
-                        android:textColor="@color/black"
-                        />
+                        android:textColor="@color/black" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text='@{"Min.Wt : " + serviceableData.minWeight + " Kg", default = "Min Wt : 0.5 Kg"}'
-                        android:textColor="@color/black"
-                        />
+                        android:textColor="@color/black" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text='@{"Rate : " + serviceableData.rate, default = "Rate : 2173.0"}'
-                        android:textColor="@color/black"
-                        />
+                        android:textColor="@color/black" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text='@{"Estimated delivery days : " + serviceableData.estimatedDeliveryDays, default = "Estimated delivery days : 5"}'
-                        android:textColor="@color/black"
-                        />
+                        android:textColor="@color/black" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text='@{"Estimated Delivery : " + serviceableData.etd, default = "Estimated Delivery : Apr 09, 2022 - Apr 14, 2022"}'
-                        android:textColor="@color/black"
-                        />
+                        android:textColor="@color/black" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text='@{"Rating : " + serviceableData.rating, default = "Rating : 4"}'
-                        android:textColor="@color/black"
-                        />
+                        android:textColor="@color/black" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text='Availibility'
-                        android:textColor="@color/black"
-                        />
+                        android:textColor="@color/black" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text='DBC'
                             android:textColor="@color/black"
-                            android:layout_weight="1"
-                            android:visibility='@{serviceableData.deliveryBoyContact.equals("MIS")?View.VISIBLE:View.GONE}'
-                            />
+                            android:visibility='@{serviceableData.deliveryBoyContact.equals("MIS")?View.VISIBLE:View.GONE}' />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text='POD'
                             android:textColor="@color/black"
-                            android:layout_weight="1"
-                            android:visibility='@{serviceableData.podAvailable.equals("Instant")?View.VISIBLE:View.GONE}'
-                            />
+                            android:visibility='@{serviceableData.podAvailable.equals("Instant")?View.VISIBLE:View.GONE}' />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text='CBD'
                             android:textColor="@color/black"
-                            android:layout_weight="1"
-                            android:visibility='@{serviceableData.callBeforeDelivery.equals("Available")?View.VISIBLE:View.GONE}'
-                            />
+                            android:visibility='@{serviceableData.callBeforeDelivery.equals("Available")?View.VISIBLE:View.GONE}' />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text='RTT'
                             android:textColor="@color/black"
-                            android:layout_weight="1"
-                            android:visibility='@{serviceableData.realtimeTracking.equals("Available")?View.VISIBLE:View.GONE}'
-                            />
+                            android:visibility='@{serviceableData.realtimeTracking.equals("Available")?View.VISIBLE:View.GONE}' />
                     </LinearLayout>
                 </LinearLayout>
 

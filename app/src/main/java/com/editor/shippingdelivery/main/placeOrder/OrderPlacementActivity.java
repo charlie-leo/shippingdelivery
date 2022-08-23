@@ -46,6 +46,10 @@ public class OrderPlacementActivity extends AppCompatActivity implements Lifecyc
 
     }
 
+    private void backPress() {
+        finish();
+    }
+
     @Override
     protected void onStart() {
         super.onStart();

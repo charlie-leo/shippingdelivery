@@ -129,6 +129,7 @@ public class OrderPlacementViewModel extends BaseObservable {
                 });
     }
 
+
     public void placeOrder(View view) {
         if (validateOrder()) {
             orderPlacementRepo.createShippingOrder(view.getContext(), createOrderRequest, this);
@@ -203,10 +204,10 @@ public class OrderPlacementViewModel extends BaseObservable {
         ) {
             setErrorMessage("Package length, breath, height, weight must be equal or greater than 0.5.");
             return false;
-        } else if (TextUtils.isEmpty(createOrderRequest.getOrderDate())){
+        } else if (TextUtils.isEmpty(createOrderRequest.getOrderDate())) {
             setErrorMessage("Order Date Mandatory");
             return false;
-        } else if (createOrderRequest.getBillingPhone().length() != 10 && createOrderRequest.getShippingPhone().length() != 10){
+        } else if (createOrderRequest.getBillingPhone().length() != 10 && createOrderRequest.getShippingPhone().length() != 10) {
             setErrorMessage("Billing Or Shipment Phone Number is not Valid !!");
             return false;
         }

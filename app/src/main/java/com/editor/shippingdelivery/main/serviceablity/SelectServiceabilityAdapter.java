@@ -29,7 +29,7 @@ public class SelectServiceabilityAdapter extends RecyclerView.Adapter<SelectServ
     @NonNull
     @Override
     public SelectServiceabilityViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ServiceabilityItemBinding serviceabilityItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.serviceability_item,parent,false);
+        ServiceabilityItemBinding serviceabilityItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_service_availabilty_list, parent, false);
         return new SelectServiceabilityViewHolder(serviceabilityItemBinding);
     }
 
@@ -46,11 +46,13 @@ public class SelectServiceabilityAdapter extends RecyclerView.Adapter<SelectServ
 
     public static class SelectServiceabilityViewHolder extends RecyclerView.ViewHolder {
         private ServiceabilityItemBinding itemView;
+
         public SelectServiceabilityViewHolder(@NonNull ServiceabilityItemBinding itemView) {
             super(itemView.getRoot());
             this.itemView = itemView;
         }
-        public void onBind(AvailableCourierCompaniesItem courierCompaniesItem){
+
+        public void onBind(AvailableCourierCompaniesItem courierCompaniesItem) {
             itemView.setServiceableData(courierCompaniesItem);
         }
     }

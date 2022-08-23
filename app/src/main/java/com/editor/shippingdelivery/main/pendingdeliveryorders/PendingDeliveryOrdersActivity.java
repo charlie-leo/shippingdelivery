@@ -25,6 +25,7 @@ import com.editor.shippingdelivery.main.pendingdeliveryorders.model.InfoBottomSh
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.viewmodels.InfoBottomSheetViewModel;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.viewmodels.PendingDeliveryOrdersViewModel;
+import com.editor.shippingdelivery.main.pickup.model.DeliveryOrdesrHeaderDataModel;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
@@ -67,6 +68,11 @@ public class PendingDeliveryOrdersActivity extends AppCompatActivity implements 
             @Override
             public void onClickInfo(View view, String viewName, int position, PendingOrderHeaderDataModel pendingOrderHeaderDataModel) {
                 showInfoBottomSheetDialog(position, viewName, pendingOrderHeaderDataModel);
+            }
+
+            @Override
+            public void onClickInfo(View view, String viewName, int position, DeliveryOrdesrHeaderDataModel pendingOrderHeaderDataModel) {
+
             }
         });
         activityPendingDeliveryOrdersBinding.rvPendingDeliveryOrders.setAdapter(pendingDeliveryOrdersAdapter);

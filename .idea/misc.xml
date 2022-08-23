@@ -5,28 +5,31 @@
       <map>
         <entry key="../../../../../../layout/custom_preview.xml" value="0.1672661870503597" />
         <entry key="app/src/main/res/drawable/activatable_ztoa.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/bg_dashboard_gradient.xml" value="0.345" />
+        <entry key="app/src/main/res/drawable/bg_dashboard_gradient.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/bg_dashboard_left_curve.xml" value="0.2025" />
         <entry key="app/src/main/res/drawable/bg_dashboard_primary_color_left_curve.xml" value="0.2025" />
         <entry key="app/src/main/res/drawable/bg_dashboard_primary_color_right_curve.xml" value="0.2025" />
         <entry key="app/src/main/res/drawable/bg_dashboard_white_curve.xml" value="0.2025" />
         <entry key="app/src/main/res/drawable/bg_gradient_header.xml" value="0.221" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1415" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.34322916666666664" />
-        <entry key="app/src/main/res/layout/activity_pending_delivery_orders.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_place_delivery_order.xml" value="0.4936329588014981" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_pending_delivery_orders.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_pickup.xml" value="0.28076923076923077" />
+        <entry key="app/src/main/res/layout/activity_place_delivery_order.xml" value="0.5" />
         <entry key="app/src/main/res/layout/bottom_sheet_address_details.xml" value="0.5" />
         <entry key="app/src/main/res/layout/bottom_sheet_bill_info.xml" value="0.51328125" />
         <entry key="app/src/main/res/layout/bottom_sheet_bill_info_whatsapp.xml" value="0.1609375" />
+        <entry key="app/src/main/res/layout/item_delivery_orders.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_info_bottom_sheet_details.xml" value="0.44" />
         <entry key="app/src/main/res/layout/item_pending_delivery.xml" value="0.51328125" />
-        <entry key="app/src/main/res/layout/item_service_availabilty_list.xml" value="0.33794871794871795" />
-        <entry key="app/src/main/res/layout/list_pending_delivery_orders.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/item_service_availabilty_list.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/list_pending_delivery_orders.xml" value="0.5626283367556468" />
+        <entry key="app/src/main/res/layout/msg_dialog.xml" value="0.5" />
         <entry key="app/src/main/res/layout/no_network_activity.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/order_placment.xml" value="0.5646630236794171" />
-        <entry key="app/src/main/res/layout/pickup_activity.xml" value="0.3421875" />
-        <entry key="app/src/main/res/layout/servicablity_activity.xml" value="0.34322916666666664" />
-        <entry key="app/src/main/res/layout/serviceability_item.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/layout/place_delivery_order_test.xml" value="0.51328125" />
+        <entry key="app/src/main/res/layout/servicablity_activity.xml" value="0.51484375" />
+        <entry key="app/src/main/res/layout/serviceability_item.xml" value="0.75" />
         <entry key="app/src/main/res/layout/tsnackbar_layout.xml" value="0.51484375" />
         <entry key="app/src/main/res/layout/tsnackbar_layout_include.xml" value="0.67" />
       </map>

@@ -8,6 +8,7 @@ package com.editor.shippingdelivery.services;
 
 
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingDeliveryOrdersRequest;
+import com.editor.shippingdelivery.main.pickup.model.DeliveryOrdersRequest;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.PlaceOrderModel;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.PlaceOrderResponse;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
@@ -60,4 +61,8 @@ public interface RetrofitInterface {
 
     @POST("wa-messaging/send")
     Observable<PlaceOrderResponse> placeOrderViaWaMessaging(@Body PlaceOrderModel placeOrderModel);
+
+    @POST( "delivery-order/pending")
+    Observable<Response<ResponseBody>> getDeliveryOrderList(@Body DeliveryOrdersRequest deliveryOrdersRequest);
+
 }

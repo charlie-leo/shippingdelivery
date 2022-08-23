@@ -1,8 +1,8 @@
-package com.editor.shippingdelivery.main.pendingdeliveryorders.model;
+package com.editor.shippingdelivery.main.pickup.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class PendingDeliveryOrdersRequest {
+public class DeliveryOrdersRequest {
     @SerializedName("cmpCode")
     private String cmpCode="TGBL";
 

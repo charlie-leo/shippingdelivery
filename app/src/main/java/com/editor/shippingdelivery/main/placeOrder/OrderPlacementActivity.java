@@ -2,6 +2,7 @@ package com.editor.shippingdelivery.main.placeOrder;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
@@ -46,7 +47,7 @@ public class OrderPlacementActivity extends AppCompatActivity implements Lifecyc
 
     }
 
-    private void backPress() {
+    public void backPress(View view) {
         finish();
     }
 

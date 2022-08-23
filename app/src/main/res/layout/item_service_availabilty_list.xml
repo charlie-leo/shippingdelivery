@@ -343,7 +343,7 @@
                     android:gravity="center"
                     android:padding="@dimen/_5sdp"
                     android:text="CBD"
-                    android:textColor="@color/primary_color"
+                    android:textColor='@color/primary_color'
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tv_dbc"

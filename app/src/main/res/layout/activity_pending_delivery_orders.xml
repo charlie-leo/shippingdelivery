@@ -45,7 +45,7 @@
             android:id="@+id/tv_toolbar_label"
             android:layout_width="0dp"
             android:layout_height="@dimen/_50sdp"
-            android:fontFamily="@font/montserrat_medium"
+            android:fontFamily="@font/elmessiri_bold"
             android:gravity="center_vertical"
             android:paddingStart="@dimen/_5sdp"
             android:paddingEnd="@dimen/_10sdp"

@@ -6,4 +6,7 @@ package com.editor.shippingdelivery.common;
  * @author Charles Raj I
  */
 public class StaticVariables {
+
+
+    public static final String INVOICE_ID = "invoice_id";
 }

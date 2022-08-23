@@ -8,22 +8,27 @@ import com.google.gson.annotations.SerializedName;
 public class CreateOrderResponse implements Parcelable {
 
 	@SerializedName("status_code")
-	private int statusCode;
+	private String statusCode;
 
 	@SerializedName("shipment_id")
-	private int shipmentId;
+	private String shipmentId;
 
 	@SerializedName("order_id")
-	private int orderId;
+	private String orderId;
 
 	@SerializedName("status")
 	private String status;
 
+	@SerializedName("invoice_id")
+	private String invoiceId;
+
+
 	protected CreateOrderResponse(Parcel in) {
-		statusCode = in.readInt();
-		shipmentId = in.readInt();
-		orderId = in.readInt();
+		statusCode = in.readString();
+		shipmentId = in.readString();
+		orderId = in.readString();
 		status = in.readString();
+		invoiceId = in.readString();
 	}
 
 	public static final Creator<CreateOrderResponse> CREATOR = new Creator<CreateOrderResponse>() {
@@ -38,36 +43,44 @@ public class CreateOrderResponse implements Parcelable {
 		}
 	};
 
-	public void setStatusCode(int statusCode){
-		this.statusCode = statusCode;
-	}
-
-	public int getStatusCode(){
+	public String getStatusCode() {
 		return statusCode;
 	}
 
-	public void setShipmentId(int shipmentId){
-		this.shipmentId = shipmentId;
+	public void setStatusCode(String statusCode) {
+		this.statusCode = statusCode;
 	}
 
-	public int getShipmentId(){
+	public String getShipmentId() {
 		return shipmentId;
 	}
 
-	public void setOrderId(int orderId){
-		this.orderId = orderId;
+	public void setShipmentId(String shipmentId) {
+		this.shipmentId = shipmentId;
 	}
 
-	public int getOrderId(){
+	public String getOrderId() {
 		return orderId;
 	}
 
-	public void setStatus(String status){
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
-	public String getStatus(){
-		return status;
+	public String getInvoiceId() {
+		return invoiceId;
+	}
+
+	public void setInvoiceId(String invoiceId) {
+		this.invoiceId = invoiceId;
 	}
 
 	@Override
@@ -77,9 +90,10 @@ public class CreateOrderResponse implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel parcel, int i) {
-		parcel.writeInt(statusCode);
-		parcel.writeInt(shipmentId);
-		parcel.writeInt(orderId);
+		parcel.writeString(statusCode);
+		parcel.writeString(shipmentId);
+		parcel.writeString(orderId);
 		parcel.writeString(status);
+		parcel.writeString(invoiceId);
 	}
 }

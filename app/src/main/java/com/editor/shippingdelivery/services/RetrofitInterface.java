@@ -14,6 +14,7 @@ import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderResponse;
 import com.editor.shippingdelivery.main.serviceablity.model.ServiceabilityResponse;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappDeliveryStatusRequest;
+import com.google.gson.JsonObject;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
@@ -44,8 +45,11 @@ public interface RetrofitInterface {
 
 
     @GET( "delivery-order/serviceability")
-    Observable<ServiceabilityResponse> getAvailableServices(@Query("order_id") String order_id);
+    Observable<ServiceabilityResponse> getAvailableServices(@Query("invoice_id") String order_id);
 
+
+    @POST("delivery-order/selectService")
+    Observable<JsonObject> selectServiceApi(@Query("invoice_id")String invoice_id, @Query("courier_id") int courier_id);
 
 
 

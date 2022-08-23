@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Shipping Delivery</string>
     <string name="dashboard">Dashboard</string>
-    <string name="delivery">Create Delivery</string>
+    <string name="delivery">Delivery</string>
+    <string name="pickup">Pick Up</string>
+    <string name="tracking">Tracking</string>
+    <string name="create_delivery">Create Delivery</string>
     <string name="whatsapp">WhatsApp</string>
     <string name="bill_info_underline"><u>Bill info</u></string>
     <string name="customer_info_underline"><u>Customer info</u></string>

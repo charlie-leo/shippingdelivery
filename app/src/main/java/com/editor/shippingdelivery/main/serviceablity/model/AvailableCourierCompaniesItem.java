@@ -135,7 +135,7 @@ public class AvailableCourierCompaniesItem{
 	private double minWeight;
 
 	@SerializedName("courier_company_id")
-	private double courierCompanyId;
+	private int courierCompanyId;
 
 	@SerializedName("cost")
 	private String cost;
@@ -529,11 +529,11 @@ public class AvailableCourierCompaniesItem{
 		return minWeight;
 	}
 
-	public void setCourierCompanyId(double courierCompanyId){
+	public void setCourierCompanyId(int courierCompanyId){
 		this.courierCompanyId = courierCompanyId;
 	}
 
-	public double getCourierCompanyId(){
+	public int getCourierCompanyId(){
 		return courierCompanyId;
 	}
 

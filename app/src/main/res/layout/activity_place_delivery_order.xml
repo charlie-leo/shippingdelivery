@@ -22,7 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/half_white"
-        app:snack_bar_error="@{orderPlacementViewModel.errorMessage}">
+        app:snack_bar_error="@{orderPlacementViewModel.errorMessage}"
+        >
 
         <View
             android:id="@+id/view_toolbar_bg"

@@ -35,9 +35,9 @@ public class OrderPlacementRepo implements DataInstance {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(createOrderResponse -> {
-                        if(createOrderResponse.getStatusCode() == 1) {
+                        if(createOrderResponse.getStatusCode().equals("200")) {
                             Intent intent = new Intent(context, SelectServiceabilityActivity.class);
-                            intent.putExtra("orderDetailks", createOrderResponse);
+                            intent.putExtra("orderDetails", createOrderResponse);
                             context.startActivity(intent);
                         } else {
                             Log.d(TAG, "createShippingOrder: " + createOrderResponse);

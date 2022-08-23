@@ -18,7 +18,7 @@ import io.reactivex.schedulers.Schedulers;
 public class SelectServiceabilityRepo  {
 
     private static final String TAG = "SelectServiceabilityRepo";
-    private RetrofitInterface service = service = RetrofitClient.getClient();
+    private final RetrofitInterface service  = RetrofitClient.getClient();
 
 
     public void getAvailableServices(SelectServiceabilityViewModel selectServiceabilityViewModel, String orderId){

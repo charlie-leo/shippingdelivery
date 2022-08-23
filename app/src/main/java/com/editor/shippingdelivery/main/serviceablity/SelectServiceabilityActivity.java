@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.editor.shippingdelivery.R;
+import com.editor.shippingdelivery.common.DataInstance;
+import com.editor.shippingdelivery.common.StaticVariables;
 import com.editor.shippingdelivery.databinding.ServicablityActivityBinding;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderResponse;
 
@@ -16,7 +18,7 @@ import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderResponse;
  *
  * @author Charles Raj I
  */
-public class SelectServiceabilityActivity extends AppCompatActivity {
+public class SelectServiceabilityActivity extends AppCompatActivity implements DataInstance {
 
     private Activity activity;
     @Override
@@ -31,8 +33,9 @@ public class SelectServiceabilityActivity extends AppCompatActivity {
         servicablityActivityBinding.setServiceabilityData(selectServiceabilityViewModel);
 
         if (getIntent() != null){
-            String orderId = getIntent().getStringExtra("orderDetails");
-            selectServiceabilityViewModel.getServiceability(orderId);
+            CreateOrderResponse createResponse = getIntent().getParcelableExtra("orderDetails");
+            setApplicationData(StaticVariables.INVOICE_ID,createResponse.getInvoiceId());
+            selectServiceabilityViewModel.getServiceability(createResponse.getInvoiceId());
         }
     }
 }

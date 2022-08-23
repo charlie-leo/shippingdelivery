@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.editor.shippingdelivery.BR;
+import com.editor.shippingdelivery.common.DataInstance;
 import com.editor.shippingdelivery.main.serviceablity.model.ServiceabilityResponse;
 
 /**
@@ -14,11 +15,12 @@ import com.editor.shippingdelivery.main.serviceablity.model.ServiceabilityRespon
  *
  * @author Charles Raj I
  */
-public class SelectServiceabilityViewModel extends BaseObservable {
+public class SelectServiceabilityViewModel extends BaseObservable  {
 
 
     private ServiceabilityResponse serviceabilityResponse;
     private SelectServiceabilityRepo selectServiceabilityRepo;
+    private String errorMessage;
 
     public SelectServiceabilityViewModel() {
         selectServiceabilityRepo = new SelectServiceabilityRepo();
@@ -34,14 +36,25 @@ public class SelectServiceabilityViewModel extends BaseObservable {
         notifyPropertyChanged(BR.serviceabilityResponse);
     }
 
-    public void getServiceability(String orderId){
-        selectServiceabilityRepo.getAvailableServices(this,orderId);
+    public void getServiceability(String invoiceId){
+        selectServiceabilityRepo.getAvailableServices(this,invoiceId);
+    }
+
+    @Bindable
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+        notifyPropertyChanged(BR.errorMessage);
     }
 
     @BindingAdapter("setServiceabilityAdapter")
-    public static void setServiceabilityAdapter(RecyclerView recyclerView, ServiceabilityResponse serviceabilityResponse){
+    public static void setServiceabilityAdapter(RecyclerView recyclerView, SelectServiceabilityViewModel selectServiceabilityViewModel){
+        ServiceabilityResponse serviceabilityResponse = selectServiceabilityViewModel.serviceabilityResponse;
         if (serviceabilityResponse != null && !serviceabilityResponse.getData().getAvailableCourierCompanies().isEmpty()) {
-            SelectServiceabilityAdapter selectServiceabilityAdapter = new SelectServiceabilityAdapter(serviceabilityResponse.getData().getAvailableCourierCompanies());
+            SelectServiceabilityAdapter selectServiceabilityAdapter = new SelectServiceabilityAdapter(serviceabilityResponse.getData().getAvailableCourierCompanies(), selectServiceabilityViewModel);
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
             recyclerView.setAdapter(selectServiceabilityAdapter);
         }

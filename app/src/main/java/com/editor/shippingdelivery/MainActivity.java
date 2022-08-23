@@ -14,6 +14,8 @@ import androidx.databinding.DataBindingUtil;
 
 import com.editor.shippingdelivery.databinding.ActivityMainBinding;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.PendingDeliveryOrdersActivity;
+import com.editor.shippingdelivery.main.pickup.PickUpActivity;
+import com.editor.shippingdelivery.main.tracking.TrackingActivity;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
 import com.editor.shippingdelivery.main.placeOrder.OrderPlacementActivity;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.WhatsappDeliveryStatusActivity;
@@ -29,15 +31,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activity = MainActivity.this;
 
-        ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(activity, R.layout.activity_main);
+        ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(activity,R.layout.activity_main);
 
         activityMainBinding.cvDelivery.setOnClickListener(view -> {
             startActivity(new Intent(activity, PendingDeliveryOrdersActivity.class));
-            /*Intent intent = new Intent(this, OrderPlacementActivity.class);
-            startActivity(intent);*/
         });
         activityMainBinding.cvWatsapp.setOnClickListener(view -> {
             startActivity(new Intent(activity, WhatsappDeliveryStatusActivity.class));
+        });
+        activityMainBinding.cvPickup.setOnClickListener(view -> {
+            startActivity(new Intent(activity, PickUpActivity.class));
+        });
+        activityMainBinding.cvTracking.setOnClickListener(view -> {
+            startActivity(new Intent(activity, TrackingActivity.class));
         });
 
     }

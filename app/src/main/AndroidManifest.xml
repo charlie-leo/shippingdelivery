@@ -35,6 +35,8 @@
         <activity android:name=".main.placeOrder.OrderPlacementActivity" />
         <activity android:name=".application.NoNetworkActivity" />
         <activity android:name=".main.serviceablity.SelectServiceabilityActivity" />
+        <activity android:name=".main.pickup.PickUpActivity"/>
+        <activity android:name=".main.tracking.TrackingActivity"/>
     </application>
 
 </manifest>

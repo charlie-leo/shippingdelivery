@@ -50,7 +50,7 @@ public class CreateOrderRequest {
     private String billingEmail = "demo@test.com";
 
     @SerializedName("billing_phone")
-    private String billingPhone = "132100000";
+    private String billingPhone = "9087663729";
 
     @SerializedName("shipping_is_billing")
     private Boolean shippingIsBilling = true;
@@ -83,7 +83,7 @@ public class CreateOrderRequest {
     private String shippingEmail = "dm@demo.com";
 
     @SerializedName("shipping_phone")
-    private String shippingPhone = "132133000";
+    private String shippingPhone = "9089786376";
 
     @SerializedName("payment_method")
     private String paymentMethod = "Prepaid";
@@ -116,7 +116,7 @@ public class CreateOrderRequest {
     private Double weight = 0.6;
 
     @SerializedName("order_items")
-    private List<OrderItemsItem> orderItems;
+    private List<OrderItemsItem> orderItems = new ArrayList<>();
 
     public String getOrderId() {
         return orderId;

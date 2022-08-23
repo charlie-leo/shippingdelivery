@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.library.baseAdapters.BR;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.editor.shippingdelivery.BR;
 import com.editor.shippingdelivery.R;
 import com.editor.shippingdelivery.databinding.ListPendingDeliveryOrdersBinding;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.listeners.OnListItemClickListener;

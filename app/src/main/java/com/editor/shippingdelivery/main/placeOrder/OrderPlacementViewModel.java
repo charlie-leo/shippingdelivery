@@ -91,7 +91,7 @@ public class OrderPlacementViewModel extends BaseObservable {
             createOrderRequest.setShippingCustomerName(orderData.getCustomerName());
             createOrderRequest.setShippingPhone(orderData.getMobileNo());
 
-            if (orderData.getPendingOrderDetailDataModelList().isEmpty()) {
+            if (!orderData.getPendingOrderDetailDataModelList().isEmpty()) {
                 for (PendingOrderDetailDataModel item : orderData.getPendingOrderDetailDataModelList()) {
                     OrderItemsItem orderItemsItem = new OrderItemsItem();
                     orderItemsItem.setName(item.getProdName());
@@ -99,6 +99,7 @@ public class OrderPlacementViewModel extends BaseObservable {
                     orderItemsItem.setUnits(item.getTotalInvoiceQty());
                     orderItemsItem.setTax(String.valueOf(item.getTaxAmt()));
                     orderItemsItem.setDiscount("0");
+                    orderItemsItem.setSku(item.getProdCode());
                     createOrderRequest.getOrderItems().add(orderItemsItem);
                 }
             }
@@ -130,7 +131,7 @@ public class OrderPlacementViewModel extends BaseObservable {
 
     public void placeOrder(View view) {
         if (validateOrder()) {
-            orderPlacementRepo.createShippingOrder(activity, createOrderRequest);
+            orderPlacementRepo.createShippingOrder(view.getContext(), createOrderRequest, this);
         }
     }
 
@@ -201,6 +202,12 @@ public class OrderPlacementViewModel extends BaseObservable {
                 && createOrderRequest.getWeight() <= 0.5
         ) {
             setErrorMessage("Package length, breath, height, weight must be equal or greater than 0.5.");
+            return false;
+        } else if (TextUtils.isEmpty(createOrderRequest.getOrderDate())){
+            setErrorMessage("Order Date Mandatory");
+            return false;
+        } else if (createOrderRequest.getBillingPhone().length() != 10 && createOrderRequest.getShippingPhone().length() != 10){
+            setErrorMessage("Billing Or Shipment Phone Number is not Valid !!");
             return false;
         }
         return true;

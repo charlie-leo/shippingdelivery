@@ -90,6 +90,7 @@ public class PendingOrderHeaderDataModel extends BaseObservable implements Parce
     @SerializedName("billPrintDetailList")
     private List<PendingOrderDetailDataModel> pendingOrderDetailDataModelList = new ArrayList<>();
 
+
     protected PendingOrderHeaderDataModel(Parcel in) {
         distrCode = in.readString();
         invoiceNo = in.readString();
@@ -146,6 +147,7 @@ public class PendingOrderHeaderDataModel extends BaseObservable implements Parce
         }
         remarks = in.readString();
         liquidation = in.readString();
+        pendingOrderDetailDataModelList = in.createTypedArrayList(PendingOrderDetailDataModel.CREATOR);
     }
 
     public static final Creator<PendingOrderHeaderDataModel> CREATOR = new Creator<PendingOrderHeaderDataModel>() {
@@ -354,6 +356,7 @@ public class PendingOrderHeaderDataModel extends BaseObservable implements Parce
         this.pendingOrderDetailDataModelList = pendingOrderDetailDataModelList;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -424,5 +427,6 @@ public class PendingOrderHeaderDataModel extends BaseObservable implements Parce
         }
         parcel.writeString(remarks);
         parcel.writeString(liquidation);
+        parcel.writeTypedList(pendingOrderDetailDataModelList);
     }
 }

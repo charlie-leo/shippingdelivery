@@ -2,7 +2,7 @@ package com.editor.shippingdelivery.main.whatsappdeliverystatus.listeners;
 
 import android.view.View;
 
-import com.editor.shippingdelivery.main.placeOrder.PlaceOrderModel;
+import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.PlaceOrderModel;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappStatusHeaderDataModel;
 
 public interface OnListItemClickListener {

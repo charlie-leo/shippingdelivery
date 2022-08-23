@@ -2,7 +2,6 @@ package com.editor.shippingdelivery.main.whatsappdeliverystatus.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.editor.shippingdelivery.BR;
 import com.editor.shippingdelivery.R;
 import com.editor.shippingdelivery.databinding.ListWhatsappDeliveryStatusOrdersBinding;
-import com.editor.shippingdelivery.main.placeOrder.PlaceOrderModel;
+import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.PlaceOrderModel;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.listeners.OnListItemClickListener;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappStatusHeaderDataModel;
 

@@ -1,4 +1,4 @@
-package com.editor.shippingdelivery.main.placeOrder;
+package com.editor.shippingdelivery.main.whatsappdeliverystatus.model;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.library.baseAdapters.BR;

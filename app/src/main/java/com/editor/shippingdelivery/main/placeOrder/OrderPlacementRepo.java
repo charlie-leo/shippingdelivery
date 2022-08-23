@@ -1,6 +1,7 @@
 package com.editor.shippingdelivery.main.placeOrder;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
@@ -22,27 +23,26 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class OrderPlacementRepo implements DataInstance {
 
-    private RetrofitInterface service;
+    private final RetrofitInterface service;
     private final String TAG = "OrderPlacementViewModel";
     public OrderPlacementRepo() {
         service = RetrofitClient.getClient2();
     }
 
-    public void createShippingOrder(Activity activity, CreateOrderRequest createOrderRequest){
+    public void createShippingOrder(Context context, CreateOrderRequest createOrderRequest, OrderPlacementViewModel orderPlacementViewModel){
         try {
-            service = RetrofitClient.getClient2();
-            DisposableManager.add(service.createShipOrder("application/json","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI5MDQyNTksImlzcyI6Imh0dHBzOi8vYXBpdjIuc2hpcHJvY2tldC5pbi92MS9leHRlcm5hbC9hdXRoL2xvZ2luIiwiaWF0IjoxNjYxMTkzNjI3LCJleHAiOjE2NjIwNTc2MjcsIm5iZiI6MTY2MTE5MzYyNywianRpIjoiTng0OXlwMDZHMXVVUkc3WSJ9._-j3VPKUOlBi96ixAzopXcWr-dF5wtITYipjBMY8h7s",createOrderRequest)
+            DisposableManager.add(service.createShipOrder(createOrderRequest)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(createOrderResponse -> {
-                        if(createOrderResponse.getStatus().equalsIgnoreCase("1"))
-                        {
-                            Intent intent = new Intent(activity, SelectServiceabilityActivity.class);
-                            intent.putExtra("orderDetails", createOrderResponse);
-                            activity.startActivity(intent);
+                        if(createOrderResponse.getStatusCode() == 1) {
+                            Intent intent = new Intent(context, SelectServiceabilityActivity.class);
+                            intent.putExtra("orderDetailks", createOrderResponse);
+                            context.startActivity(intent);
+                        } else {
+                            Log.d(TAG, "createShippingOrder: " + createOrderResponse);
+                            orderPlacementViewModel.setErrorMessage(createOrderResponse.getStatus());
                         }
-
-                        Log.d(TAG, "createShippingOrder: " + createOrderResponse);
                     }, throwable -> {
                         Log.d(TAG, "createShippingOrder: " + throwable.getMessage());
                     }));

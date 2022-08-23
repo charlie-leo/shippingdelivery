@@ -23,7 +23,7 @@ public class OrderItemsItem{
 	private int units=10;
 
 	@SerializedName("sku")
-	private String sku = "Channel";
+	private String sku ;
 
 	public void setSellingPrice(String sellingPrice){
 		this.sellingPrice = sellingPrice;

@@ -1,20 +1,16 @@
 package com.editor.shippingdelivery.utils;
 
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
-import androidx.databinding.InverseBindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.editor.shippingdelivery.main.pendingdeliveryorders.adapter.InfoBottomSheetDetailsAdapter;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.adapter.PendingDeliveryOrdersAdapter;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.InfoBottomSheetDetailsModel;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrderHeaderDataModel;
-import com.editor.shippingdelivery.main.placeOrder.OrderPlacementViewModel;
-import com.editor.shippingdelivery.main.placeOrder.PlaceDeliveryOrderViewModel;
 import com.editor.shippingdelivery.main.placeOrder.model.CreateOrderRequest;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.adapter.WhatappInfoBottomSheetDetailsAdapter;
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.adapter.WhatsappDeliveryStatusAdapter;
@@ -22,7 +18,6 @@ import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappInf
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappStatusHeaderDataModel;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class BindingUtils {

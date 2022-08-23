@@ -4,15 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <import type="android.text.TextUtils" />
-
         <import type="android.view.View" />
-
-        <!--<variable
-            name="placeDeliverOrderVm"
-            type="com.editor.shippingdelivery.main.placeOrder.PlaceDeliveryOrderViewModel" />-->
-
         <variable
             name="orderPlacementViewModel"
             type="com.editor.shippingdelivery.main.placeOrder.OrderPlacementViewModel" />

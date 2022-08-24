@@ -98,13 +98,15 @@ public class WhatsappDeliveryStatusActivity extends AppCompatActivity implements
         List<WhatsappStatusHeaderDataModel> whatsappStatusHeaderDataModelListTemp=new ArrayList<>();
         if(whatsappDeliveryStatusAdapter.getWhatsappStatusHeaderDataModelList().size()>0){
             for (WhatsappStatusHeaderDataModel whatsappStatusHeaderDataModel:whatsappDeliveryStatusAdapter.getWhatsappStatusHeaderDataModelList()) {
-                if(whatsappStatusHeaderDataModel.getStatus().equalsIgnoreCase(status)){
+                if(whatsappStatusHeaderDataModel.getStatus()!=null && whatsappStatusHeaderDataModel.getStatus().equalsIgnoreCase(status)){
+                    whatsappStatusHeaderDataModelListTemp.add(whatsappStatusHeaderDataModel);
+                }else{
                     whatsappStatusHeaderDataModelListTemp.add(whatsappStatusHeaderDataModel);
                 }
             }
-            whatsappDeliveryStatusAdapter.setWhatsappDeliveryStatusList(new ArrayList<>());
-            whatsappDeliveryStatusAdapter.setWhatsappDeliveryStatusList(whatsappStatusHeaderDataModelListTemp);
         }
+        whatsappDeliveryStatusAdapter.setWhatsappDeliveryStatusList(new ArrayList<>());
+        whatsappDeliveryStatusAdapter.setWhatsappDeliveryStatusList(whatsappStatusHeaderDataModelListTemp);
     }
 
     private void initRecyclerView() {

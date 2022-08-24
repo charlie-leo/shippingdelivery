@@ -28,15 +28,21 @@ import retrofit2.http.Query;
 
 public interface RetrofitInterface {
 
-    String baseUrl = "https://botreeuat.csngsfa.com/api/v1/";
-    String baseLocalUrl = "http://10.0.2.2:8080/api/v1/";
-
 
     @Headers({
             "Content-Type: application/json"
     })
     @POST( "delivery-order/pending")
     Observable<Response<ResponseBody>> getShippingOrderList(@Body PendingDeliveryOrdersRequest pendingDeliveryOrdersRequest);
+
+
+    @Headers({
+            "Content-Type: application/json"
+    })
+    @POST( "delivery-order/pick-up")
+    Observable<Response<ResponseBody>> getTrackingOrderList(@Body PendingDeliveryOrdersRequest pendingDeliveryOrdersRequest);
+
+
 
     @Headers({
             "Content-Type: application/json"

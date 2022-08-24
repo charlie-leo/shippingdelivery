@@ -5,6 +5,16 @@ plugins {
 android {
     compileSdk 32
 
+//    lint {
+//        baseline = file("lint-baseline.xml")
+//    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
     defaultConfig {
         applicationId "com.editor.shippingdelivery"
         minSdk 23
@@ -17,8 +27,21 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            shrinkResources true
+            debuggable false
+            ndk {
+                debugSymbolLevel 'SYMBOL_TABLE'
+            }
+        }
+        debug {
+            debuggable true
+            ndk {
+                debugSymbolLevel 'FULL'
+            }
+            minifyEnabled false
+            shrinkResources false
         }
     }
     compileOptions {
@@ -27,6 +50,15 @@ android {
     }
     buildFeatures {
         dataBinding = true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../app/keystore/sfaproduct.jks")
+            storePassword "botree@123"
+            keyAlias "SFA Product"
+            keyPassword "botree@123"
+        }
     }
 }
 

@@ -77,11 +77,17 @@ public class SelectServiceabilityAdapter extends RecyclerView.Adapter<SelectServ
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(jsonObject -> {
+                                String errorMessage = "";
                                 if ((int)jsonObject.getAsJsonPrimitive("status_code").getAsInt() == 200){
                                     Intent intent = new Intent(itemView.getRoot().getContext(), PickUpActivity.class);
                                     itemView.getRoot().getContext().startActivity(intent);
+                                    errorMessage = jsonObject.getAsJsonPrimitive("message").getAsString();
+                                } else if ((int)jsonObject.getAsJsonPrimitive("status_code").getAsInt() == 350){
+                                    errorMessage = "Insufficient balance in your account, The minimum required balance is Rs 100";
+                                }else {
+                                    errorMessage = jsonObject.getAsJsonPrimitive("message").getAsString();
                                 }
-                                selectServiceabilityViewModel.setErrorMessage(jsonObject.getAsJsonPrimitive("message").getAsString());
+                                selectServiceabilityViewModel.setErrorMessage(errorMessage);
                             }));
                 }catch (Exception e){
                     Log.d(TAG, "onBind: " + e.getMessage());

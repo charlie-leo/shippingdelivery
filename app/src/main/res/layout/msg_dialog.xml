@@ -17,8 +17,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:drawableStart="@mipmap/ic_alert"
-            android:drawableLeft="@mipmap/ic_alert"
             android:drawablePadding="10dp"
             android:gravity="center"
             android:padding="10dp"

@@ -86,32 +86,6 @@ public class PickUpActivity extends AppCompatActivity {
         });
     }
 
-    private void showInfoBottomSheetDialog(int position, String viewName, DeliveryOrdesrHeaderDataModel deliveryOrdesrHeaderDataModel) {
-      /*  bottomSheetBillInfoBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.bottom_sheet_bill_info, null, false);
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        bottomSheetDialog.setContentView(bottomSheetBillInfoBinding.getRoot());
-
-        infoBottomSheetViewModel = new ViewModelProvider(this).get(InfoBottomSheetViewModel.class);
-        bottomSheetBillInfoBinding.setBottomSheetvm(infoBottomSheetViewModel);
-
-        initInfoBottomSheetRecyclerView();
-
-        infoBottomSheetViewModel.setBottomSheetHeader(viewName);
-
-        infoBottomSheetViewModel.getInfoBottomSheetList(viewName, position, deliveryOrdesrHeaderDataModel).observe(this, infoBottomSheetDetailsModelList ->
-                infoBottomSheetDetailsAdapter.setPendingDeliveryOrderList(infoBottomSheetDetailsModelList));
-
-        bottomSheetDialog.show();*/
-    }
-
-    private void initInfoBottomSheetRecyclerView() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        bottomSheetBillInfoBinding.rvInfoDetails.setLayoutManager(layoutManager);
-        bottomSheetBillInfoBinding.rvInfoDetails.setItemAnimator(new DefaultItemAnimator());
-        infoBottomSheetDetailsAdapter = new InfoBottomSheetDetailsAdapter(this);
-        bottomSheetBillInfoBinding.rvInfoDetails.setAdapter(infoBottomSheetDetailsAdapter);
-    }
-
     public void showDialog(String title, String msg,
                            int type) {
 

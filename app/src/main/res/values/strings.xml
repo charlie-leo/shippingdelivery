@@ -10,5 +10,8 @@
     <string name="customer_info_underline"><u>Customer info</u></string>
     <string name="route_info_underline"><u>Route info</u></string>
     <string name="place_order">Place Order</string>
-
+    <string name="pending">Pending</string>
+    <string name="message_accepted">Message\nAccepted</string>
+    <string name="rejected">Message Rejected</string>
+    <string name="message_sent">Message Sent</string>
 </resources>

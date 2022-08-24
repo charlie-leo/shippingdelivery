@@ -17,6 +17,7 @@ import com.editor.shippingdelivery.main.whatsappdeliverystatus.model.WhatsappSta
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class WhatsappDeliveryStatusAdapter extends RecyclerView.Adapter<WhatsappDeliveryStatusAdapter.AdapterViewHolder> {
 
@@ -85,9 +86,12 @@ public class WhatsappDeliveryStatusAdapter extends RecyclerView.Adapter<Whatsapp
                 PlaceOrderModel placeOrderModel = new PlaceOrderModel();
                 placeOrderModel.setCustomerCode(whatsappStatusHeaderDataModel.getCustomerCode());
                 placeOrderModel.setInvoiceNo(whatsappStatusHeaderDataModel.getInvoiceNo());
-                placeOrderModel.setMessageId(Double.toString(Math.random()));
-                placeOrderModel.setMobileNumber(whatsappStatusHeaderDataModel.getMobileNo());
-                placeOrderModel.setMessageContent("");
+                placeOrderModel.setMessageId(UUID.randomUUID().toString());
+                placeOrderModel.setMobileNumber("919500512853");
+                placeOrderModel.setMessageContent("Dear "+whatsappStatusHeaderDataModel.getCustomerName()+","
+                                +"please confirm the order id:"+whatsappStatusHeaderDataModel.getInvoiceNo()+
+                        "\norder value:"+whatsappStatusHeaderDataModel.getTotNetAmt()+"\n"+
+                        "\ntotal line count:"+whatsappStatusHeaderDataModel.getTotTaxAmt());
 
                 onListItemClickListener.onClick(viewDataBinding.placeOrderTxt, position, placeOrderModel);
 
@@ -98,5 +102,9 @@ public class WhatsappDeliveryStatusAdapter extends RecyclerView.Adapter<Whatsapp
     public void setWhatsappDeliveryStatusList(List<WhatsappStatusHeaderDataModel> whatsappStatusHeaderDataModels) {
         this.whatsappStatusHeaderDataModelList = whatsappStatusHeaderDataModels;
         notifyDataSetChanged();
+    }
+
+    public List<WhatsappStatusHeaderDataModel> getWhatsappStatusHeaderDataModelList() {
+        return whatsappStatusHeaderDataModelList;
     }
 }

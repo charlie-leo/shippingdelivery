@@ -72,17 +72,78 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_toolbar_label" />
 
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_margin="5dp"
+            app:layout_constraintEnd_toEndOf="@+id/progress_horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/view_toolbar_bg">
+
+            <Button
+                android:id="@+id/pending_btn"
+                android:layout_width="0dp"
+                android:layout_height="53dp"
+                android:layout_marginEnd="1dp"
+                android:layout_weight="0.25"
+              android:layout_marginTop="7dp"
+                android:text="@string/pending"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_10ssp"
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="72dp" />
+
+            <Button
+                android:id="@+id/message_sent_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:text="@string/message_sent"
+                android:textSize="@dimen/_10ssp"
+                android:textAllCaps="false"
+                android:layout_marginEnd="1dp"
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="72dp" />
+
+            <Button
+                android:id="@+id/message_accepted_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:text="@string/message_accepted"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_10ssp"
+                android:layout_marginEnd="1dp"
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="72dp" />
+
+            <Button
+                android:id="@+id/rejected_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:text="@string/rejected"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_10ssp"
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="72dp" />
+        </LinearLayout>
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_whatsapp_status_orders"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="@dimen/_4sdp"
-            android:scrollbars="none"
             android:background="@color/weldon_blue"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progress_horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             tools:listitem="@layout/list_whatsapp_delivery_status_orders" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

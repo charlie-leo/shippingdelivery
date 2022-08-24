@@ -62,13 +62,13 @@ public interface RetrofitInterface {
 
     // WHATSAPP DEVELOPERS PLEASE ADD WHATSAPP APIS BELOW !!
 
-    @POST("delivery-order/pending")
+    @POST("wa-messaging/orders")
     Observable<Response<ResponseBody>> getWhatsappOrderList(@Body WhatsappDeliveryStatusRequest pendingDeliveryOrdersRequest);
 
     @POST("wa-messaging/send")
     Observable<PlaceOrderResponse> placeOrderViaWaMessaging(@Body PlaceOrderModel placeOrderModel);
 
-    @POST( "delivery-order/pending")
+    @POST("delivery-order/pending")
     Observable<Response<ResponseBody>> getDeliveryOrderList(@Body DeliveryOrdersRequest deliveryOrdersRequest);
 
 }

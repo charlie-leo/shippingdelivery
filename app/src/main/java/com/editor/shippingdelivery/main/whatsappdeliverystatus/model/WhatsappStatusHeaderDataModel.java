@@ -83,6 +83,7 @@ public class WhatsappStatusHeaderDataModel extends BaseObservable implements Par
     /** liquidation. */
     private String liquidation;
 
+    private String status;
     /** billDetailsEntityList. */
     private List<WhatsappDliveryDetailDataModel> whatsappDeliveryDetailDataModelList;
 
@@ -142,6 +143,7 @@ public class WhatsappStatusHeaderDataModel extends BaseObservable implements Par
         }
         remarks = in.readString();
         liquidation = in.readString();
+        status = in.readString();
     }
 
     public static final Creator<WhatsappStatusHeaderDataModel> CREATOR = new Creator<WhatsappStatusHeaderDataModel>() {
@@ -342,6 +344,10 @@ public class WhatsappStatusHeaderDataModel extends BaseObservable implements Par
         this.liquidation = liquidation;
     }
 
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status;}
+
     public List<WhatsappDliveryDetailDataModel> getWhatsappDeliveryDetailDataModelList() {
         return whatsappDeliveryDetailDataModelList;
     }
@@ -420,5 +426,6 @@ public class WhatsappStatusHeaderDataModel extends BaseObservable implements Par
         }
         parcel.writeString(remarks);
         parcel.writeString(liquidation);
+        parcel.writeString(status);
     }
 }

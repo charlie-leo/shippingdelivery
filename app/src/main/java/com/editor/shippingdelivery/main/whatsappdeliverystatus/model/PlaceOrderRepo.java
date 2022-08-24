@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 public class PlaceOrderRepo {
 
     private static final String TAG = "PlaceOrderRepo";
-    private RetrofitInterface service = service = RetrofitClient.getClient();
+    private final RetrofitInterface  service = RetrofitClient.getClient();
 
 
     public void placeOrderSendWhatsApp(PlaceOrderModel placeOrderModel){

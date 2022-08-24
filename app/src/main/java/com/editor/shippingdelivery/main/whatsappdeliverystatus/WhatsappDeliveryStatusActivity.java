@@ -2,8 +2,10 @@ package com.editor.shippingdelivery.main.whatsappdeliverystatus;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
@@ -23,6 +25,8 @@ import com.editor.shippingdelivery.main.whatsappdeliverystatus.viewmodels.Whatsa
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.viewmodels.WhatsappInfoBottomSheetViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.util.List;
+
 public class WhatsappDeliveryStatusActivity extends AppCompatActivity implements LifecycleOwner {
 
     private ActivityWhatsappDeliveryStatusBinding activityWhatsappDeliveryStatusBinding;
@@ -31,7 +35,7 @@ public class WhatsappDeliveryStatusActivity extends AppCompatActivity implements
     private WhatsappInfoBottomSheetViewModel infoBottomSheetViewModel;
     private BottomSheetBillInfoWhatsappBinding bottomSheetBillInfoBinding;
     private WhatappInfoBottomSheetDetailsAdapter infoBottomSheetDetailsAdapter;
-
+    private List<WhatsappStatusHeaderDataModel> whatsappStatusHeaderDataModelList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +43,66 @@ public class WhatsappDeliveryStatusActivity extends AppCompatActivity implements
         initDataBinding();
         initRecyclerView();
         observerFun();
+
     }
 
+    private void orderStatusFilter(Button button) {
+        button.setBackgroundColor(ContextCompat.getColor(this,androidx.cardview.R.color.cardview_dark_background));
+    }
+    private void orderStatusNormal(Button button) {
+        button.setBackgroundColor(ContextCompat.getColor(this,R.color.teal_700));
+    }
     private void initDataBinding() {
         activityWhatsappDeliveryStatusBinding = DataBindingUtil.setContentView(this, R.layout.activity_whatsapp_delivery_status);
         whatsappDeliveryStatusViewModel = new ViewModelProvider(this).get(WhatsappDeliveryStatusViewModel.class);
         activityWhatsappDeliveryStatusBinding.setWhatsappDeliveryStatusViewModel(whatsappDeliveryStatusViewModel);
+        orderStatusFilter(activityWhatsappDeliveryStatusBinding.pendingBtn);
+        activityWhatsappDeliveryStatusBinding.pendingBtn.setOnClickListener(view -> {
+            filterOrder("P");
+            orderStatusFilter( activityWhatsappDeliveryStatusBinding.pendingBtn);
+            orderStatusNormal(activityWhatsappDeliveryStatusBinding.messageSentBtn);
+            orderStatusNormal(activityWhatsappDeliveryStatusBinding.messageAcceptedBtn);
+            orderStatusNormal(activityWhatsappDeliveryStatusBinding.rejectedBtn);
+        });
+        activityWhatsappDeliveryStatusBinding.messageSentBtn.setOnClickListener(view -> {
+            filterOrder("S");
+            orderStatusFilter( activityWhatsappDeliveryStatusBinding.messageSentBtn);
+            orderStatusNormal(activityWhatsappDeliveryStatusBinding.pendingBtn);
+            orderStatusNormal(activityWhatsappDeliveryStatusBinding.messageAcceptedBtn);
+            orderStatusNormal(activityWhatsappDeliveryStatusBinding.rejectedBtn);
+        });
+        activityWhatsappDeliveryStatusBinding.messageAcceptedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filterOrder("A");
+                orderStatusFilter( activityWhatsappDeliveryStatusBinding.messageAcceptedBtn);
+                orderStatusNormal(activityWhatsappDeliveryStatusBinding.messageSentBtn);
+                orderStatusNormal(activityWhatsappDeliveryStatusBinding.pendingBtn);
+                orderStatusNormal(activityWhatsappDeliveryStatusBinding.rejectedBtn);
+            }
+        });
+        activityWhatsappDeliveryStatusBinding.rejectedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filterOrder("R");
+                orderStatusFilter( activityWhatsappDeliveryStatusBinding.rejectedBtn);
+                orderStatusNormal(activityWhatsappDeliveryStatusBinding.messageAcceptedBtn);
+                orderStatusNormal(activityWhatsappDeliveryStatusBinding.messageSentBtn);
+                orderStatusNormal(activityWhatsappDeliveryStatusBinding.pendingBtn);
+            }
+        });
+    }
+
+    private void filterOrder(String status) {
+        if(whatsappDeliveryStatusAdapter.getWhatsappStatusHeaderDataModelList().size()>0){
+            for (WhatsappStatusHeaderDataModel whatsappStatusHeaderDataModel:whatsappDeliveryStatusAdapter.getWhatsappStatusHeaderDataModelList()) {
+                if(whatsappStatusHeaderDataModel.getStatus()==null){
+              //      whatsappDeliveryStatusAdapter.getWhatsappStatusHeaderDataModelList().remove(whatsappStatusHeaderDataModel);
+                }else if(whatsappStatusHeaderDataModel.getStatus().equalsIgnoreCase(status)){
+
+                }
+            }
+        }
     }
 
     private void initRecyclerView() {
@@ -59,7 +117,7 @@ public class WhatsappDeliveryStatusActivity extends AppCompatActivity implements
 
             @Override
             public void onClick(View view, int position, PlaceOrderModel placeOrderModel) {
-                    placeOrderModel.getPlaceOrderViaWhatsApp();
+                placeOrderModel.getPlaceOrderViaWhatsApp();
             }
 
             @Override
@@ -71,9 +129,9 @@ public class WhatsappDeliveryStatusActivity extends AppCompatActivity implements
     }
 
     private void observerFun() {
-        whatsappDeliveryStatusViewModel.getWhatsappStatusOrders().observe(this, whatsappStatusHeaderDataModels ->
-                whatsappDeliveryStatusAdapter.setWhatsappDeliveryStatusList(whatsappStatusHeaderDataModels));
-
+        whatsappDeliveryStatusViewModel.getWhatsappStatusOrders().observe(this, whatsappStatusHeaderDataModels -> 
+        whatsappDeliveryStatusAdapter.setWhatsappDeliveryStatusList(whatsappStatusHeaderDataModels));
+   
         whatsappDeliveryStatusViewModel.isProgress.observe(this, aBoolean -> {
             if (aBoolean) {
                 activityWhatsappDeliveryStatusBinding.progressHorizontal.setVisibility(View.VISIBLE);

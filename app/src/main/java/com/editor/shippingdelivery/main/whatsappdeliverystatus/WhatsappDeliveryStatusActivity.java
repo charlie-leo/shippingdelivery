@@ -25,6 +25,7 @@ import com.editor.shippingdelivery.main.whatsappdeliverystatus.viewmodels.Whatsa
 import com.editor.shippingdelivery.main.whatsappdeliverystatus.viewmodels.WhatsappInfoBottomSheetViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WhatsappDeliveryStatusActivity extends AppCompatActivity implements LifecycleOwner {
@@ -94,14 +95,15 @@ public class WhatsappDeliveryStatusActivity extends AppCompatActivity implements
     }
 
     private void filterOrder(String status) {
+        List<WhatsappStatusHeaderDataModel> whatsappStatusHeaderDataModelListTemp=new ArrayList<>();
         if(whatsappDeliveryStatusAdapter.getWhatsappStatusHeaderDataModelList().size()>0){
             for (WhatsappStatusHeaderDataModel whatsappStatusHeaderDataModel:whatsappDeliveryStatusAdapter.getWhatsappStatusHeaderDataModelList()) {
-                if(whatsappStatusHeaderDataModel.getStatus()==null){
-              //      whatsappDeliveryStatusAdapter.getWhatsappStatusHeaderDataModelList().remove(whatsappStatusHeaderDataModel);
-                }else if(whatsappStatusHeaderDataModel.getStatus().equalsIgnoreCase(status)){
-
+                if(whatsappStatusHeaderDataModel.getStatus().equalsIgnoreCase(status)){
+                    whatsappStatusHeaderDataModelListTemp.add(whatsappStatusHeaderDataModel);
                 }
             }
+            whatsappDeliveryStatusAdapter.setWhatsappDeliveryStatusList(new ArrayList<>());
+            whatsappDeliveryStatusAdapter.setWhatsappDeliveryStatusList(whatsappStatusHeaderDataModelListTemp);
         }
     }
 

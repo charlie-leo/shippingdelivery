@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/drawable/bg_dashboard_primary_color_right_curve.xml" value="0.2025" />
         <entry key="app/src/main/res/drawable/bg_dashboard_white_curve.xml" value="0.2025" />
         <entry key="app/src/main/res/drawable/bg_gradient_header.xml" value="0.221" />
+        <entry key="app/src/main/res/drawable/bg_red_color_left_curve.xml" value="0.179" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1415" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_pending_delivery_orders.xml" value="0.5" />
@@ -24,14 +25,9 @@
         <entry key="app/src/main/res/layout/item_pending_delivery.xml" value="0.51328125" />
         <entry key="app/src/main/res/layout/item_service_availabilty_list.xml" value="0.67" />
         <entry key="app/src/main/res/layout/list_pending_delivery_orders.xml" value="0.5626283367556468" />
-        <entry key="app/src/main/res/layout/msg_dialog.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/msg_dialog.xml" value="0.67" />
         <entry key="app/src/main/res/layout/no_network_activity.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/order_placment.xml" value="0.5646630236794171" />
-        <entry key="app/src/main/res/layout/pickup_activity.xml" value="0.3421875" />
-        <entry key="app/src/main/res/layout/servicablity_activity.xml" value="0.34322916666666664" />
-        <entry key="app/src/main/res/layout/serviceability_item.xml" value="0.34322916666666664" />
-        <entry key="app/src/main/res/layout/tracking_activity.xml" value="0.33692307692307694" />
-        <entry key="app/src/main/res/layout/tracking_adapter_item.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/place_delivery_order_test.xml" value="0.51328125" />
         <entry key="app/src/main/res/layout/servicablity_activity.xml" value="0.51484375" />
         <entry key="app/src/main/res/layout/serviceability_item.xml" value="0.75" />

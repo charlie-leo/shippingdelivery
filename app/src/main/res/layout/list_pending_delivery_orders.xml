@@ -24,6 +24,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
             android:elevation="@dimen/_10sdp"
             app:cardCornerRadius="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -34,20 +38,21 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <View
                     android:id="@+id/view_line_bg"
                     android:layout_width="@dimen/_2sdp"
                     android:layout_height="0dp"
                     android:background="@color/primary_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_customer_name"
                     android:layout_width="0dp"
-                    android:fontFamily="@font/elmessiri_semibold"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/elmessiri_semibold"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
@@ -62,8 +67,8 @@
                     android:id="@+id/tv_date"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/_5sdp"
                     android:fontFamily="@font/elmessiri_regular"
+                    android:padding="@dimen/_5sdp"
                     android:textColor="@color/secondary_text"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_customer_name"
@@ -81,8 +86,8 @@
                 <TextView
                     android:id="@+id/tv_invoice_no"
                     android:layout_width="0dp"
-                    android:fontFamily="@font/elmessiri_regular"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/elmessiri_regular"
                     android:padding="@dimen/_5sdp"
                     android:text="@{headerModel.invoiceNo}"
                     android:textColor="@color/secondary_text"
@@ -96,8 +101,8 @@
                 <TextView
                     android:id="@+id/tv_line_no"
                     android:layout_width="0dp"
-                    android:fontFamily="@font/elmessiri_regular"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/elmessiri_regular"
                     android:padding="@dimen/_5sdp"
                     android:text='@{headerModel.pendingOrderDetailDataModelList.size()+" Lines"}'
                     android:textColor="@color/primary_text"
@@ -116,13 +121,14 @@
                 <TextView
                     android:id="@+id/tv_bill_info"
                     android:layout_width="0dp"
-                    android:fontFamily="@font/elmessiri_regular"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/elmessiri_regular"
                     android:gravity="center"
                     android:paddingStart="@dimen/_3sdp"
+                    android:paddingTop="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_3sdp"
                     android:paddingBottom="@dimen/_5sdp"
-                    android:paddingTop="@dimen/_5sdp"                    android:text="@string/bill_info_underline"
+                    android:text="@string/bill_info_underline"
                     android:textColor="@color/blue"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintEnd_toStartOf="@+id/tv_customer_info"
@@ -133,15 +139,15 @@
                 <TextView
                     android:id="@+id/tv_customer_info"
                     android:layout_width="0dp"
-                    android:fontFamily="@font/elmessiri_regular"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/elmessiri_regular"
                     android:gravity="center"
                     android:paddingStart="@dimen/_3sdp"
+                    android:paddingTop="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_3sdp"
                     android:paddingBottom="@dimen/_5sdp"
-                    android:paddingTop="@dimen/_5sdp"
                     android:text="@string/customer_info_underline"
-                    android:textColor="@color/green"
+                    android:textColor="@color/rating"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintEnd_toStartOf="@+id/tv_route_info"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -155,9 +161,10 @@
                     android:fontFamily="@font/elmessiri_regular"
                     android:gravity="center"
                     android:paddingStart="@dimen/_3sdp"
+                    android:paddingTop="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_3sdp"
                     android:paddingBottom="@dimen/_5sdp"
-                    android:paddingTop="@dimen/_5sdp"                    android:text="@string/route_info_underline"
+                    android:text="@string/route_info_underline"
                     android:textColor="@color/red"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintEnd_toStartOf="@+id/view_line_bg"
@@ -198,12 +205,12 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
+                    android:background="@color/primary_color"
+                    android:src="@mipmap/ic_delivery"
+                    android:tint="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_divider"
-                    android:tint="@color/white"
-                    android:background="@color/primary_color"
-                    android:src="@mipmap/ic_delivery"/>
+                    app:layout_constraintTop_toBottomOf="@+id/view_divider" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

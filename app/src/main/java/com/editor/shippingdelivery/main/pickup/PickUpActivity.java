@@ -123,8 +123,8 @@ public class PickUpActivity extends AppCompatActivity {
         TextView txtMsg = Dialog.findViewById(R.id.alert_msg);
         TextView txtTitle = Dialog.findViewById(R.id.alert_title);
 
-        final Button ok = Dialog.findViewById(R.id.alert_ok_btn);
-        final Button cancel = Dialog.findViewById(R.id.alert_cancel_btn);
+        final TextView ok = Dialog.findViewById(R.id.alert_ok_btn);
+        final TextView cancel = Dialog.findViewById(R.id.alert_cancel_btn);
 
         txtTitle.setText(title);
 

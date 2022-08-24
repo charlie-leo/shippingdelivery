@@ -11,7 +11,7 @@ public class CreateOrderRequest {
     private String orderId = "";
 
     @SerializedName("order_date")
-    private String orderDate = "2022-08-13 11:11";
+    private String orderDate = "";
 
     @SerializedName("pickup_location")
     private String pickupLocation = "Primary";
@@ -23,34 +23,34 @@ public class CreateOrderRequest {
     private String comment = "";
 
     @SerializedName("billing_customer_name")
-    private String billingCustomerName = "Ak";
+    private String billingCustomerName = "";
 
     @SerializedName("billing_last_name")
-    private String billingLastName = "M";
+    private String billingLastName = "";
 
     @SerializedName("billing_address")
-    private String billingAddress = "15th streeet";
+    private String billingAddress = "";
 
     @SerializedName("billing_address_2")
-    private String billingAddress2 = "line";
+    private String billingAddress2 = "";
 
     @SerializedName("billing_city")
-    private String billingCity = "chennai";
+    private String billingCity = "";
 
     @SerializedName("billing_pincode")
-    private String billingPincode = "600039";
+    private String billingPincode = "";
 
     @SerializedName("billing_state")
-    private String billingState = "TN";
+    private String billingState = "";
 
     @SerializedName("billing_country")
-    private String billingCountry = "India";
+    private String billingCountry = "";
 
     @SerializedName("billing_email")
-    private String billingEmail = "demo@test.com";
+    private String billingEmail = "";
 
     @SerializedName("billing_phone")
-    private String billingPhone = "9087663729";
+    private String billingPhone = "";
 
     @SerializedName("shipping_is_billing")
     private Boolean shippingIsBilling = true;
@@ -59,34 +59,34 @@ public class CreateOrderRequest {
     private String shippingCustomerName = "";
 
     @SerializedName("shipping_last_name")
-    private String shippingLastName = "R";
+    private String shippingLastName = "";
 
     @SerializedName("shipping_address")
-    private String shippingAddress = "11th streen";
+    private String shippingAddress = "";
 
     @SerializedName("shipping_address_2")
-    private String shippingAddress2 = "line2";
+    private String shippingAddress2 = "";
 
     @SerializedName("shipping_city")
-    private String shippingCity = "chennai";
+    private String shippingCity = "";
 
     @SerializedName("shipping_pincode")
-    private String shippingPincode = "600001";
+    private String shippingPincode = "";
 
     @SerializedName("shipping_country")
-    private String shippingCountry = "india";
+    private String shippingCountry = "";
 
     @SerializedName("shipping_state")
-    private String shippingState = "TN";
+    private String shippingState = "";
 
     @SerializedName("shipping_email")
-    private String shippingEmail = "dm@demo.com";
+    private String shippingEmail = "";
 
     @SerializedName("shipping_phone")
-    private String shippingPhone = "9089786376";
+    private String shippingPhone = "";
 
     @SerializedName("payment_method")
-    private String paymentMethod = "Prepaid";
+    private String paymentMethod = "";
 
     @SerializedName("shipping_charges")
     private Integer shippingCharges = 0;

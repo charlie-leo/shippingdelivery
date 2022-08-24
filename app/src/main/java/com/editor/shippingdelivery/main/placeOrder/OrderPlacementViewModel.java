@@ -228,7 +228,7 @@ public class OrderPlacementViewModel extends BaseObservable {
                 && !errorMessage.equalsIgnoreCase("")) {
             TSnackbar snackbar = TSnackbar.make(layout, errorMessage, TSnackbar.LENGTH_SHORT);
             View snackbarView = snackbar.getView();
-            snackbarView.setBackgroundColor(ContextCompat.getColor(layout.getContext(), R.color.primary_color));
+            snackbarView.setBackgroundColor(ContextCompat.getColor(layout.getContext(), R.color.red));
             TextView textView = (TextView) snackbarView.findViewById(R.id.snackbar_text);
             textView.setTextColor(Color.WHITE);
             snackbar.show();

@@ -122,7 +122,7 @@
                         android:fontFamily="@font/elmessiri_semibold"
                         android:text="Billing Details"
                         android:textColor="@color/primary_text"
-                        android:textSize="@dimen/_12ssp"
+                        android:textSize="@dimen/_14ssp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -168,7 +168,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.billingCustomerName}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -202,7 +202,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.billingLastName}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -240,7 +240,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.billingAddress}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -271,7 +271,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.billingAddress2}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -303,7 +303,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.billingCity}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -335,7 +335,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.billingState}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -374,7 +374,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.billingCountry}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -405,7 +405,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.billingPincode}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -444,7 +444,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.billingEmail}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -478,7 +478,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.billingPhone}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -538,7 +538,7 @@
                         android:fontFamily="@font/elmessiri_semibold"
                         android:text="Shipping Details"
                         android:textColor="@color/primary_text"
-                        android:textSize="@dimen/_12ssp"
+                        android:textSize="@dimen/_14ssp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -582,7 +582,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.shippingCustomerName}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -614,7 +614,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.shippingLastName}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -652,7 +652,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.shippingAddress}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -683,7 +683,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.shippingAddress2}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -716,7 +716,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.shippingCity}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -748,7 +748,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.shippingState}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -788,7 +788,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.shippingCountry}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -819,7 +819,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.shippingPincode}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -858,7 +858,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.shippingEmail}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -892,7 +892,7 @@
                                 android:text="@={orderPlacementViewModel.createOrderRequest.shippingPhone}"
                                 android:textColor="@color/primary_text"
                                 android:textColorHint="@color/secondary_text"
-                                android:textSize="@dimen/_10ssp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -929,7 +929,7 @@
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/primary_text"
                     android:textColorHint="@color/secondary_text"
-                    android:textSize="@dimen/_12ssp"
+                    android:textSize="@dimen/_14ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraint_layout_shipping_details" />
@@ -956,7 +956,7 @@
                         android:paddingBottom="@dimen/_5sdp"
                         android:text="Package Details"
                         android:textColor="@color/secondary_text"
-                        android:textSize="@dimen/_12ssp"
+                        android:textSize="@dimen/_14ssp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -988,7 +988,7 @@
                             android:text='@={"" + orderPlacementViewModel.createOrderRequest.length}'
                             android:textColor="@color/primary_text"
                             android:textColorHint="@color/secondary_text"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="@dimen/_12ssp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -1019,7 +1019,7 @@
                             android:text='@={"" + orderPlacementViewModel.createOrderRequest.breadth}'
                             android:textColor="@color/primary_text"
                             android:textColorHint="@color/secondary_text"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="@dimen/_12ssp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -1057,7 +1057,7 @@
                             android:text='@={"" + orderPlacementViewModel.createOrderRequest.height}'
                             android:textColor="@color/primary_text"
                             android:textColorHint="@color/secondary_text"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="@dimen/_12ssp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -1087,7 +1087,7 @@
                             android:text='@={"" + orderPlacementViewModel.createOrderRequest.weight}'
                             android:textColor="@color/primary_text"
                             android:textColorHint="@color/secondary_text"
-                            android:textSize="@dimen/_10ssp"
+                            android:textSize="@dimen/_12ssp"
                             tools:layout_editor_absoluteX="84dp"
                             tools:layout_editor_absoluteY="1870dp" />
 
@@ -1128,7 +1128,7 @@
                             android:text='@={"" + orderPlacementViewModel.createOrderRequest.shippingCharges}'
                             android:textColor="@color/primary_text"
                             android:textColorHint="@color/secondary_text"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="@dimen/_12ssp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -1154,7 +1154,7 @@
                     android:text="@={orderPlacementViewModel.createOrderRequest.comment}"
                     android:textColor="@color/primary_text"
                     android:textColorHint="@color/secondary_text"
-                    android:textSize="@dimen/_10ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -1190,7 +1190,7 @@
             android:paddingEnd="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
             android:textColor="@color/white"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintBottom_toBottomOf="@id/view_bg_bottom"
             app:layout_constraintStart_toStartOf="@id/view_bg_bottom"
             app:layout_constraintTop_toTopOf="@+id/barrier_submit_total"

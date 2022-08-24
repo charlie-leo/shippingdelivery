@@ -18,7 +18,7 @@
             android:includeFontPadding="false"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_10sdp"
-            android:text="Delivery"
+            android:text="De-Ship"
             android:textColor="@color/white"
             android:textSize="@dimen/_26ssp"
             android:textStyle="bold"
@@ -54,13 +54,13 @@
                 android:id="@+id/cv_delivery"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
                 app:cardCornerRadius="@dimen/_15sdp"
                 app:cardElevation="@dimen/_3sdp"
                 app:layout_constraintDimensionRatio="w,1:1"
-                app:layout_constraintEnd_toStartOf="@+id/cv_watsapp"
+                app:layout_constraintEnd_toStartOf="@+id/cv_pickup"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -75,8 +75,9 @@
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:padding="@dimen/_5sdp"
+                        android:padding="@dimen/_12sdp"
                         android:src="@mipmap/ic_create_delivery"
+                        android:tint="@color/secondary_text"
                         app:layout_constraintBottom_toTopOf="@+id/tv_delivery_menu_label"
                         app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -90,8 +91,112 @@
                         android:background="@color/light_primary"
                         android:fontFamily="@font/elmessiri_regular"
                         android:gravity="center"
-                        android:padding="@dimen/_5sdp"
-                        android:text="@string/delivery"
+                        android:padding="@dimen/_2sdp"
+                        android:text="De-Create"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_pickup"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_2sdp"
+                app:cardCornerRadius="@dimen/_15sdp"
+                app:cardElevation="@dimen/_3sdp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/cv_tracking"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/cv_delivery"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/pickUpConstrinkayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
+                    app:layout_constraintStart_toEndOf="@+id/constraintLayout2">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@mipmap/ic_pickup_menu"
+                        android:tint="@color/secondary_text"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_pickup_menu_label"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_pickup_menu_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/light_primary"
+                        android:fontFamily="@font/elmessiri_regular"
+                        android:gravity="center"
+                        android:padding="@dimen/_2sdp"
+                        android:text="De-Pickup"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_tracking"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_15sdp"
+                app:cardElevation="@dimen/_3sdp"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/cv_pickup"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/trackingConstrinkayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
+                    app:layout_constraintStart_toEndOf="@+id/constraintLayout2">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:padding="@dimen/_14sdp"
+                        android:src="@mipmap/ic_tracking_dashboard"
+                        android:tint="@color/secondary_text"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_tracking_menu_label"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_tracking_menu_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/light_primary"
+                        android:fontFamily="@font/elmessiri_regular"
+                        android:gravity="center"
+                        android:padding="@dimen/_2sdp"
+                        android:text="De-Track"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -105,17 +210,13 @@
                 android:id="@+id/cv_watsapp"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
                 app:cardCornerRadius="@dimen/_15sdp"
                 app:cardElevation="@dimen/_3sdp"
-                app:layout_constraintDimensionRatio="w,1:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/cv_delivery"
-                app:layout_constraintTop_toTopOf="parent"
-                >
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@+id/cv_delivery"
+                app:layout_constraintStart_toStartOf="@+id/cv_delivery"
+                app:layout_constraintTop_toBottomOf="@+id/cv_delivery">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout3"
@@ -125,10 +226,11 @@
                     app:layout_constraintStart_toEndOf="@+id/constraintLayout">
 
                     <ImageView
-                        android:layout_width="@dimen/_100sdp"
+                        android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:padding="@dimen/_10sdp"
-                        android:src="@mipmap/ic_dashboard_whatsapp_menu"
+                        android:padding="@dimen/_14sdp"
+                        android:src="@mipmap/ic_watsapp_dashboard"
+                        android:tint="@color/secondary_text"
                         app:layout_constraintBottom_toTopOf="@+id/tv_wats_app_menu_label"
                         app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -140,9 +242,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@color/light_primary"
-                        android:fontFamily="@font/montserrat_medium"
+                        android:fontFamily="@font/elmessiri_regular"
                         android:gravity="center"
-                        android:padding="@dimen/_5sdp"
+                        android:padding="@dimen/_2sdp"
                         android:text="@string/whatsapp"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14ssp"
@@ -152,106 +254,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_pickup"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                app:cardCornerRadius="@dimen/_15sdp"
-                app:cardElevation="@dimen/_3sdp"
-                app:layout_constraintEnd_toStartOf="@+id/cv_watsapp"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_delivery">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/pickUpConstrinkayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
-                    app:layout_constraintStart_toEndOf="@+id/constraintLayout2">
-
-                    <ImageView
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="0dp"
-                        android:padding="@dimen/_5sdp"
-                        android:src="@mipmap/ic_dashboard_delivery_menu"
-                        app:layout_constraintBottom_toTopOf="@+id/tv_pickup_menu_label"
-                        app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tv_pickup_menu_label"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@color/light_primary"
-                        android:gravity="center"
-                        android:padding="@dimen/_5sdp"
-                        android:text="@string/pickup"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14ssp"
-                        android:fontFamily="@font/elmessiri_regular"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_tracking"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                app:cardCornerRadius="@dimen/_15sdp"
-                app:cardElevation="@dimen/_3sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/cv_delivery"
-                app:layout_constraintTop_toBottomOf="@id/cv_watsapp"
-                >
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/trackingConstrinkayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
-                    app:layout_constraintStart_toEndOf="@+id/constraintLayout2">
-
-                    <ImageView
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="0dp"
-                        android:padding="@dimen/_5sdp"
-                        android:src="@mipmap/ic_dashboard_delivery_menu"
-                        app:layout_constraintBottom_toTopOf="@+id/tv_tracking_menu_label"
-                        app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tv_tracking_menu_label"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:background="@color/light_primary"
-                        android:gravity="center"
-                        android:padding="@dimen/_5sdp"
-                        android:text="@string/tracking"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_14ssp"
-                        android:fontFamily="@font/elmessiri_regular"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

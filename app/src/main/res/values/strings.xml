@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shipping Delivery</string>
+    <string name="app_name">De-Ship</string>
     <string name="dashboard">Dashboard</string>
     <string name="delivery">Delivery</string>
     <string name="pickup">Pick Up</string>

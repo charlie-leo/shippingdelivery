@@ -88,10 +88,13 @@ public class WhatsappDeliveryStatusAdapter extends RecyclerView.Adapter<Whatsapp
                 placeOrderModel.setInvoiceNo(whatsappStatusHeaderDataModel.getInvoiceNo());
                 placeOrderModel.setMessageId(UUID.randomUUID().toString());
                 placeOrderModel.setMobileNumber("919500512853");
-                placeOrderModel.setMessageContent("Dear "+whatsappStatusHeaderDataModel.getCustomerName()+","
-                                +"please confirm the order id:"+whatsappStatusHeaderDataModel.getInvoiceNo()+
-                        "\norder value:"+whatsappStatusHeaderDataModel.getTotNetAmt()+"\n"+
-                        "\ntotal line count:"+whatsappStatusHeaderDataModel.getTotTaxAmt());
+                String totalInvoiceQty =(whatsappStatusHeaderDataModel.getBillPrintDetailList()!=null) ? whatsappStatusHeaderDataModel.getBillPrintDetailList().get(0).getTotalInvoiceQty() : "Not available";
+                String messageContent ="Order Details:\nName:"+whatsappStatusHeaderDataModel.getCustomerName()+" "
+                        +"\nPurchased Item Count:"+totalInvoiceQty+" "+
+                        "\nYour Billing Amount:"+whatsappStatusHeaderDataModel.getTotNetAmt()+" "+
+                        "\nCan we place the order?";
+                System.out.println("message:"+messageContent);
+                placeOrderModel.setMessageContent(messageContent);
 
                 onListItemClickListener.onClick(viewDataBinding.placeOrderTxt, position, placeOrderModel);
 

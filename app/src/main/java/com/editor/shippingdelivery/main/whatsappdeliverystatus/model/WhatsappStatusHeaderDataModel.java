@@ -8,6 +8,7 @@ import androidx.databinding.Bindable;
 
 import com.editor.shippingdelivery.BR;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WhatsappStatusHeaderDataModel extends BaseObservable implements Parcelable
@@ -84,6 +85,19 @@ public class WhatsappStatusHeaderDataModel extends BaseObservable implements Par
     private String liquidation;
 
     private String status;
+
+    public ArrayList<BillPrintDetailList> getBillPrintDetailList() {
+        return billPrintDetailList;
+    }
+
+    public void setBillPrintDetailList(ArrayList<BillPrintDetailList> billPrintDetailList) {
+        this.billPrintDetailList = billPrintDetailList;
+    }
+
+    private ArrayList<BillPrintDetailList> billPrintDetailList;
+
+
+
     /** billDetailsEntityList. */
     private List<WhatsappDliveryDetailDataModel> whatsappDeliveryDetailDataModelList;
 
@@ -144,6 +158,7 @@ public class WhatsappStatusHeaderDataModel extends BaseObservable implements Par
         remarks = in.readString();
         liquidation = in.readString();
         status = in.readString();
+        billPrintDetailList= in.readArrayList(String.class.getClassLoader());
     }
 
     public static final Creator<WhatsappStatusHeaderDataModel> CREATOR = new Creator<WhatsappStatusHeaderDataModel>() {
@@ -427,5 +442,6 @@ public class WhatsappStatusHeaderDataModel extends BaseObservable implements Par
         parcel.writeString(remarks);
         parcel.writeString(liquidation);
         parcel.writeString(status);
+        parcel.writeList(billPrintDetailList);
     }
 }

@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ShippingDelivery"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".TrackingStatusActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
@@ -32,11 +35,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.placeOrder.OrderPlacementActivity" />
+        <activity
+            android:name=".main.placeOrder.OrderPlacementActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity android:name=".application.NoNetworkActivity" />
         <activity android:name=".main.serviceablity.SelectServiceabilityActivity" />
-        <activity android:name=".main.pickup.PickUpActivity"/>
-        <activity android:name=".main.tracking.TrackingActivity"/>
+        <activity android:name=".main.pickup.PickUpActivity" />
+        <activity android:name=".main.tracking.TrackingActivity" />
     </application>
 
 </manifest>

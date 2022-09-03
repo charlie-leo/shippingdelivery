@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_constraint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/_10sdp"
+            tools:context=".main.tracking.TrackingStatusActivity">
+
+            <ImageView
+                android:id="@+id/order_received"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:src="@mipmap/banner_order_received"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_status_order_received"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:src="@mipmap/ic_checked"
+                app:layout_constraintBottom_toBottomOf="@+id/order_received"
+                app:layout_constraintEnd_toEndOf="@+id/order_received"
+                app:layout_constraintStart_toStartOf="@+id/order_received"
+                app:layout_constraintTop_toBottomOf="@+id/order_received" />
+
+            <View
+                android:id="@+id/view_dotted_line_ord_received"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:background="@mipmap/ic_dotted_vertical_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_status_order_received" />
+
+            <ImageView
+                android:id="@+id/order_picked"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/banner_order_picked"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_dotted_line_ord_received" />
+
+            <ImageView
+                android:id="@+id/iv_status_order_picked"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:src="@mipmap/ic_unchecked"
+                app:layout_constraintBottom_toBottomOf="@+id/order_picked"
+                app:layout_constraintEnd_toEndOf="@+id/order_picked"
+                app:layout_constraintStart_toStartOf="@+id/order_picked"
+                app:layout_constraintTop_toBottomOf="@+id/order_picked" />
+
+            <View
+                android:id="@+id/view_dotted_line_ord_picked"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:background="@mipmap/ic_dotted_vertical_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_status_order_picked" />
+
+            <ImageView
+                android:id="@+id/order_in_transit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/banner_order_transit"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_dotted_line_ord_picked" />
+
+            <ImageView
+                android:id="@+id/iv_status_order_in_transit"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:src="@mipmap/ic_unchecked"
+                app:layout_constraintBottom_toBottomOf="@+id/order_in_transit"
+                app:layout_constraintEnd_toEndOf="@+id/order_in_transit"
+                app:layout_constraintStart_toStartOf="@+id/order_in_transit"
+                app:layout_constraintTop_toBottomOf="@+id/order_in_transit" />
+
+            <View
+                android:id="@+id/view_dotted_line_ord_transit"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:background="@mipmap/ic_dotted_vertical_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_status_order_in_transit" />
+
+            <ImageView
+                android:id="@+id/order_out_for_delivery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/banner_out_for_delivery"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_dotted_line_ord_transit" />
+
+            <ImageView
+                android:id="@+id/iv_status_order_out_for_delivry"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:src="@mipmap/ic_unchecked"
+                app:layout_constraintBottom_toBottomOf="@+id/order_out_for_delivery"
+                app:layout_constraintEnd_toEndOf="@+id/order_out_for_delivery"
+                app:layout_constraintStart_toStartOf="@+id/order_out_for_delivery"
+                app:layout_constraintTop_toBottomOf="@+id/order_out_for_delivery" />
+
+            <View
+                android:id="@+id/view_dotted_line_ord_out_delvry"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:background="@mipmap/ic_dotted_vertical_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_status_order_out_for_delivry" />
+
+            <ImageView
+                android:id="@+id/order_reached_destination"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/banner_reached_desti"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_dotted_line_ord_out_delvry" />
+
+            <ImageView
+                android:id="@+id/iv_status_order_destination"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:src="@mipmap/ic_unchecked"
+                app:layout_constraintBottom_toBottomOf="@+id/order_reached_destination"
+                app:layout_constraintEnd_toEndOf="@+id/order_reached_destination"
+                app:layout_constraintStart_toStartOf="@+id/order_reached_destination"
+                app:layout_constraintTop_toBottomOf="@+id/order_reached_destination" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_constraint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/light_primary"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tv_order_id_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Order Id"
+            android:padding="@dimen/_10sdp"
+            android:gravity="start"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_order_id"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_order_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="12321321331"
+            android:gravity="end"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_order_id_label"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

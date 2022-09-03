@@ -16,7 +16,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_pending_delivery_orders.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_pickup.xml" value="0.28076923076923077" />
-        <entry key="app/src/main/res/layout/activity_place_delivery_order.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_place_delivery_order.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_tracking_status.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_whatsapp_delivery_status.xml" value="0.25" />
         <entry key="app/src/main/res/layout/bottom_sheet_address_details.xml" value="0.5" />
         <entry key="app/src/main/res/layout/bottom_sheet_bill_info.xml" value="0.51328125" />

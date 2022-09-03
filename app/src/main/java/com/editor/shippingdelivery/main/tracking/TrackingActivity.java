@@ -73,6 +73,10 @@ public class TrackingActivity extends AppCompatActivity {
         });
     }
 
+    public void back(View view) {
+        finish();
+    }
+
     @Override
     protected void onStart() {
         super.onStart();

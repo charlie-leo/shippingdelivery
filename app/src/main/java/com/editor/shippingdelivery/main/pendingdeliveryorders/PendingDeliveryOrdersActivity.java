@@ -1,5 +1,6 @@
 package com.editor.shippingdelivery.main.pendingdeliveryorders;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.editor.shippingdelivery.main.pendingdeliveryorders.model.PendingOrder
 import com.editor.shippingdelivery.main.pendingdeliveryorders.viewmodels.InfoBottomSheetViewModel;
 import com.editor.shippingdelivery.main.pendingdeliveryorders.viewmodels.PendingDeliveryOrdersViewModel;
 import com.editor.shippingdelivery.main.pickup.model.DeliveryOrdesrHeaderDataModel;
+import com.editor.shippingdelivery.main.placeOrder.OrderPlacementActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
@@ -46,7 +48,8 @@ public class PendingDeliveryOrdersActivity extends AppCompatActivity implements 
         initDataBinding();
         initRecyclerView();
         observerFun();
-
+        Intent in = new Intent(this, OrderPlacementActivity.class);
+        startActivity(in);
     }
 
     private void initDataBinding() {

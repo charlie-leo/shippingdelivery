@@ -146,7 +146,7 @@
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_2sdp"
                             android:layout_marginBottom="@dimen/_2sdp"
-                            android:hint="Name"
+                            android:hint="Name*"
                             app:errorContentDescription="Enter Customer Name"
                             app:layout_constraintBottom_toBottomOf="@+id/barrier_billing_name_lname"
                             app:layout_constraintEnd_toStartOf="@+id/til_billing_customer_last_name"
@@ -181,7 +181,7 @@
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
                             android:layout_marginBottom="@dimen/_2sdp"
-                            android:hint="Last Name"
+                            android:hint="Last Name*"
                             app:layout_constraintBottom_toBottomOf="@+id/barrier_billing_name_lname"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/til_billing_customer_name"
@@ -221,7 +221,7 @@
                             android:layout_marginStart="@dimen/_8sdp"
                             android:layout_marginTop="@dimen/_2sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:hint="Address Line 1"
+                            android:hint="Address Line 1*"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/barrier_billing_name_lname">
@@ -252,7 +252,7 @@
                             android:layout_marginStart="@dimen/_8sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:hint="Address Line 2"
+                            android:hint="Address Line 2*"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/til_billing_address">
@@ -283,7 +283,7 @@
                             android:layout_marginStart="@dimen/_8sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_2sdp"
-                            android:hint="City"
+                            android:hint="City*"
                             app:layout_constraintEnd_toStartOf="@+id/til_billing_state"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/til_billing_address_line_two">
@@ -315,7 +315,7 @@
                             android:layout_marginStart="@dimen/_2sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:hint="State"
+                            android:hint="State*"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/til_billing_city"
                             app:layout_constraintTop_toBottomOf="@+id/til_billing_address_line_two">
@@ -354,7 +354,7 @@
                             android:layout_marginStart="@dimen/_8sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_2sdp"
-                            android:hint="Country"
+                            android:hint="Country*"
                             app:layout_constraintEnd_toStartOf="@+id/til_billing_pin_code"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/barrier_billing_city_state">
@@ -386,7 +386,7 @@
                             android:layout_marginStart="@dimen/_2sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:hint="Pin Code"
+                            android:hint="Pin Code*"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/til_billing_Country"
                             app:layout_constraintTop_toBottomOf="@+id/barrier_billing_city_state">
@@ -425,7 +425,7 @@
                             android:layout_marginStart="@dimen/_8sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:hint="Email"
+                            android:hint="Email*"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/barrier_billing_country_state">
@@ -457,7 +457,7 @@
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
                             android:layout_marginBottom="@dimen/_8sdp"
-                            android:hint="Mobile No"
+                            android:hint="Mobile No*"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -561,7 +561,7 @@
                             android:layout_marginStart="@dimen/_8sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_2sdp"
-                            android:hint="Name"
+                            android:hint="Name*"
                             app:errorContentDescription="Enter Customer Name"
                             app:layout_constraintEnd_toStartOf="@+id/til_shipping_customer_last_name"
                             app:layout_constraintStart_toStartOf="parent"
@@ -594,7 +594,7 @@
                             android:layout_marginStart="@dimen/_2sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:hint="Last Name"
+                            android:hint="Last Name*"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/til_shipping_customer_name"
                             app:layout_constraintTop_toTopOf="parent">
@@ -633,7 +633,7 @@
                             android:layout_marginStart="@dimen/_8sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:hint="Address Line 1"
+                            android:hint="Address Line 1*"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/barrier_shipping_name_lname">
@@ -664,7 +664,7 @@
                             android:layout_marginStart="@dimen/_8sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:hint="Address Line 2"
+                            android:hint="Address Line 2*"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/til_shipping_address">
@@ -696,7 +696,7 @@
                             android:layout_marginStart="@dimen/_8sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_2sdp"
-                            android:hint="City"
+                            android:hint="City*"
                             app:layout_constraintEnd_toStartOf="@+id/til_shipping_state"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/til_shipping_address_line_two">
@@ -728,7 +728,7 @@
                             android:layout_marginStart="@dimen/_2sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:hint="State"
+                            android:hint="State*"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/til_shipping_city"
                             app:layout_constraintTop_toBottomOf="@+id/til_shipping_address_line_two">
@@ -768,7 +768,7 @@
                             android:layout_marginStart="@dimen/_8sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_2sdp"
-                            android:hint="Country"
+                            android:hint="Country*"
                             app:layout_constraintEnd_toStartOf="@+id/til_shipping_pin_code"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/barrier_shipping_city_state">
@@ -800,7 +800,7 @@
                             android:layout_marginStart="@dimen/_2sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:hint="Pin Code"
+                            android:hint="Pin Code*"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/til_shipping_Country"
                             app:layout_constraintTop_toBottomOf="@+id/barrier_shipping_city_state">
@@ -839,7 +839,7 @@
                             android:layout_marginStart="@dimen/_8sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:hint="Email"
+                            android:hint="Email*"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/barrier_shipping_country_pincode">
@@ -871,7 +871,7 @@
                             android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
                             android:layout_marginBottom="@dimen/_8sdp"
-                            android:hint="Mobile No"
+                            android:hint="Mobile No*"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -924,7 +924,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_8sdp"
                     android:background="@drawable/bg_white_curve"
-                    android:hint="Select Pickup Date"
+                    android:hint="Select Pickup Date*"
                     android:onClick='@{(view)->orderPlacementViewModel.selectStartDate(view)}'
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/primary_text"
@@ -971,7 +971,7 @@
                         android:layout_marginTop="@dimen/_4sdp"
                         android:layout_marginEnd="@dimen/_2sdp"
                         android:layout_marginBottom="@dimen/_4sdp"
-                        android:hint="Length"
+                        android:hint="Length*"
                         app:layout_constraintBottom_toBottomOf="@+id/barrier_length_breadth"
                         app:layout_constraintEnd_toStartOf="@+id/til_breadth"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -1001,7 +1001,7 @@
                         android:layout_marginTop="@dimen/_4sdp"
                         android:layout_marginEnd="@dimen/_8sdp"
                         android:layout_marginBottom="@dimen/_4sdp"
-                        android:hint="Breadth"
+                        android:hint="Breadth*"
                         app:layout_constraintBottom_toBottomOf="@+id/barrier_length_breadth"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -1040,7 +1040,7 @@
                         android:layout_marginTop="@dimen/_4sdp"
                         android:layout_marginEnd="@dimen/_2sdp"
                         android:layout_marginBottom="@dimen/_4sdp"
-                        android:hint="height"
+                        android:hint="height*"
                         app:layout_constraintBottom_toBottomOf="@+id/barrier_height_weight"
                         app:layout_constraintEnd_toStartOf="@+id/til_weight"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -1070,7 +1070,7 @@
                         android:layout_marginTop="@dimen/_4sdp"
                         android:layout_marginEnd="@dimen/_8sdp"
                         android:layout_marginBottom="@dimen/_4sdp"
-                        android:hint="Weight"
+                        android:hint="Weight*"
                         app:layout_constraintBottom_toBottomOf="@+id/barrier_height_weight"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -1109,7 +1109,7 @@
                         android:layout_marginTop="@dimen/_4sdp"
                         android:layout_marginEnd="@dimen/_8sdp"
                         android:layout_marginBottom="@dimen/_4sdp"
-                        android:hint="Shipping Charges"
+                        android:hint="Shipping Charges*"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/barrier_height_weight">
@@ -1182,7 +1182,7 @@
 
         <TextView
             android:id="@+id/tv_Total"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/elmessiri_regular"
             android:paddingStart="@dimen/_10sdp"
@@ -1194,8 +1194,20 @@
             app:layout_constraintBottom_toBottomOf="@id/view_bg_bottom"
             app:layout_constraintStart_toStartOf="@id/view_bg_bottom"
             app:layout_constraintTop_toTopOf="@+id/barrier_submit_total"
+            app:layout_constraintEnd_toStartOf="@+id/view_line_next"
             app:set_value_with_symbol='@{"" + orderPlacementViewModel.createOrderRequest.subTotal}' />
 
+        <View
+            android:id="@+id/view_line_next"
+            android:layout_width="@dimen/_2sdp"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/view_bg_bottom"
+            app:layout_constraintEnd_toStartOf="@id/tv_place_order"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            app:layout_constraintTop_toTopOf="@+id/barrier_submit_total"
+            />
         <TextView
             android:id="@+id/tv_place_order"
             android:layout_width="wrap_content"
